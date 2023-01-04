@@ -1,0 +1,25 @@
+
+#: import SoftBox widgets.gradient.SoftBox
+#: import BackBox widgets.box.BackBox
+#: import Text widgets.labels.Text
+#: import ShadowBox widgets.shadow.ShadowBox
+#: import IconButton widgets.buttons.IconButton
+#: import FlatButton widgets.buttons.FlatButton
+#: import icon kivy.garden.iconfonts.icon
+##:import MapView kivy.garden.mapview.MapView
+
+##: import Home views.home.Home
+##: import BookingDetails views.booking_details.BookingDetails
+##: import TicketDetails views.ticket.TicketDetails
+<MainWindow>:
+    orientation: 'vertical'
+    canvas.before:
+        Color:
+            rgba: app.colors.secondary
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    ScreenManager:
+        id: scrn_mngr
+
+        
