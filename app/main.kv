@@ -10,6 +10,7 @@
 
 #: import Home views.home.Home
 #: import BookingDetails views.booking_details.BookingDetails
+#: import TicketDetails views.ticket.TicketDetails
 <MainWindow>:
     orientation: 'vertical'
     canvas.before:
@@ -29,4 +30,8 @@
             name: 'scrn_booking_details'
             BookingDetails:
                 id: booking_details
+        Screen:
+            name: 'scrn_ticket_details'
+            TicketDetails:
+                id: ticket_details_info
      

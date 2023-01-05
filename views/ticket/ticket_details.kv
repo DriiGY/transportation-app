@@ -1,0 +1,41 @@
+
+
+<TicketDetails>:
+    id: ticket_details_info
+    size_hint: 1, 1
+    orientation: "vertical"
+    spacing:dp(10)
+    canvas.before:
+        Color:
+            rgba:[1,1,1,1]
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    BoxLayout:
+        size_hint_y: .1
+        padding:[dp(15), 0, dp(10), 0]
+        ButtonIcon:
+            size_hint_x: .2
+            text:icon("icon-chevron-left")
+            color:[0,0,0,1]
+            bold:True
+            font_size:app.fonts.size.h1
+            on_press:
+                root.go_back()
+                root.parent.manager.transition.direction = "left"
+        BoxLayout:
+            size_hint_x: .8
+            canvas.before:
+                Color:
+                    rgba:[0,1,1,0]
+                Rectangle:
+                    size:self.size
+                    pos:self.pos
+            padding:[0, 0, dp(100), 0]
+            Label:
+                
+                size_hint_x: 1
+                text: "Ticket"
+                color:[0,0,0,1]
+                font_size:app.fonts.size.h1
+    Widget:
