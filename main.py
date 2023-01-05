@@ -8,4 +8,5 @@ register(
     join(dirname(__file__), "assets/fonts/feather/feather.ttf"),
     join(dirname(__file__), "assets/fonts/feather/feather.fontd"),
 )
+
 MainApp().run()

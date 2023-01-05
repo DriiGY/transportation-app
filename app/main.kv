@@ -7,7 +7,7 @@
 #: import FlatButton widgets.buttons.FlatButton
 #: import icon kivy.garden.iconfonts.icon
 ##:import MapView kivy.garden.mapview.MapView
-
+#: import Home views.home.Home
 <MainWindow>:
     orientation: 'vertical'
     canvas.before:
@@ -19,4 +19,8 @@
 
     ScreenManager:
         id: scrn_mngr
+        Screen:
+            name: 'scrn_home'
+            Home:
+                id: home
      
