@@ -7,12 +7,14 @@
 #: import FlatButton widgets.buttons.FlatButton
 #: import icon kivy.garden.iconfonts.icon
 ##:import MapView kivy.garden.mapview.MapView
+
 #: import Home views.home.Home
+#: import BookingDetails views.booking_details.BookingDetails
 <MainWindow>:
     orientation: 'vertical'
     canvas.before:
         Color:
-            rgba: app.colors.secondary
+            rgba: app.colors.white
         Rectangle:
             pos: self.pos
             size: self.size
@@ -23,4 +25,8 @@
             name: 'scrn_home'
             Home:
                 id: home
+        Screen:
+            name: 'scrn_booking_details'
+            BookingDetails:
+                id: booking_details
      

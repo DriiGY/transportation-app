@@ -1,0 +1,516 @@
+
+
+
+<BookingDetails>:
+    size_hint: 1, 1
+    orientation: "vertical"
+    spacing:dp(10)
+    canvas.before:
+        Color:
+            rgba:[0,0,0,0]
+        Rectangle:
+            size:self.size
+            pos:self.pos
+    BoxLayout:
+        size_hint_y: .1
+        padding:[dp(15), 0, dp(10), 0]
+        ButtonIcon:
+            size_hint_x: .2
+            text:icon("icon-chevron-left")
+            color:[0,0,0,1]
+            bold:True
+            font_size:app.fonts.size.h1
+            on_press:
+                root.go_back()
+                root.parent.manager.transition.direction = "left"
+        BoxLayout:
+            size_hint_x: .8
+            canvas.before:
+                Color:
+                    rgba:[0,1,1,0]
+                Rectangle:
+                    size:self.size
+                    pos:self.pos
+            padding:[0, 0, dp(100), 0]
+            Label:
+                
+                size_hint_x: 1
+                text: "Booking details"
+                color:[0,0,0,1]
+                font_size:app.fonts.size.h1
+        # ---------------- MENU BUTTON MISSING HERE --------------------
+    BoxLayout:
+        size_hint_y: .1
+        BoxLayout:
+            size_hint_x: .7
+            orientation:"horizontal"
+            padding:[dp(20), 0,dp(0),0]
+            spacing:0
+            canvas.before:
+                Color:
+                    rgba: [1,0,0,0]
+                Rectangle:
+                    size:self.size
+                    pos:self.pos
+            AnchorLayout:
+                size_hint_x: .1
+                padding_right:dp(30)
+                Text:
+                    size_hint:1,1
+                    text:icon("icon-circle")
+                    color:rgba("#8787F6")
+                    font_size:app.fonts.size.h3
+                    font_name:app.fonts.heading
+                    bold:True
+            Widget:
+                size_hint_x: .8
+                canvas.before:
+                    Color:
+                        rgba: rgba('#000fff')
+                    
+                    
+                    Line:
+                        points: self.x, self.y+self.height/2, self.width+dp(20), self.y+self.height/2
+                        width: 1
+                        dash_length: dp(8)
+                        dash_offset: dp(10)
+            AnchorLayout:
+                size_hint_x: .1
+                padding_right:dp(30)
+                Text:
+                    size_hint:1,1
+                    text:icon("icon-circle")
+                    color:rgba("#EC8982")
+                    font_size:app.fonts.size.h3
+                    font_name:app.fonts.heading
+                    bold:True
+        Button:
+            size_hint_x: .3
+            text:"Edit"
+            color:rgba("#D5D5D5")
+            background_color: 0, 0, 0, 0
+            on_press: root.go_back()
+            
+
+    BoxLayout:
+        size_hint_y:.1
+        canvas.before:
+            Color:
+                rgba:[1,0,0,0]
+            Rectangle:
+                pos:self.pos
+                size:self.size
+        spacing:dp(10)
+        padding:[dp(15), 0, dp(15), 0]
+        size_hint_y: .1
+        Label:
+            id:from_local_label
+            text:""
+            text_size: self.size
+            color:[0,0,0,1]
+            valign:"top"
+            font_size:app.fonts.size.h5
+        
+        Label:
+            id:to_local_label
+            text:""
+            text_size: self.size
+            color:[0,0,0,1]
+            valign:"top"
+            font_size:app.fonts.size.h5
+    BoxLayout:
+        size_hint_y: .2
+        canvas.after:
+            Color:
+                rgba: [1,0,1,0]
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                
+
+        size_hint_y:.1
+        padding:[dp(15), 0, dp(10), 0]
+        ShadowBox:
+            size_hint_x: .1
+            elevation: 4
+            radius:[dp(15)]
+            padding:[dp(7), 0 ,0,0]
+            ButtonIcon:
+            
+                id:calendar_button
+                text:icon("icon-calendar")
+                color:[0,0,0,1]
+                bold:True
+                font_size:app.fonts.size.h1
+                on_press:root.show_date_picker()
+        Label:
+            size_hint_x: .6
+            id:date_calendar_label
+            text:"Pick a date, please!"
+            color:[0,0,0,1]
+        BoxLayout:
+            size_hint_x: .3
+            padding:[dp(5)]
+            ButtonIcon:
+                
+                canvas.before:
+                    Color:
+                        rgba: rgba("#6167EB") 
+                    RoundedRectangle:
+                        pos:self.pos
+                        size:self.size
+                        radius:[dp(10)]
+                        
+                
+                markup: True
+                text: "%s Find " % icon("icon-search")
+                color:[1,1,1,1]
+                halign:'center'
+                bold:False
+                font_size:app.fonts.size.h4
+                on_press:root.find_button()
+    ScrollView:
+        padding:[0, dp(10), 0, dp(20)]
+        do_scroll_x: False
+        do_scroll_y: True   
+        
+        canvas.before:
+            Color:
+                rgba: [1,0,0,0]
+            Rectangle:
+                pos:self.pos
+                size:self.size 
+        GridLayout:
+            id:ticket_list
+            cols:1
+            size_hint_min_y: None
+            size_hint_y: None
+            height: self.minimum_height
+            
+            canvas.before:
+                Color:
+                    rgba: [1,0,0,0]
+                Rectangle:
+                    pos:self.pos
+                    size:self.size 
+            padding:[0, dp(10), 0, dp(20)]
+            # Ticket:
+            #     id:ticket1
+            #     state:"normal"
+            # Ticket:
+            #     id:ticket2
+            #     state:"normal"
+            # Ticket:
+            #     id:ticket3
+            #     state:"normal"
+            # Ticket:
+            #     id:ticket4
+            #     state:"down"
+            # Ticket:
+            #     id:ticket5
+            #     state:"normal"
+            # Ticket:
+            #     id:ticket6
+            #     state:"normal"
+            # Ticket:
+            #     id:ticket7
+            #     state:"normal" 
+            # Ticket:
+            #     id:ticket8
+            #     state:"normal"
+            
+            
+            
+    
+    BoxLayout:
+        size_hint: 1, .1
+        RoundedButton:
+            size:self.parent.size
+            text:"Buy"
+            bcolor:rgba("#2BC48A")
+            radius:[dp(10), dp(10), 0, 0]
+            font_name:app.fonts.heading
+            font_size:app.fonts.size.h3
+            on_press: root.buy_ticket()
+    # Widget:
+
+        
+           
+        
+        
+
+
+        
+    
+       
+
+
+##################### COMPONENTS: ####################
+
+<ButtonCardNoToggle>:
+    background_normal:""
+    background_down:""
+    background_color:[0,0,0,0]
+    radius: [10]
+    size_hint_x: .25
+    
+    AnchorLayout:
+        radius: [10]
+        canvas.before:
+            Color:
+                rgba: rgba("#6167EB") 
+            RoundedRectangle:
+                pos:self.pos
+                size:self.size
+                radius:[dp(10), 0, 0, dp(10)]
+        padding:[dp(14), dp(16), dp(18), dp(14)]
+        Widget:
+            canvas.before:
+                Color:
+                    rgba: rgba("#FFFFFF")  
+                Rectangle:
+                    pos: self.pos
+                    size:dp(20), dp(20)
+                    source: root.icon
+    
+    Text:
+        
+        canvas.before:
+            Color:
+                rgba: rgba("#6167EB") 
+            RoundedRectangle:
+                pos:self.pos
+                size:self.size
+                radius:[0, dp(10), dp(10), 0]
+        halign: 'left'
+        valign: 'middle'
+        # 
+        text: root.text
+        font_name:app.fonts.heading
+        font_size: app.fonts.size.h5
+        color:  app.colors.white
+        
+    # Text:
+        
+    #     canvas.before:
+    #         Color:
+    #             rgba: app.colors.primary
+    #         RoundedRectangle:
+    #             pos:self.pos
+    #             size:self.size
+    #             radius:[0, dp(10), dp(10), 0]
+    #     halign: 'left'
+    #     valign: 'middle'
+    #     # 
+    #     text: root.text
+    #     font_name:app.fonts.heading
+    #     font_size: app.fonts.size.h5
+    #     color:  app.colors.white 
+
+<Ticket>:
+    #id:ticket
+    orientation:"vertical"   
+    group:"tickets"
+    allow_no_selection:False
+    size_hint:1, None
+    height:dp(180)
+    minimum_height:self.height
+    padding:[dp(30), dp(20), dp(30), dp(8)]
+    
+    BackBox:
+        radius: [2]
+        bcolor:root.back_color if root.state == "normal" else rgba("#5B63CD") # This color can either be light purple (#DCE3F9) or purple (#5B63CD)
+        size_hint:.9,1
+        pos_hint: {'center_x': .5}
+        padding:[dp(2)]
+        BackBox:
+            orientation:"vertical"
+            radius: [2]
+            bcolor:[1,1,1,1]
+            size_hint:1,1
+            pos_hint: {'center_x': .5, 'center_y':.5}
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba:[1,0,1,0]
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+                size_hint_y: .7
+                BoxLayout: # time stamps##############################################
+                    canvas.before:
+                        Color:
+                            rgba:[1,1,1,1]
+                        Rectangle:
+                            size:self.size
+                            pos:self.pos
+                    orientation:"vertical"
+                    size_hint_x:.2
+                    spacing:dp(50)
+                    Label:
+                        text:root.scheduled_time
+                        color:rgba("#707DE9")
+                        bold:True
+                        font_name:app.fonts.heading
+                    Label:
+                        text:root.estim_arrival_time
+                        color:rgba("#FF9288")
+                        bold:True
+                        font_name:app.fonts.heading
+                BoxLayout:
+                    size_hint_x:.1
+                    canvas.before:
+                        Color:
+                            rgba: [0,0,1,0]
+
+                        Rectangle:
+                            size:self.size
+                            pos:self.pos
+                    #padding:[0,0,dp(30), 0]
+                    BoxLayout: # os simbolos
+                        # canvas.before:
+                        #     Color:
+                        #         rgba:[1,0,1,0]
+                        #     Rectangle:
+                        #         size:self.size
+                        #         pos:self.pos
+                        orientation:"vertical"
+                        pos_hint:{'center_x': .5}
+                        spacing:dp(45)
+                        #padding:[dp(23), 0,0,0]
+                        canvas.before:
+                            Color:
+                                rgba: rgba('#000fff')
+                            
+                            Line:
+                                points: self.x+dp(15), self.y + dp(30), self.x+dp(15) , self.top - dp(30)
+                                width: 1
+                                dash_length: dp(8)
+                                dash_offset: dp(5)
+                        Text:
+                            text:icon("icon-circle")
+                            color:rgba("#8787F6")
+                            bold:True
+                            halign:"center"
+                        
+                        
+                        Text:
+                            text:icon("icon-circle")
+                            color:rgba("#EC8982")
+                            bold:True
+                            halign:"center"
+                BoxLayout: #  tudo resto
+                    orientation:"vertical"
+                    size_hint_x:.7
+                    padding:[0,dp(5),0,dp(5)]
+                    spacing:dp(30)
+                    canvas.before:
+                        Color:
+                            rgba:[1,0,0,0]
+                        Rectangle:
+                            size:self.size
+                            pos:self.pos
+                    BoxLayout: # parte cima comeco e preco
+                        orientation:"horizontal"
+                        size_hint_y:.5
+                        canvas.before:
+                            Color:
+                                rgba:[1,1,0,0]
+                            Rectangle:
+                                size:self.size
+                                pos:self.pos
+                        
+                        Label:
+                            canvas.before:
+                                Color:
+                                    rgba:[1,1,0,0]
+                                Rectangle:
+                                    size:self.size
+                                    pos:self.pos
+                            text: root.start_location
+                            font_size:app.fonts.size.h5
+                            color: app.colors.black
+                            shorten: True
+                            shorten_from: "right"
+                            size_hint_x: .7
+                            text_size: self.size
+                        Label:
+                            canvas.before:
+                                Color:
+                                    rgba:[1,0,1,0]
+                                Rectangle:
+                                    size:self.size
+                                    pos:self.pos
+                            text: root.price
+                            size_hint_x:.3
+                            color:rgba("#68C593")
+                            bold:True
+                    BoxLayout: # parte baixo sitio de chegada
+                        orientation:"vertical"
+                        size_hint_y:.5
+                        canvas.before:
+                            Color:
+                                rgba:[1,0,0,0]
+                            Rectangle:
+                                size:self.size
+                                pos:self.pos
+                        Label:
+                            text: root.end_location
+                            font_size:app.fonts.size.h5
+                            color: app.colors.black
+                            shorten: True
+                            shorten_from: "right"
+                            text_size: self.size
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba:[0,0,1,0]
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+
+                size_hint_y: .3
+                padding:[dp(6)]
+                BoxLayout:
+                    size_hint_x:.75
+                    
+                    Label:
+                        canvas.before:
+                            Color:
+                                rgba:[0,1,1,0]
+                            Rectangle:
+                                size:self.size
+                                pos:self.pos
+                        text:root.driver_area
+                        color:rgba("#D1D1D1")
+                        halign:"left"
+                        valign:"middle"
+                        text_size: self.size
+                        
+                BoxLayout:
+                    size_hint_x:.25
+                    Text:
+                        text:icon("icon-user-plus")
+                        color:rgba("#CDDDFE")
+                        bold: True
+                        font_size:app.fonts.size.h2
+                    Button:
+                        id:passenger_button_add
+                        background_color:app.colors.white
+                        background_down:""
+                        background_normal:""
+                        text:root.number_passengers
+                        color:rgba("#CDDDFE")
+                        bold: True
+                        font_size:app.fonts.size.h2
+                        on_press:root.add_passengers()
+                    Button:
+                        id:passenger_button_minus
+                        background_color:app.colors.white
+                        background_down:""
+                        background_normal:""
+                        text:"-"
+                        color:rgba("#CDDDFE")
+                        bold: True
+                        font_size:app.fonts.size.h2
+                        on_press:root.remove_passengers()

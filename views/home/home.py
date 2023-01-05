@@ -240,7 +240,7 @@ class Home(BoxLayout):
         #     self.parent.manager.current = "scrn_booking_details"
             #self.parent.manager.transition.direction = "right"
         self.parent.manager.transition.direction = "left"
-        #self.parent.manager.current = "scrn_booking_details"
+        self.parent.manager.current = "scrn_booking_details"
         
 class Map(MapView):
 
