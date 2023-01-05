@@ -3,6 +3,7 @@ from kivymd.app import MDApp
 from kivy.utils import QueryDict, rgba
 from kivy.metrics import dp, sp
 from kivy.core.window import Window
+
 from .view import MainWindow
 
 class MainApp(MDApp):
