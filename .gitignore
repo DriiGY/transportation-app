@@ -32,3 +32,6 @@ envkivy/
 
 # credentials
 credentials.py
+
+#cache
+cache/

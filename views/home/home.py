@@ -8,7 +8,6 @@ from kivy.utils import rgba, QueryDict
 from kivy.uix.label import Label
 from kivy.uix.behaviors import ToggleButtonBehavior
 from kivy.clock import Clock
-import random
 from math import *
 from kivy.core.image import Image
 from kivy.graphics import Color, Line, SmoothLine
@@ -24,7 +23,6 @@ import pprint
 import requests
 import re
 import json
-import os
 from credentials import API_KEY
 
 
@@ -47,6 +45,9 @@ class Home(BoxLayout):
         self.dest_loc_flag_button = False
         self.list_of_lines = []
         self.route_points = []
+        self.start_region = ""
+        self.end_region = ""
+        
         Clock.schedule_interval(self.get_name_me, 0.1)
         Clock.schedule_interval(self.get_name_dest, 0.1)
         
@@ -59,9 +60,12 @@ class Home(BoxLayout):
         self.map_pos.append(self.ids.main_map.lat)
         self.map_pos.append(self.ids.main_map.lon)
 
+    def set_start_region(self, reg):
+        self.start_region = reg
+    
+    def set_end_region(self, reg):
+        self.end_region = reg
  
-
-
     def on_press_my_location(self):
         
         if self.my_loc_flag_button==False:
@@ -107,14 +111,15 @@ class Home(BoxLayout):
     
         if touch.y < self.ids.main_map.height+self.ids.main_map.pos[1] and touch.y > self.ids.main_map.pos[1]:
             if not touch.is_mouse_scrolling and self.ids.main_map.lat==self.map_pos[0] and self.ids.main_map.lon==self.map_pos[1] and not self.my_pin_placed and self.my_loc_flag_button:
-                print(self.my_pin_placed)
+                
                 self.my_pin_placed = True 
                 latitude = self.ids.main_map.get_latlon_at(touch.x-self.ids.main_map.pos[0], touch.y-self.ids.main_map.pos[1])[0]
                 longitude = self.ids.main_map.get_latlon_at(touch.x-self.ids.main_map.pos[0], touch.y-self.ids.main_map.pos[1])[1]
                 # we do not need to verify for x bc map occupies 100% of x
                 self.my_pin = MapMarkerPopup(lat=latitude, lon=longitude, source='assets/imgs/preto.png')
                 self.ids.main_map.add_widget(self.my_pin)
-                label = self.get_street_from_coordinates(latitude, longitude)
+                label, region = self.get_street_from_coordinates(latitude, longitude)
+                self.set_start_region(region)
                 self.ids.my_location_label.text = label
                 if self.my_pin and self.dest_pin:
                    
@@ -133,7 +138,8 @@ class Home(BoxLayout):
                 longitude = self.ids.main_map.get_latlon_at(touch.x-self.ids.main_map.pos[0], touch.y-self.ids.main_map.pos[1])[1]
                 self.dest_pin = MapMarkerPopup(lat=latitude, lon=longitude, source='assets/imgs/red.png')
                 self.ids.main_map.add_widget(self.dest_pin)
-                label = self.get_street_from_coordinates(latitude, longitude)
+                label, region = self.get_street_from_coordinates(latitude, longitude)
+                self.set_end_region(region)
                 self.ids.destination_label.text = label
                 if self.my_pin and self.dest_pin:   
                     self.points_line()
@@ -167,9 +173,10 @@ class Home(BoxLayout):
         }
         self.call = requests.get('https://api.openrouteservice.org/geocode/reverse?api_key={}&point.lon={}&point.lat={}'.format(API_KEY, lon, lat), headers=self.headers)
         res = json.loads(self.call.text)
+        
         # pp = pprint.PrettyPrinter(indent=4)
-        # pp.pprint(res['features'][0]['properties']['label'])
-        return res['features'][0]['properties']['label']
+        # pp.pprint(res['features'][0]) # ['properties']['region']
+        return res['features'][0]['properties']['label'], res['features'][0]['properties']['region']
     def openrouteservice_request(self, body):
         self.headers = {
                 'Accept': 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8',
