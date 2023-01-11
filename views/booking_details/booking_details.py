@@ -123,6 +123,7 @@ class BookingDetails(BoxLayout):
         pass
 
     def find_button(self):
+        self.ids.ticket_list.clear_widgets()
         #print(self.ids.ticket1.state)
         i = 0
         # Initialize Nominatim API
