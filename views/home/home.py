@@ -36,8 +36,7 @@ class Home(BoxLayout):
         self.start_region = ""
         self.end_region = ""
         
-        Clock.schedule_interval(self.get_name_me, 0.1)
-        Clock.schedule_interval(self.get_name_dest, 0.1)
+        
         
     def render(self, _):
         # self.get_map()
@@ -143,19 +142,6 @@ class Home(BoxLayout):
                 self.map_pos[0] = self.ids.main_map.lat
                 self.map_pos[1] = self.ids.main_map.lon
 
-
-    
-    def get_name_me(self, *args):
-        # when its just a empty string gives False like ""
-        if self.my_pin:
-            pass
-
-    def get_name_dest(self, *args):
-        if self.dest_pin:
-            pass
-
-    
-    
 
 
 
