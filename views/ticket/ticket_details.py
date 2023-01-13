@@ -1,7 +1,6 @@
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.clock import Clock
-from geopy.geocoders import Nominatim
 
 
 Builder.load_file('views/ticket/ticket_details.kv')

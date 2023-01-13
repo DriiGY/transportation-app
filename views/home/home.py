@@ -1,29 +1,17 @@
 
-from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.behaviors import ButtonBehavior
-from kivy.metrics import dp, sp
-from kivy.utils import rgba, QueryDict
 from kivy.uix.label import Label
 from kivy.uix.behaviors import ToggleButtonBehavior
 from kivy.clock import Clock
-from math import *
-from kivy.core.image import Image
-from kivy.graphics import Color, Line, SmoothLine
-from kivy.graphics.context_instructions import Translate, Scale
-from kivy.garden.mapview.mapview.utils import clamp
-from kivy.garden.mapview.mapview import MapLayer, MIN_LONGITUDE, MIN_LATITUDE, MAX_LATITUDE, MAX_LONGITUDE 
-from kivy.garden.mapview import MarkerMapLayer, MapView, MapMarkerPopup
+from kivy.graphics import Color, Line
+from kivy.garden.mapview import MapView, MapMarkerPopup
 
 from widgets.shadow import ShadowBox
-from kivy.properties import StringProperty, BooleanProperty, ListProperty, ColorProperty, NumericProperty
+from kivy.properties import StringProperty, ColorProperty
 
-import pprint
-import requests
-import re
-import json
-from credentials import API_KEY
+from .openrouteservicecalls import get_street_from_coordinates, openrouteservice_request
 
 
 Builder.load_file('views/home/home.kv')
@@ -118,7 +106,7 @@ class Home(BoxLayout):
                 # we do not need to verify for x bc map occupies 100% of x
                 self.my_pin = MapMarkerPopup(lat=latitude, lon=longitude, source='assets/imgs/preto.png')
                 self.ids.main_map.add_widget(self.my_pin)
-                label, region = self.get_street_from_coordinates(latitude, longitude)
+                label, region = get_street_from_coordinates(latitude, longitude)
                 self.set_start_region(region)
                 self.ids.my_location_label.text = label
                 if self.my_pin and self.dest_pin:
@@ -138,7 +126,7 @@ class Home(BoxLayout):
                 longitude = self.ids.main_map.get_latlon_at(touch.x-self.ids.main_map.pos[0], touch.y-self.ids.main_map.pos[1])[1]
                 self.dest_pin = MapMarkerPopup(lat=latitude, lon=longitude, source='assets/imgs/red.png')
                 self.ids.main_map.add_widget(self.dest_pin)
-                label, region = self.get_street_from_coordinates(latitude, longitude)
+                label, region = get_street_from_coordinates(latitude, longitude)
                 self.set_end_region(region)
                 self.ids.destination_label.text = label
                 if self.my_pin and self.dest_pin:   
@@ -166,42 +154,8 @@ class Home(BoxLayout):
         if self.dest_pin:
             pass
 
-    def get_street_from_coordinates(self, lat, lon):
-        print("GET STREET FROM COORDINATES:")
-        self.headers = {
-            'Accept': 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8',
-        }
-        self.call = requests.get('https://api.openrouteservice.org/geocode/reverse?api_key={}&point.lon={}&point.lat={}'.format(API_KEY, lon, lat), headers=self.headers)
-        res = json.loads(self.call.text)
-        
-        # pp = pprint.PrettyPrinter(indent=4)
-        # pp.pprint(res['features'][0]) # ['properties']['region']
-        return res['features'][0]['properties']['label'], res['features'][0]['properties']['region']
-    def openrouteservice_request(self, body):
-        self.headers = {
-                'Accept': 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8',
-                'Authorization': API_KEY,
-                'Content-Type': 'application/json; charset=utf-8'
-                }
-        self.call = requests.post('https://api.openrouteservice.org/v2/directions/driving-car/gpx', json=body, headers=self.headers)           
-        #print(self.call.text)
-        self.string_res = self.call.text
-
-        #print(self.string_res)
-
-        self.tag = 'rtept'
-        self.reg_str = '</' + self.tag + '>(.*?)' + '>'
-        self.res = re.findall(self.reg_str, self.string_res)
-        #print(self.res)
-        print('_____________________________________')
-        self.string1 = str(self.res)
-        self.tag1 = '"'
-        self.reg_str1 = '"' + '(.*?)' + '"'
-        self.final = re.findall(self.reg_str1, self.string1)
-        print()
-        print()
-        #print(self.final)
-        return self.final
+    
+    
 
 
 
@@ -215,7 +169,7 @@ class Home(BoxLayout):
             self.end_lon = self.dest_pin.lon
             self.end_lat = self.dest_pin.lat
             self.body = {"coordinates":[[self.start_lon, self.start_lat],[self.end_lon, self.end_lat]]}
-            self.res1 = self.openrouteservice_request(self.body)
+            self.res1 = openrouteservice_request(self.body)
 
             for i in range(0, len(self.res1)-1, 2):
                 # print('lat= ' + self.res1[i])
