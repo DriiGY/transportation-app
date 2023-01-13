@@ -24,7 +24,6 @@ class Home(BoxLayout):
         
         self.my_pin_placed = False
         self.dest_pin_placed = False
-        self.exists = False
         self.my_pin = ""  # object type
         self.map_pos = []
         self.dest_pin_placed = False
