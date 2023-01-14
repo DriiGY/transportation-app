@@ -17,6 +17,9 @@ from geopy.geocoders import Nominatim
 
 Builder.load_file('views/booking_details/booking_details.kv')
 
+#
+# !!! Mock data to BE REMOVED AFTER !!!
+#
 data_moristas = [
     {
         "id": 1,
@@ -76,15 +79,19 @@ class BookingDetails(BoxLayout):
         Clock.schedule_interval(self.get_to_local, 1)
         Clock.schedule_interval(self.get_from_local, 1)
 
+    # Get start point adress
     def get_start_location(self):
         return  self.parent.manager.get_screen("scrn_home").children[0].ids.my_location_label.text    
     
+    # Get start point adress
     def get_end_location(self):
         return  self.parent.manager.get_screen("scrn_home").children[0].ids.destination_label.text   
 
+    # Go back to home screen if start or end point needs to be changed.
     def go_back(self):
         self.parent.manager.current = "scrn_home"
     
+    # Update adresss.
     def get_to_local(self, dt):
     #     o = inspect.getmembers(self.parent.manager.get_screen("scrn_home").children[0], lambda a:not(inspect.isroutine(a)))
     #     pp = pprint.PrettyPrinter(indent=4)
@@ -93,7 +100,7 @@ class BookingDetails(BoxLayout):
     def get_from_local(self, dt):
         self.ids.to_local_label.text = self.get_end_location()
     
-    
+    # Calendar
     def show_date_picker(self):
        
         
@@ -111,9 +118,13 @@ class BookingDetails(BoxLayout):
     
     def on_save(self, instance, value, date_range):
         today = datetime.today()
+
+        # User can only pick a day from now till a week.
         max_range_date = datetime.today() + timedelta(days=7)
         # combine date with time so i get datetime
         dt = datetime.combine(value, datetime.now().time())
+
+        # Handle user day choice. now to a week.
         if  dt >= today  and dt <= max_range_date: # picked today or a day in the future (max 7 days)
             self.ids.date_calendar_label.text = str(value.strftime("%d %b, %Y"))
         else:
@@ -122,6 +133,7 @@ class BookingDetails(BoxLayout):
     def on_cancel(self, instance, value):
         pass
 
+    # Get all ticket available.
     def find_button(self):
         self.ids.ticket_list.clear_widgets()
         #print(self.ids.ticket1.state)
@@ -130,8 +142,8 @@ class BookingDetails(BoxLayout):
         geolocator = Nominatim(user_agent="geoapiExercises")
         g = geocoder.ip('me')
         location = geolocator.reverse(str(g.latlng[0])+","+str(g.latlng[1]))
-        print(g.latlng)
-        print(location)
+        # print(g.latlng)
+        # print(location)
         start_location = self.get_start_location()
         end_location = self.get_end_location()
         for driver in data_moristas:
@@ -143,7 +155,11 @@ class BookingDetails(BoxLayout):
             self.ids.ticket_list.ids[id] = ticket
             i=i+1
   
+
     def buy_ticket(self):
+        ####
+        ### !!! CHANGE THIS FOR ONLY DAY IS PICKED AND TICKET IS SELECTED ####
+        ###
         self.parent.manager.transition.direction = "left"
         self.parent.manager.current = "scrn_ticket_details"
 
@@ -171,15 +187,20 @@ class Ticket(ToggleButtonBehavior, BoxLayout):
         
         
 
-    # Make function that increases numbr of passengers in everyticket after click
-    ##  HERE ####
+    # Increase number of passengers in everyticket after click.
     def add_passengers(self):
         number_passengers = int(self.ids.passenger_button_add.text)
-        carro_motorista = 5  # ISTO TEM DE SER MUDADO
+
+        #
+        # !!! ISTO TEM DE SER MUDADO !!! Use seats from car in drivers table DB.
+        #
+        carro_motorista = 5 
+
+
         if number_passengers+1<=carro_motorista:
             self.ids.passenger_button_add.text = str(number_passengers+1)
            
-       
+    # Decrease number of passengers in everyticket after click.   
     def remove_passengers(self):
         number_passengers = int(self.ids.passenger_button_add.text)
         if number_passengers-1>=1: 

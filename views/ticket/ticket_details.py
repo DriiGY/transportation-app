@@ -18,6 +18,8 @@ class TicketDetails(BoxLayout):
         end_region = self.parent.manager.get_screen("scrn_home").children[0].end_region
         
         self.ids.regions.text = start_region + " - " + end_region
+
+    # Edit ticket selection or day.    
     def go_back(self):
         self.parent.manager.current = "scrn_booking_details"
        
