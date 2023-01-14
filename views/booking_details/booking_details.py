@@ -138,14 +138,23 @@ class BookingDetails(BoxLayout):
         self.ids.ticket_list.clear_widgets()
         #print(self.ids.ticket1.state)
         i = 0
+
+        ### GEOLOCATION DOESNT DO ANYTHING, TESITNG ONLY
         # Initialize Nominatim API
         geolocator = Nominatim(user_agent="geoapiExercises")
+
         g = geocoder.ip('me')
+
         location = geolocator.reverse(str(g.latlng[0])+","+str(g.latlng[1]))
+
         # print(g.latlng)
         # print(location)
+
+        # Start and end points adress.
         start_location = self.get_start_location()
         end_location = self.get_end_location()
+
+        # Create tickets for every driver available.
         for driver in data_moristas:
             
             id="ticket_{}".format(i)
