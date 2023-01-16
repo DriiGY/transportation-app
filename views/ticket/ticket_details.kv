@@ -2,6 +2,13 @@
 
 <TicketDetails>:
     id: ticket_details_info
+    _regions:"-"
+    _to_local_label:""
+    _from_local_label:""
+    _schedule_time:""
+    _estimated_arrival_time:""
+    _estimated_difference:"Estim. travel time ..."
+    
     size_hint: 1, 1
     orientation: "vertical"
     spacing:dp(20)
@@ -53,7 +60,7 @@
                 bcolor:rgba("#6068EB")
                 radius:[dp(20), dp(20), 0, 0]
                 Label:
-                    id:regions
+                    text:root._regions
                     color:app.colors.white
             #box with info
             #border box
@@ -84,13 +91,13 @@
                         orientation:"horizontal"
                         size_hint_y: .2
                         Label:
-                            text:"11:00"
+                            text:root._schedule_time
                             color: [0,0,0,1]
                             bold:True
                             font_size:app.fonts.size.h3
                         Widget:
                         Label:
-                            text:"12:00"
+                            text:root._estimated_arrival_time
                             color: [0,0,0,1]
                             bold:True
                             font_size:app.fonts.size.h3
@@ -136,7 +143,7 @@
                                         dash_offset: dp(10)
                             Label:
                                 size_hint_y:.2
-                                text:"Estim. travel time 30min"
+                                text:root._estimated_difference
                                 color:rgba("#D4D4D4")
                                 font_size:app.fonts.size.h6
                         AnchorLayout:
@@ -161,12 +168,18 @@
                         orientation:"horizontal"
                         size_hint_y: .1
                         Label:
-                            text:"M.L"
+                            text:root._from_local_label
+                            text_size: self.size
+                            shorten_from: "right"
+                            shorten: True
                             color: [0,0,0,1]
                             font_size:app.fonts.size.h4
                         Widget:
                         Label:
-                            text:"el prat"
+                            text:root._to_local_label
+                            text_size: self.size
+                            shorten_from: "right"
+                            shorten: True
                             color: [0,0,0,1]
                             font_size:app.fonts.size.h4
                     # Box with date
@@ -175,6 +188,7 @@
                         size_hint_y: .1
                         padding:[dp(10), dp(5), dp(10), dp(5)]
                         Label:
+                            id:my_location_label
                             # canvas.before:
                             #     Color:
                             #         rgba: [1,0,0,1]
@@ -182,7 +196,7 @@
                             #         size:self.size
                             #         pos:self.pos
                             size_hint_x: .3
-                            text:"19 Oct 2021"
+                            text:""
                             color:rgba("#D4D4D4")
                             font_size:app.fonts.size.h6
                         Widget:
@@ -227,7 +241,7 @@
                             #         size:self.size
                             #         pos:self.pos
                             
-                            text:"Wesley Karon"
+                            text:"Wesley Karen"
                             color:app.colors.black
                             font_size:app.fonts.size.h4
                         Widget:

@@ -1,19 +1,17 @@
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.behaviors import ButtonBehavior, ToggleButtonBehavior
-from kivy.metrics import dp, sp
-from kivy.utils import rgba, QueryDict
+from kivy.utils import rgba
 from kivy.clock import Clock
 from kivymd.uix.pickers import MDDatePicker
 from kivymd.app import MDApp
-import inspect
-import pprint
-from datetime import date, datetime, timedelta
-from kivy.properties import StringProperty, BooleanProperty, ListProperty, ColorProperty, NumericProperty
-from widgets.buttons import FlatButton
+from datetime import datetime, timedelta
+from kivy.properties import StringProperty, ColorProperty
 from widgets.shadow import ShadowBox
 import geocoder
 from geopy.geocoders import Nominatim
+
+from utils.utils import calc_time_diff
 
 Builder.load_file('views/booking_details/booking_details.kv')
 
@@ -76,34 +74,18 @@ class BookingDetails(BoxLayout):
     def __init__(self, **kw) -> None:
         super().__init__(**kw)
         self.app = MDApp.get_running_app()
-        Clock.schedule_interval(self.get_to_local, 1)
-        Clock.schedule_interval(self.get_from_local, 1)
+        self.date_selected_check = False
+        self.ticket_selected_check = False
+        self.ticket_selected = ''
 
-    # Get start point adress
-    def get_start_location(self):
-        return  self.parent.manager.get_screen("scrn_home").children[0].ids.my_location_label.text    
-    
-    # Get start point adress
-    def get_end_location(self):
-        return  self.parent.manager.get_screen("scrn_home").children[0].ids.destination_label.text   
 
     # Go back to home screen if start or end point needs to be changed.
     def go_back(self):
         self.parent.manager.current = "scrn_home"
     
-    # Update adresss.
-    def get_to_local(self, dt):
-    #     o = inspect.getmembers(self.parent.manager.get_screen("scrn_home").children[0], lambda a:not(inspect.isroutine(a)))
-    #     pp = pprint.PrettyPrinter(indent=4)
-    #     pp.pprint(o)
-        self.ids.from_local_label.text = self.get_start_location()
-    def get_from_local(self, dt):
-        self.ids.to_local_label.text = self.get_end_location()
-    
     # Calendar
     def show_date_picker(self):
        
-        
        date_dialog = MDDatePicker(
         primary_color=self.app.colors.primary,
         accent_color="white",
@@ -126,10 +108,13 @@ class BookingDetails(BoxLayout):
 
         # Handle user day choice. now to a week.
         if  dt >= today  and dt <= max_range_date: # picked today or a day in the future (max 7 days)
-            self.ids.date_calendar_label.text = str(value.strftime("%d %b, %Y"))
+            self._date_calendar_label = str(value.strftime("%d %b, %Y"))
+            self.date_selected_check = True
         else:
-            self.ids.date_calendar_label.text = "Pick a day within 7 days"
+            self._date_calendar_label = "Pick a day within 7 days"
+            self.date_selected_check = False
 
+    # Close calendar
     def on_cancel(self, instance, value):
         pass
 
@@ -139,7 +124,7 @@ class BookingDetails(BoxLayout):
         #print(self.ids.ticket1.state)
         i = 0
 
-        ### GEOLOCATION DOESNT DO ANYTHING, TESITNG ONLY
+        ### GEOLOCATION DOESNT DO ANYTHING, TESITNG ONLY ########################
         # Initialize Nominatim API
         geolocator = Nominatim(user_agent="geoapiExercises")
 
@@ -151,8 +136,8 @@ class BookingDetails(BoxLayout):
         # print(location)
 
         # Start and end points adress.
-        start_location = self.get_start_location()
-        end_location = self.get_end_location()
+        start_location = self._from_local_label
+        end_location = self._to_local_label
 
         # Create tickets for every driver available.
         for driver in data_moristas:
@@ -166,11 +151,43 @@ class BookingDetails(BoxLayout):
   
 
     def buy_ticket(self):
-        ####
-        ### !!! CHANGE THIS FOR ONLY DAY IS PICKED AND TICKET IS SELECTED ####
-        ###
-        self.parent.manager.transition.direction = "left"
-        self.parent.manager.current = "scrn_ticket_details"
+
+        if self.date_selected_check == True and self.ids.ticket_list.children:
+            for ticket in self.ids.ticket_list.children:
+                if ticket.state == "down":
+                    self.ticket_selected_check = True
+                    self.ticket_selected = ticket
+                    break
+            
+            if self.ticket_selected_check:
+                ticket_screen = self.parent.manager.get_screen("scrn_ticket_details").children[0]
+                home_screen = self.parent.manager.get_screen("scrn_home").children[0]
+                ticket_screen._to_local_label = self._to_local_label
+                ticket_screen._from_local_label = self._from_local_label
+                ticket_screen._regions = home_screen.start_region + " - " + home_screen.end_region
+                ticket_screen._schedule_time = self.ticket_selected.scheduled_time
+                ticket_screen._estimated_arrival_time = self.ticket_selected.estim_arrival_time
+                hours, minutes = calc_time_diff(self.ticket_selected.scheduled_time, self.ticket_selected.estim_arrival_time)
+                if hours > 0:
+                    ticket_screen._estimated_difference = "Estim. travel time " + str(hours) + "h" + str(minutes) + "min"
+                elif hours==0:
+                    ticket_screen._estimated_difference = "Estim. travel time " + str(minutes) + "min"
+                elif min<1:
+                    ticket_screen._estimated_difference = "Estim. travel time ..."
+                else:
+                    "Estim. travel time ...."
+                self.parent.manager.transition.direction = "left"
+                self.parent.manager.current = "scrn_ticket_details"
+                
+            else:
+                print("Select a date and a ticket to move on!")
+                self.ticket_selected_check
+            
+        else:
+            print("Select a date and a ticket to move on!")
+            self.ticket_selected_check
+
+        
 
 
 
@@ -181,16 +198,16 @@ class ButtonCardNoToggle(ShadowBox):
         super().__init__(**kw)
 
 class Ticket(ToggleButtonBehavior, BoxLayout):
-    
+
     back_color = ColorProperty(rgba("#DCE3F9"))  # purple if selected or light purple if not selected
-    scheduled_time = StringProperty("15:00")
+    scheduled_time = StringProperty("12:00")
     estim_arrival_time = StringProperty("15:31")
     start_location = StringProperty("Chinicato, rua da alfarrobeira, lote 42")
     end_location = StringProperty("Praca ribeirinha, lisboa")
     price = StringProperty("11$")   # PRICE IS A STRING ###### 
     driver_area = StringProperty("Marina, lagos")
     number_passengers = StringProperty("1")   # number of passengers is a STRING #####
-    # state = BooleanProperty(False)
+    #state = BooleanProperty(False)
     def __init__(self, **kw) -> None:
         super().__init__(**kw)
         

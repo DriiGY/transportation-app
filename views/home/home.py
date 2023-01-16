@@ -148,7 +148,7 @@ class Home(BoxLayout):
                 self.set_start_region(region)
 
                 # Updates start point description label. Default is "start"
-                self.ids.my_location_label.text = label
+                self._my_location_label = label
 
                 # If both points are placed we created path between them.
                 if self.my_pin and self.dest_pin:
@@ -167,7 +167,7 @@ class Home(BoxLayout):
                 self.my_pin_placed = False  # Flag
 
                 # Reset label to default text.
-                self.ids.my_location_label.text = "Start"
+                self._my_location_label = "Start"
 
             # If mouse is not being scroll and end point button is being placed and end pin has not been placed.
             elif not touch.is_mouse_scrolling and   self.ids.main_map.lat==self.map_pos[0] and self.ids.main_map.lon==self.map_pos[1] and not self.dest_pin_placed  and self.dest_loc_flag_button  :
@@ -192,7 +192,7 @@ class Home(BoxLayout):
                 self.set_end_region(region)
 
                 # Updates end point description label. Default is "Destination"
-                self.ids.destination_label.text = label
+                self._destination_label = label
 
                  # If both points are placed we created path between them.
                 if self.my_pin and self.dest_pin:   
@@ -211,7 +211,7 @@ class Home(BoxLayout):
                 self.dest_pin_placed = False  # Flag
 
                 # Reset label to default text.
-                self.ids.destination_label.text = "Destination"
+                self._destination_label= "Destination"
                  
             else:
                  # in case button is pressed when dragging map
@@ -264,10 +264,13 @@ class Home(BoxLayout):
         # 
         # !!! UNCOMMENT AFTER !!!
         #
-
+        
         # if self.my_pin_placed and self.dest_pin_placed:
         #     self.parent.manager.current = "scrn_booking_details"
             #self.parent.manager.transition.direction = "right"
+        booking_details_screen = self.parent.manager.get_screen("scrn_booking_details").children[0]
+        booking_details_screen._from_local_label = self._my_location_label
+        booking_details_screen._to_local_label = self._destination_label
         self.parent.manager.transition.direction = "left"
         self.parent.manager.current = "scrn_booking_details"
 
