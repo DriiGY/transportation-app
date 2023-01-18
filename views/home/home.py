@@ -261,18 +261,14 @@ class Home(BoxLayout):
 
     # Button next on_press(). If both pins are placed user can move on in the ticket sale.
     def press_next(self):
-        # 
-        # !!! UNCOMMENT AFTER !!!
-        #
-        
-        # if self.my_pin_placed and self.dest_pin_placed:
-        #     self.parent.manager.current = "scrn_booking_details"
-            #self.parent.manager.transition.direction = "right"
-        booking_details_screen = self.parent.manager.get_screen("scrn_booking_details").children[0]
-        booking_details_screen._from_local_label = self._my_location_label
-        booking_details_screen._to_local_label = self._destination_label
-        self.parent.manager.transition.direction = "left"
-        self.parent.manager.current = "scrn_booking_details"
+       
+        if self.my_pin_placed and self.dest_pin_placed:
+            
+            booking_details_screen = self.parent.manager.get_screen("scrn_booking_details").children[0]
+            booking_details_screen._from_local_label = self._my_location_label
+            booking_details_screen._to_local_label = self._destination_label
+            self.parent.manager.transition.direction = "left"
+            self.parent.manager.current = "scrn_booking_details"
 
 # Map component        
 class Map(MapView):
