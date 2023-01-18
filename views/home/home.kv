@@ -2,6 +2,8 @@
 
 <Home>:
     id:homeLayout
+    _my_location_label:"Start"
+    _destination_label: "Destination"
     orientation: "vertical"
     canvas.before:
         Color:
@@ -9,6 +11,7 @@
         Rectangle:
             pos:self.pos
             size:self.size
+    # Top purple element
     SoftBox:
         
         orientation: 'vertical'
@@ -25,7 +28,7 @@
                 size_hint_x:.7
                 orientation: "vertical"
                 padding:[0,dp(20),0,dp(25)]  
-                 
+ 
                 Label:
                     canvas.before:
                         Color:
@@ -192,8 +195,8 @@
                                     font_name:app.fonts.heading
                                 
                                 Label:
-                                    id:my_location_label
-                                    text:"Start"
+                                    
+                                    text:root._my_location_label
                                     font_size:app.fonts.size.h5
                                     color: app.colors.black
                                     shorten_from: "right"
@@ -236,8 +239,8 @@
                                     
                                 
                                 Label:
-                                    id:destination_label
-                                    text:"Destination"
+                                    
+                                    text:root._destination_label
                                     font_size:app.fonts.size.h5
                                     color: app.colors.black
                                     shorten_from: "right"

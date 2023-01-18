@@ -2,9 +2,16 @@
 
 <TicketDetails>:
     id: ticket_details_info
+    _regions:"-"
+    _to_local_label:""
+    _from_local_label:""
+    _schedule_time:""
+    _estimated_arrival_time:""
+    _estimated_difference:"Estim. travel time ..."
+    
     size_hint: 1, 1
     orientation: "vertical"
-    spacing:dp(10)
+    spacing:dp(20)
     canvas.before:
         Color:
             rgba:[1,1,1,1]
@@ -38,4 +45,234 @@
                 text: "Ticket"
                 color:[0,0,0,1]
                 font_size:app.fonts.size.h1
-    Widget:
+    BoxLayout:
+        size_hint_y:.8 
+        padding:[dp(10), 0, dp(10), 0]
+        
+        BackBox:
+            orientation:"vertical"
+            size_hint_y:1
+            padding:[dp(2)]
+            bcolor:rgba("#D5DDF2")
+            radius:[dp(20)]
+            BackBox:
+                size_hint_y: .1
+                bcolor:rgba("#6068EB")
+                radius:[dp(20), dp(20), 0, 0]
+                Label:
+                    text:root._regions
+                    color:app.colors.white
+            #box with info
+            #border box
+            BoxLayout:
+                orientation:"vertical"
+                size_hint_y: .5  
+                canvas.before:
+                    Color:
+                        rgba:[1,1,1,1]
+                    Rectangle:
+                        pos:self.pos
+                        size:self.size  
+                #box with content      
+                BoxLayout:
+                    orientation:"vertical"
+                    size_hint: 1, 1  
+                    padding:[0,dp(10), 0, dp(10)]
+                    canvas.before:
+                    
+                        Color:
+                            rgba:rgba("#D5DDF2")
+                       
+                        Rectangle:
+                            pos:[self.pos[0] +dp(6), self.pos[1]]
+                            size:[self.size[0]-dp(8), dp(2)]
+                    # Box with times of trip
+                    BoxLayout:
+                        orientation:"horizontal"
+                        size_hint_y: .2
+                        Label:
+                            text:root._schedule_time
+                            color: [0,0,0,1]
+                            bold:True
+                            font_size:app.fonts.size.h3
+                        Widget:
+                        Label:
+                            text:root._estimated_arrival_time
+                            color: [0,0,0,1]
+                            bold:True
+                            font_size:app.fonts.size.h3
+                    # Box with circles and line
+                    BoxLayout:
+                        size_hint: 1, .3
+                        orientation:"horizontal"
+                        padding:[dp(35), 0,dp(35),0]
+                        spacing:0
+                        canvas.before:
+                            Color:
+                                rgba: [1,0,0,0]
+                            Rectangle:
+                                size:self.size
+                                pos:self.pos
+                        AnchorLayout:
+                            size_hint_x: .1
+                            #padding_right:dp(30)
+                            padding:[0,0,0,dp(10)]
+                            Text:
+                                size_hint:1,1
+                                text:icon("icon-circle")
+                                color:rgba("#8787F6")
+                                font_size:app.fonts.size.h3
+                                font_name:app.fonts.heading
+                                bold:True
+                        # box with line and "estimated travel time text"
+                        BoxLayout:
+                            orientation:"vertical"
+                            
+                            Widget:
+                                size_hint_x: .8
+                                size_hint_y:.8
+                                canvas.before:
+                                    Color:
+                                        rgba: rgba('#000fff')
+                                    
+                                    
+                                    Line:
+                                        points: self.x, self.y+self.height/2, self.parent.width + dp(50), self.y+self.height/2
+                                        width: 1
+                                        dash_length: dp(8)
+                                        dash_offset: dp(10)
+                            Label:
+                                size_hint_y:.2
+                                text:root._estimated_difference
+                                color:rgba("#D4D4D4")
+                                font_size:app.fonts.size.h6
+                        AnchorLayout:
+                            size_hint_x: .1
+                            padding:[0,0,0,dp(10)]
+                            canvas.before:
+                                Color:
+                                    rgba: [0,1,0,0]
+                                
+                                Rectangle:
+                                    size:self.size
+                                    pos:self.pos
+                            Text:
+                                size_hint:1,1
+                                text:icon("icon-circle")
+                                color:rgba("#EC8982")
+                                font_size:app.fonts.size.h3
+                                font_name:app.fonts.heading
+                                bold:True
+                    # Box with start and end location
+                    BoxLayout:
+                        orientation:"horizontal"
+                        size_hint_y: .1
+                        Label:
+                            text:root._from_local_label
+                            text_size: self.size
+                            shorten_from: "right"
+                            shorten: True
+                            color: [0,0,0,1]
+                            font_size:app.fonts.size.h4
+                        Widget:
+                        Label:
+                            text:root._to_local_label
+                            text_size: self.size
+                            shorten_from: "right"
+                            shorten: True
+                            color: [0,0,0,1]
+                            font_size:app.fonts.size.h4
+                    # Box with date
+                    BoxLayout:
+                        orientation:"horizontal"
+                        size_hint_y: .1
+                        padding:[dp(10), dp(5), dp(10), dp(5)]
+                        Label:
+                            id:my_location_label
+                            # canvas.before:
+                            #     Color:
+                            #         rgba: [1,0,0,1]
+                            #     Rectangle:
+                            #         size:self.size
+                            #         pos:self.pos
+                            size_hint_x: .3
+                            text:""
+                            color:rgba("#D4D4D4")
+                            font_size:app.fonts.size.h6
+                        Widget:
+                    #  Box with titles: Passenger and document
+                    BoxLayout:
+                        orientation:"horizontal"
+                        size_hint_y: .1
+                        padding:[dp(10), dp(20), dp(10), 0]
+                        Label:
+                            # canvas.before:
+                            #     Color:
+                            #         rgba: [1,0,0,1]
+                            #     Rectangle:
+                            #         size:self.size
+                            #         pos:self.pos
+                            
+                            text:"Passenger"
+                            color:rgba("#D4D4D4")
+                            font_size:app.fonts.size.h6
+                        Widget:
+                        Label:
+                            # canvas.before:
+                            #     Color:
+                            #         rgba: [1,0,0,1]
+                            #     Rectangle:
+                            #         size:self.size
+                            #         pos:self.pos
+                            
+                            text:"Document"
+                            color:rgba("#D4D4D4")
+                            font_size:app.fonts.size.h6
+                    #  Box with info about Passenger and document
+                    BoxLayout:
+                        orientation:"horizontal"
+                        size_hint_y: .2
+                        padding:[dp(20), 0, dp(20), 0]
+                        Label:
+                            # canvas.before:
+                            #     Color:
+                            #         rgba: [1,0,0,1]
+                            #     Rectangle:
+                            #         size:self.size
+                            #         pos:self.pos
+                            
+                            text:"Wesley Karen"
+                            color:app.colors.black
+                            font_size:app.fonts.size.h4
+                        Widget:
+                        Label:
+                            # canvas.before:
+                            #     Color:
+                            #         rgba: [1,0,0,1]
+                            #     Rectangle:
+                            #         size:self.size
+                            #         pos:self.pos
+                            
+                            text:"ID: 670 599 234"
+                            color:app.colors.black
+                            font_size:app.fonts.size.h4
+                   
+
+            
+            BackBox:
+                
+                size_hint_y: .4
+                bcolor:app.colors.white
+                radius:[0,0, dp(20), dp(20)]
+    BoxLayout:
+        size_hint_y:.1
+        padding:[dp(10), 0, dp(10), dp(15)]
+        RoundedButton:
+            
+            text:"OK"
+            bcolor:rgba("#2BC48A")
+            radius:[dp(10)]
+            font_name:app.fonts.heading
+            font_size:app.fonts.size.h3
+        
+       

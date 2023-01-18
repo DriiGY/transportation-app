@@ -2,6 +2,9 @@
 
 
 <BookingDetails>:
+    _from_local_label:""
+    _to_local_label:""
+    _date_calendar_label:"Pick a date, please!"
     size_hint: 1, 1
     orientation: "vertical"
     spacing:dp(10)
@@ -104,16 +107,16 @@
         padding:[dp(15), 0, dp(15), 0]
         size_hint_y: .1
         Label:
-            id:from_local_label
-            text:""
+            
+            text:root._from_local_label
             text_size: self.size
             color:[0,0,0,1]
             valign:"top"
             font_size:app.fonts.size.h5
         
         Label:
-            id:to_local_label
-            text:""
+            
+            text:root._to_local_label
             text_size: self.size
             color:[0,0,0,1]
             valign:"top"
@@ -145,8 +148,8 @@
                 on_press:root.show_date_picker()
         Label:
             size_hint_x: .6
-            id:date_calendar_label
-            text:"Pick a date, please!"
+           
+            text:root._date_calendar_label
             color:[0,0,0,1]
         BoxLayout:
             size_hint_x: .3
