@@ -33,5 +33,6 @@ envkivy/
 # credentials
 credentials.py
 
-#cache
+#folder with map images
+
 cache/
