@@ -15,7 +15,8 @@ class Splash(BoxLayout):
     def render(self, _):
         self.ids.progress.start()
     def on_start(self):
-        Clock.schedule_once(self.login, 5)
+        Clock.schedule_once(self.login, .1)
+        
     
     def login(self, *args):
         self.parent.manager.current = "scrn_login"

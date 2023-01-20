@@ -10,38 +10,29 @@
             size:self.size
     BoxLayout:
         orientation:"vertical"
-        Label:
+    #     Label:
             
-            size_hint: 1, .1
-            text: "TransportYoiu"
-            font_size:dp(46)
-            bold:True
-        Label:
+    #         size_hint: 1, .1
+    #         text: "TransportYoiu"
+    #         font_size:dp(46)
+    #         bold:True
+    #     Label:
             
-            size_hint: 1, .05
-            text: "Get the transport most \n suitable to you"
-            font_size:app.fonts.size.h3
-            valign:"middle"
-            halign:"center"
+    #         size_hint: 1, .05
+    #         text: "Get the transport most \n suitable to you"
+    #         font_size:app.fonts.size.h3
+    #         valign:"middle"
+    #         halign:"center"
 
         # Add gif image
         Image:
            
-            id:ellipse_image
-            size_hint: .5, .5
+            
+            size_hint: .9, .9
             pos_hint:{"center_y": .5, "center_x": .5 }
-            source:"assets/imgs/giphy.gif"
+            source:"assets/imgs/png2/logo-no-background.png"
             allow_stretch: True
-            anim_delay: .1
-            # anim loop: 1
-            anim_reset: True
-            canvas.before:
-                Color:
-                    rgb: 1,1,1,1
-                Ellipse:
-                    
-                    size:[dp(300), dp(300)]
-                    pos:[self.center_x - 150, self.center_y - 150]
+            
         BoxLayout:
             pos_hint:{"center_y": .3, "center_x": .5}
             padding: dp(10)

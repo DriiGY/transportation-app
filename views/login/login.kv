@@ -1,10 +1,75 @@
 
 
 <Login>:
+    orientation:"vertical"
     canvas.before:
         Color:
-            rgba: [1,0,0,1]
+            rgba: app.colors.white
         Rectangle:
             pos:self.pos
             size:self.size
-            
+    BoxLayout:
+        orientation:"vertical"
+        size_hint:1, .6
+        Image:
+            size_hint:1, 1
+            source:"assets/imgs/png2/logo-no-background.png"
+            pos_hint:{"center_y": .5, "center_x": .5 }
+            allow_stretch: True
+    BoxLayout:
+        orientation:"vertical"
+        size_hint:1, .6
+        padding:[dp(10), 0, dp(10), 0]
+        spacing:dp(10)
+        Label:
+            text: "Login"
+            font_size:app.fonts.size.h1
+            font_family:app.fonts.heading
+            valign:"middle"
+            halign: "left"
+            color:rgba("#6068EB")
+            text_size:self.size
+            bold:True
+        MDTextField:
+            hint_text:"username"
+            color_mode: 'custom'
+            helper_text_mode: "on_focus"
+            helper_text: "something@email.com"
+            line_color_focus: 1, 0, 1, 1
+            mode:"line"
+            color:96/255,104/255,235/255,1
+            fill_color:96/255,104/255,235/255,1
+            icon_right:'check'  # close cruz
+        
+        MDTextField:
+            hint_text:"password"
+            color_mode: 'custom'
+            line_color_focus: 1, 0, 1, 1
+            mode:"line"
+            color:96/255,104/255,235/255,1
+            fill_color:96/255,104/255,235/255,1
+            password:True
+            icon_right:'eye-off'
+        BoxLayout:
+            spacing:0
+            Button:
+                text:"Forgot your password?"
+                markup:True
+                background_color: [0,0,0,0]
+                background_down: ""
+                background_normal: ""
+                background_disabled: ""
+                color:app.colors.black
+                
+        BoxLayout:
+            size_hint: 1, .4
+            RoundedButton:
+                size:self.parent.size
+                text:"Login"
+                bcolor: rgba("#6068EB")
+                radius:[dp(10)]
+                font_name:app.fonts.heading
+                font_size:app.fonts.size.h3
+                color:app.colors.white
+        
+  
