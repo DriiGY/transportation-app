@@ -2,6 +2,7 @@
 
 <Login>:
     orientation:"vertical"
+    padding:[0, dp(10), 0, dp(10)]
     canvas.before:
         Color:
             rgba: app.colors.white
@@ -62,7 +63,7 @@
                 color:app.colors.black
                 
         BoxLayout:
-            size_hint: 1, .4
+            size_hint: 1, 1
             RoundedButton:
                 size:self.parent.size
                 text:"Login"
@@ -71,5 +72,18 @@
                 font_name:app.fonts.heading
                 font_size:app.fonts.size.h3
                 color:app.colors.white
+        Label:
+            canvas.before:
+                Color:
+                    rgba:app.colors.black
+                Rectangle:
+                    pos:self.pos
+                    size:[self.size[0], dp(2)]
+            text:"Or"
+            color:app.colors.black
+        Button:
+            markup: True
+            text: "google"
+
         
   
