@@ -36,3 +36,7 @@ credentials.py
 #folder with map images
 
 cache/
+
+#google auth
+client_id.txt
+client_secret.txt
