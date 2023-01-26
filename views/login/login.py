@@ -14,10 +14,10 @@ Builder.load_file('views/login/login.kv')
 class Login(BoxLayout):
     
     def __init__(self, **kw) -> None:
-        client_id = open("client_id.txt")
-        client_secret = open("client_secret.txt")
-        initialize_google(self.after_login, self.error_listener, client_id.read(), client_secret.read())
-        print(client_id.read())
+        # client_id = open("client_id.txt")
+        # client_secret = open("client_secret.txt")
+        # initialize_google(self.after_login, self.error_listener, client_id.read(), client_secret.read())
+        # print(client_id.read())
         super().__init__(**kw)
 
     def login(self):
@@ -46,21 +46,21 @@ class Login(BoxLayout):
         else:
             return False
     
-    def forgot_pass(self):
-        if self.ids.email.valid == True:
-            #################################
-            ### ADD SEND EMAIL TO RESET PASSWORD SCREEN
-            ###################################
-            toast("We sent an email to " + self.ids.email.ids.email.text)
-        else: 
-            toast("Add a valid email to the email field")
+    # def forgot_pass(self):
+    #     if self.ids.email.valid == True:
+    #         #################################
+    #         ### ADD SEND EMAIL TO RESET PASSWORD SCREEN
+    #         ###################################
+    #         toast("We sent an email to " + self.ids.email.ids.email.text)
+    #     else: 
+    #         toast("Add a valid email to the email field")
 
-    def after_login(self, name, email, photo_uri):
-        print(name, email)
-        self.parent.manager.current = "scrn_home"
+    # def after_login(self, name, email, photo_uri):
+    #     print(name, email)
+    #     self.parent.manager.current = "scrn_home"
 
-    def error_listener(self):
-        print("Login Failed!")
+    # def error_listener(self):
+    #     print("Login Failed!")
 
     def signup(self):
         self.parent.manager.current = "scrn_signup"
