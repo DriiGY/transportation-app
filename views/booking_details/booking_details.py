@@ -10,7 +10,7 @@ from kivy.properties import StringProperty, ColorProperty
 from widgets.shadow import ShadowBox
 import geocoder
 from geopy.geocoders import Nominatim
-
+from kivymd.toast import toast
 from utils.utils import calc_time_diff
 
 Builder.load_file('views/booking_details/booking_details.kv')
@@ -180,11 +180,11 @@ class BookingDetails(BoxLayout):
                 self.parent.manager.current = "scrn_ticket_details"
                 
             else:
-                print("Select a date and a ticket to move on!")
+                toast("Select a date and a ticket to move on!")
                 self.ticket_selected_check
             
         else:
-            print("Select a date and a ticket to move on!")
+            toast("Select a date and a ticket to move on!")
             self.ticket_selected_check
 
         

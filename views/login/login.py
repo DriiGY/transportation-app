@@ -28,8 +28,8 @@ class Login(BoxLayout):
         else:
             
             toast("E-mail/password invalid!")
-    def login_by_google(self):
-        login_google()
+    # def login_by_google(self):
+    #     login_google()
 
     def check_password(self, password):
         ### Needs to have capital letter, special character numbers and 6 to 20 letters
@@ -61,7 +61,12 @@ class Login(BoxLayout):
 
     # def error_listener(self):
     #     print("Login Failed!")
-
+    def forgot_pass(self):
+        if self.ids.email.valid:
+            
+            toast(f"We sent an email to {self.ids.email.ids.email.text}")
+        else:
+            toast("Fill email field and press again!")
     def signup(self):
         self.parent.manager.current = "scrn_signup"
 

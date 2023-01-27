@@ -74,7 +74,7 @@
                 background_normal: ""
                 background_disabled: ""
                 color:app.colors.black
-                on_press:root.forgot_pass()
+                on_release:root.forgot_pass()
             Button:
                 text:"Signup"
                 markup:True
@@ -98,21 +98,23 @@
                 font_size:app.fonts.size.h3
                 color:app.colors.white
                 on_press: root.login()
-        Label:
-            size_hint: 1, .1
-            canvas.before:
-                Color:
-                    rgba:app.colors.black
-                Rectangle:
-                    pos:self.pos
-                    size:[self.size[0], dp(2)]
-            text:"Or"
-            color:app.colors.black
-        Button:
-            size_hint: 1, .1
-            markup: True
-            text: "google(not working)"
-            on_release:root.login_by_google()
+
+        # Loggin with google ###############################################
+        # Label:
+        #     size_hint: 1, .1
+        #     canvas.before:
+        #         Color:
+        #             rgba:app.colors.black
+        #         Rectangle:
+        #             pos:self.pos
+        #             size:[self.size[0], dp(2)]
+        #     text:"Or"
+        #     color:app.colors.black
+        # Button:
+        #     size_hint: 1, .1
+        #     markup: True
+        #     text: "google(not working)"
+        #     on_release:root.login_by_google()
 
 <ClickableTextFieldUsername>:
     size_hint: 1, None
