@@ -1,0 +1,52 @@
+
+
+<Splash>:
+    id:splash
+    canvas.before:
+        Color:
+            rgba: rgba("#6068EB")
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    BoxLayout:
+        orientation:"vertical"
+    #     Label:
+            
+    #         size_hint: 1, .1
+    #         text: "TransportYoiu"
+    #         font_size:dp(46)
+    #         bold:True
+    #     Label:
+            
+    #         size_hint: 1, .05
+    #         text: "Get the transport most \n suitable to you"
+    #         font_size:app.fonts.size.h3
+    #         valign:"middle"
+    #         halign:"center"
+
+        # Add gif image
+        Image:
+           
+            
+            size_hint: .9, .9
+            pos_hint:{"center_y": .5, "center_x": .5 }
+            source:"assets/imgs/png2/logo-no-background.png"
+            allow_stretch: True
+            
+        BoxLayout:
+            pos_hint:{"center_y": .3, "center_x": .5}
+            padding: dp(10)
+            size_hint_x: .7
+            size_hint_y: .01
+            MDProgressBar:
+                id:progress
+                orientation:"horizontal"
+                # type
+                type:"indeterminate"
+                # Progress duration
+                running_duration:2
+                # Catching duration
+                catching_duration:1
+                color:rgba("#ffffff")
+        
+      

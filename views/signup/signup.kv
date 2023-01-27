@@ -1,0 +1,361 @@
+
+<Signup>:
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True   
+        
+        canvas.before:
+            Color:
+                rgba: [1,0,0,0]
+            Rectangle:
+                pos:self.pos
+                size:self.size 
+        BoxLayout:
+            size_hint_min_y: None
+            size_hint_y: None
+            height: self.minimum_height
+            padding:[dp(20)]
+            spacing:dp(10)
+            orientation:"vertical"
+            canvas.before:
+                Color:
+                    rgba: app.colors.white
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            BoxLayout:
+                size_hint: 1, None
+                height:dp(50)
+                padding:[dp(15), 0, dp(10), 0]
+                ButtonIcon:
+                    size_hint_x: .2
+                    text:icon("icon-chevron-left")
+                    color:[0,0,0,1]
+                    bold:True
+                    font_size:app.fonts.size.h1
+                    on_press:
+                        root.cancel_signup()
+                        root.parent.manager.transition.direction = "left"
+                BoxLayout:
+                    size_hint_x: .8
+                    canvas.before:
+                        Color:
+                            rgba:[0,1,1,0]
+                        Rectangle:
+                            size:self.size
+                            pos:self.pos
+                    padding:[0, 0, dp(100), 0]
+                    Label:
+                        
+                        size_hint_x: 1
+                        text: "Sign up"
+                        color:[0,0,0,1]
+                        font_size:app.fonts.size.h1
+                        bold:True
+            #Name
+            BoxLayout:
+        
+            
+                orientation: 'vertical'
+                #E9F1FF
+                size_hint: 1, None
+                height:name.height+ phone_number.height+dp(10)
+                spacing:dp(3)
+                padding:[dp(3), dp(7), dp(3), dp(3)]
+                canvas.before:
+                    Color:
+                        rgba: rgba("#E9F1FF")
+                    RoundedRectangle:
+                        pos:self.pos
+                        size:self.size
+                        radius: [20]
+                BoxLayout:
+                    size_hint: 1, None
+                    height:name.height
+                    padding:[dp(5), dp(5), dp(5), dp(-10)]
+                    canvas.before:
+                        Color:
+                            rgba: rgba("#FFFFFF")
+                        RoundedRectangle:
+                            pos:self.pos
+                            size:self.size
+                            radius:[dp(12), dp(12),0,0]
+                    MDTextField:
+                        id:name
+                        hint_text: "First and Last Name"
+                        font_size:app.fonts.size.h3
+                        hint_font_size:app.fonts.size.h1
+                        line_color_focus: 1,1,1,0
+                        line_color_normal: 1,1,1,0
+                        hint_text_color_normal: rgba("#9F9F9F")
+                        hint_text_color_focus: rgba("#9F9F9F")
+                        cursor_color: app.colors.black
+                        selection_color: 233/255, 241/255, 255/255, .5
+                        text_color_focus:rgba("#2BC48A")
+                        text_color_normal:rgba("#2BC48A")
+                BoxLayout:
+                    size_hint: 1, None
+                    height: phone_number.height
+                    padding:[dp(10), dp(3), dp(5), dp(-5)]
+                    canvas.before:
+                        Color:
+                            rgba: rgba("#FFFFFF")
+                        RoundedRectangle:
+                            pos:self.pos
+                            size:self.size
+                            radius:[0,0, dp(12), dp(12)]
+                    MDTextField:
+                        
+                        id:phone_number
+                        hint_text: "(+351) Phone Number"
+                        font_size:app.fonts.size.h3
+                        hint_font_size:app.fonts.size.h1
+                        line_color_focus: 1,1,1,1
+                        line_color_normal: 1,1,1,0
+                        hint_text_color_normal: rgba("#9F9F9F")
+                        hint_text_color_focus: rgba("#9F9F9F")
+                        cursor_color: app.colors.black
+                        selection_color:  233/255, 241/255, 255/255, .5
+                        text_color_focus:rgba("#2BC48A")
+                        text_color_normal:rgba("#2BC48A")
+            BoxLayout:
+                padding:[0,0,0,dp(5)]
+                size_hint_y: .05
+                Label:
+                    
+                    text:"Make sure it matches your name in your Governament ID"
+                    color:app.colors.black
+                    font_size:app.fonts.size.h6
+                    halign:"left"
+                    multiline:True
+            BoxLayout:
+                orientation: 'vertical'
+                #E9F1FF
+                size_hint: 1, None
+                height:birthdate.height + dp(5)
+                spacing:dp(3)
+                padding:[dp(3), dp(7), dp(3), dp(3)]
+                canvas.before:
+                    Color:
+                        rgba: rgba("#E9F1FF")
+                    RoundedRectangle:
+                        pos:self.pos
+                        size:self.size
+                        radius: [20]
+                BoxLayout:
+                    size_hint: 1, None
+                    height: birthdate.height
+                    padding:[dp(10), dp(3), dp(5), dp(-5)]
+                    canvas.before:
+                        Color:
+                            rgba: rgba("#FFFFFF")
+                        RoundedRectangle:
+                            pos:self.pos
+                            size:self.size
+                            radius:[0,0, dp(12), dp(12)]
+                    MDTextField:
+                        
+                        id:birthdate
+                        hint_text: "Birthdate(dd/mm/yyyy)"
+                        font_size:app.fonts.size.h3
+                        hint_font_size:app.fonts.size.h1
+                        line_color_focus: 1,1,1,1
+                        line_color_normal: 1,1,1,0
+                        hint_text_color_normal: rgba("#9F9F9F")
+                        hint_text_color_focus: rgba("#9F9F9F")
+                        cursor_color: app.colors.black
+                        selection_color:  233/255, 241/255, 255/255, .5
+                        text_color_focus:rgba("#2BC48A")
+                        text_color_normal:rgba("#2BC48A")
+                        on_text: root.check_birthdate(self, self.text)
+            BoxLayout:
+                padding:[0,0,0,dp(5)]
+                size_hint_y: .05
+                Label:
+                    
+                    text:"Example:01/01/96"
+                    color:app.colors.black
+                    font_size:app.fonts.size.h6
+                    halign:"left"
+                    multiline:True
+            BoxLayout:
+                orientation: 'vertical'
+                #E9F1FF
+                size_hint: 1, None
+                height:email.height + dp(5)
+                spacing:dp(3)
+                padding:[dp(3), dp(7), dp(3), dp(3)]
+                canvas.before:
+                    Color:
+                        rgba: rgba("#E9F1FF")
+                    RoundedRectangle:
+                        pos:self.pos
+                        size:self.size
+                        radius: [20]
+                BoxLayout:
+                    size_hint: 1, None
+                    height: email.height
+                    padding:[dp(10), dp(3), dp(5), dp(-5)]
+                    canvas.before:
+                        Color:
+                            rgba: rgba("#FFFFFF")
+                        RoundedRectangle:
+                            pos:self.pos
+                            size:self.size
+                            radius:[0,0, dp(12), dp(12)]
+                    MDTextField:
+                        
+                        id:email
+                        hint_text: "Email adress"
+                        font_size:app.fonts.size.h3
+                        hint_font_size:app.fonts.size.h1
+                        line_color_focus: 1,1,1,1
+                        line_color_normal: 1,1,1,0
+                        hint_text_color_normal: rgba("#9F9F9F")
+                        hint_text_color_focus: rgba("#9F9F9F")
+                        cursor_color: app.colors.black
+                        selection_color:  233/255, 241/255, 255/255, .5
+                        text_color_focus:rgba("#2BC48A")
+                        text_color_normal:rgba("#2BC48A")
+            BoxLayout:
+                padding:[0,0,0,dp(5)]
+                size_hint_y: .05
+                Label:
+                    
+                    text:"We'll send you your trip confirmations and receipts"
+                    color:app.colors.black
+                    font_size:app.fonts.size.h6
+                    halign:"left"
+                    multiline:True
+            # password
+            BoxLayout:
+                orientation: 'vertical'
+                #E9F1FF
+                size_hint: 1, None
+                height:password.height + dp(5)
+                spacing:dp(3)
+                padding:[dp(3), dp(7), dp(3), dp(3)]
+                canvas.before:
+                    Color:
+                        rgba: rgba("#E9F1FF")
+                    RoundedRectangle:
+                        pos:self.pos
+                        size:self.size
+                        radius: [20]
+                BoxLayout:
+                    size_hint: 1, None
+                    height: password.height
+                    padding:[dp(10), dp(3), dp(5), dp(-5)]
+                    canvas.before:
+                        Color:
+                            rgba: rgba("#FFFFFF")
+                        RoundedRectangle:
+                            pos:self.pos
+                            size:self.size
+                            radius:[0,0, dp(12), dp(12)]
+                    MDTextField:
+                        
+                        id:password
+                        hint_text: "Password"
+                        font_size:app.fonts.size.h3
+                        hint_font_size:app.fonts.size.h1
+                        line_color_focus: 1,1,1,1
+                        line_color_normal: 1,1,1,0
+                        hint_text_color_normal: rgba("#9F9F9F")
+                        hint_text_color_focus: rgba("#9F9F9F")
+                        cursor_color: app.colors.black
+                        selection_color:  233/255, 241/255, 255/255, .5
+                        text_color_focus:rgba("#2BC48A")
+                        text_color_normal:rgba("#2BC48A")
+                        password:True
+            # password confirm
+            BoxLayout:
+                orientation: 'vertical'
+                #E9F1FF
+                size_hint: 1, None
+                height:password_confirm.height + dp(5)
+                spacing:dp(3)
+                padding:[dp(3), dp(7), dp(3), dp(3)]
+                canvas.before:
+                    Color:
+                        rgba: rgba("#E9F1FF")
+                    RoundedRectangle:
+                        pos:self.pos
+                        size:self.size
+                        radius: [20]
+                BoxLayout:
+                    size_hint: 1, None
+                    height: password_confirm.height
+                    padding:[dp(10), dp(3), dp(5), dp(-5)]
+                    canvas.before:
+                        Color:
+                            rgba: rgba("#FFFFFF")
+                        RoundedRectangle:
+                            pos:self.pos
+                            size:self.size
+                            radius:[0,0, dp(12), dp(12)]
+                    MDTextField:
+                        
+                        id:password_confirm
+                        hint_text: "Comfirm password"
+                        font_size:app.fonts.size.h3
+                        hint_font_size:app.fonts.size.h1
+                        line_color_focus: 1,1,1,1
+                        line_color_normal: 1,1,1,0
+                        hint_text_color_normal: rgba("#9F9F9F")
+                        hint_text_color_focus: rgba("#9F9F9F")
+                        cursor_color: app.colors.black
+                        selection_color:  233/255, 241/255, 255/255, .5
+                        text_color_focus:rgba("#2BC48A")
+                        text_color_normal:rgba("#2BC48A")
+                        password:True
+                        on_text: root.check_password_confirmation(self, self.text)
+            BoxLayout:
+                
+                padding:[0,0,0,dp(5)]
+                size_hint_y: .05
+                Label:
+                    id:confirmation_message
+                    text:""
+                    color:[0,0,0,0]
+                    font_size:app.fonts.size.h6
+                    halign:"left"
+                    multiline:True
+            # Terms of services
+            BoxLayout:
+                orientation:"horizontal"
+                size_hint_y:None
+                height:dp(100)
+                #padding:[0, 0,dp(80),0]
+                CheckBox:
+                    id:terms_checkbox
+                    size_hint_x:.05
+                    
+                Label:
+                    size_hint_x:.95
+                    text:"By checking the box, you are agreeing to:\n[ref=http://google.com][b][color=#3866B1][u]the terms of service[/u][/color][/b][/ref]\n[ref=http://google.com][b][color=#3866B1][u]payment terms of service[/u][/color][/b][/ref]\n[ref=http://google.com][b][color=#3866B1][u]privacy policy[/u][/color][/b][/ref]\nand [ref=http://google.com][b][color=#3866B1][u]nondiscrimination policy[/u][/color][/b][/ref]."
+                    color:app.colors.black
+                    font_size:app.fonts.size.h6
+                    halign:"left"
+                    multiline:True
+                    markup: True
+                    on_ref_press:
+                        import webbrowser
+                        webbrowser.open(args[1])
+            BoxLayout:
+                size_hint: 1, None
+                height:dp(50)
+                RoundedButton:
+                    size:self.parent.size
+                    text:"Signup"
+                    bcolor: rgba("#2BC48A")
+                    radius:[dp(10)]
+                    font_name:app.fonts.heading
+                    font_size:app.fonts.size.h3
+                    color:app.colors.white
+                    on_release:root.signup()
+                
+
+
+
+

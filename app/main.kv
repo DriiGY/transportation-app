@@ -8,6 +8,9 @@
 #: import icon kivy.garden.iconfonts.icon
 ##:import MapView kivy.garden.mapview.MapView
 
+#: import Splash views.splash.Splash
+#: import Login views.login.Login
+#: import Signup views.signup.Signup
 #: import Home views.home.Home
 #: import BookingDetails views.booking_details.BookingDetails
 #: import TicketDetails views.ticket.TicketDetails
@@ -22,6 +25,18 @@
 
     ScreenManager:
         id: scrn_mngr
+        Screen:
+            name: 'scrn_splash'
+            Splash:
+                id: splash
+        Screen:
+            name:"scrn_login"
+            Login:
+                id:login
+        Screen:
+            name:"scrn_signup"
+            Signup:
+                id:signup
         Screen:
             name: 'scrn_home'
             Home:

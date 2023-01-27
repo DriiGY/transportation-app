@@ -79,4 +79,4 @@ class SoftBox(ButtonBehavior, BoxLayout):
         self.rect.size = self.size
         self.rect.pos = self.pos
 
-        print(self.rect.texture)
+        #print(self.rect.texture)

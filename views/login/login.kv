@@ -1,0 +1,166 @@
+
+
+<Login>:
+    
+    orientation:"vertical"
+    padding:[0, dp(10), 0, dp(10)]
+    canvas.before:
+        Color:
+            rgba: app.colors.white
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    BoxLayout:
+        orientation:"vertical"
+        size_hint:1, .5
+        Image:
+            size_hint:1, 1
+            source:"assets/imgs/png2/logo-no-background.png"
+            pos_hint:{"center_y": .5, "center_x": .5 }
+            allow_stretch: True
+    BoxLayout:
+        orientation:"vertical"
+        size_hint:1, .5
+        padding:[dp(10), 0, dp(10), 0]
+        spacing:dp(10)
+        Label:
+            size_hint_y:.2
+            text: "Login"
+            font_size:app.fonts.size.h1
+            font_family:app.fonts.heading
+            valign:"middle"
+            halign: "left"
+            color:rgba("#6068EB")
+            text_size:self.size
+            bold:True
+        # MDTextField:
+        #     hint_text:"username"
+        #     color_mode: 'custom'
+        #     helper_text_mode: "on_focus"
+        #     helper_text: "something@email.com"
+        #     line_color_focus: 1, 0, 1, 1
+        #     mode:"line"
+        #     color:96/255,104/255,235/255,1
+        #     fill_color:96/255,104/255,235/255,1
+        #     icon_right:'check'  # close cruz
+        ClickableTextFieldUsername:
+            id:email
+            size_hint_y:.2
+            hint_text: "e-mail"
+            pos_hint: {"center_x": .5, "center_y": .5}
+        ClickableTextFieldPassword:
+            id:password
+            size_hint_y:.2
+            hint_text: "Password"
+            pos_hint: {"center_x": .5, "center_y": .5}
+        # MDTextField:
+        #     hint_text:"password"
+        #     color_mode: 'custom'
+        #     line_color_focus: 1, 0, 1, 1
+        #     mode:"line"
+        #     color:96/255,104/255,235/255,1
+        #     fill_color:96/255,104/255,235/255,1
+        #     password:True
+        #     icon_right:'eye-off'
+        BoxLayout:
+
+            spacing:dp(2)
+            size_hint_y:.1
+            Button:
+                text:"Forgot your password?"
+                markup:True
+                background_color: [0,0,0,0]
+                background_down: ""
+                background_normal: ""
+                background_disabled: ""
+                color:app.colors.black
+                on_release:root.forgot_pass()
+            Button:
+                text:"Signup"
+                markup:True
+                background_color: [0,0,0,0]
+                background_down: ""
+                background_normal: ""
+                background_disabled: ""
+                color:rgba("#6DC08F")
+                underline:True
+                on_release:root.signup()
+              
+                
+        BoxLayout:
+            size_hint: 1, .1
+            RoundedButton:
+                size:self.parent.size
+                text:"Login"
+                bcolor: rgba("#6068EB")
+                radius:[dp(10)]
+                font_name:app.fonts.heading
+                font_size:app.fonts.size.h3
+                color:app.colors.white
+                on_press: root.login()
+
+        # Loggin with google ###############################################
+        # Label:
+        #     size_hint: 1, .1
+        #     canvas.before:
+        #         Color:
+        #             rgba:app.colors.black
+        #         Rectangle:
+        #             pos:self.pos
+        #             size:[self.size[0], dp(2)]
+        #     text:"Or"
+        #     color:app.colors.black
+        # Button:
+        #     size_hint: 1, .1
+        #     markup: True
+        #     text: "google(not working)"
+        #     on_release:root.login_by_google()
+
+<ClickableTextFieldUsername>:
+    size_hint: 1, None
+    height: email.height
+    
+    MDTextField:
+        id: email
+        hint_text: root.hint_text
+        on_text: root.check_focus(self, self.text)
+        color_mode: 'custom'
+        line_color_focus: rgba("#6068EB")
+        line_color_normal: rgba("#D0D0D0")
+        hint_text_color_normal: rgba('#D0D0D0')
+        hint_text_color_focus: rgba("#6068EB")
+        multiline:False
+        text_color_focus:app.colors.black
+
+    MDIconButton:
+        id:icon
+        icon: "close"
+        pos_hint: {"center_y": .5}
+        pos: email.width - self.width + dp(8), 0
+        theme_icon_color: "Custom"
+        icon_color: rgba("#DC3545")
+
+<ClickableTextFieldPassword>:
+    size_hint: 1, None
+    height: password.height
+
+    MDTextField:
+        id: password
+        hint_text: root.hint_text
+        text: root.text
+        password: True
+        multiline:False
+        line_color_focus: rgba("#6068EB")
+        line_color_normal: rgba("#D0D0D0")
+        hint_text_color_normal: rgba('#D0D0D0')
+        hint_text_color_focus: rgba("#6068EB")
+        text_color_focus:app.colors.black
+
+    MDIconButton:
+        icon: "eye-off"
+        pos_hint: {"center_y": .5}
+        pos: password.width - self.width + dp(8), 0
+        theme_text_color: "Hint"
+        on_release:
+            self.icon = "eye" if self.icon == "eye-off" else "eye-off"
+            password.password = False if password.password is True else True  
