@@ -75,7 +75,8 @@
                         size_hint:[None, None]
                         size:[dp(66), dp(66)]
                         elevation:4
-                        Widget:
+                        ButtonWidget:
+                            on_release:root.parent.parent.parent.children[0].set_state("open")
                             canvas.before:
                                 Color:
                                     rgba: [1,1,1,1]
@@ -344,6 +345,7 @@
 
         
 
+<ButtonWidget>:
 
 
 

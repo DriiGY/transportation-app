@@ -8,7 +8,7 @@ from kivy.clock import Clock
 from kivy.graphics import Color, Line
 from kivy.garden.mapview import MapView, MapMarkerPopup
 from kivy.properties import StringProperty, ColorProperty
-
+from kivy.uix.widget import Widget
 from widgets.shadow import ShadowBox
 
 from plyer import gps
@@ -269,7 +269,9 @@ class Home(BoxLayout):
             booking_details_screen._to_local_label = self._destination_label
             self.parent.manager.transition.direction = "left"
             self.parent.manager.current = "scrn_booking_details"
-
+    def display(self):
+        #print()
+        pass
 # Map component        
 class Map(MapView):
 
@@ -291,3 +293,6 @@ class ButtonCard(ToggleButtonBehavior, ShadowBox):
     def __init__(self, **kw) -> None:
         super().__init__(**kw)
 
+class ButtonWidget(ButtonBehavior, Widget):
+    def __init__(self, **kw) -> None:
+        super(ButtonWidget, self).__init__(**kw)

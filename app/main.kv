@@ -22,31 +22,60 @@
         Rectangle:
             pos: self.pos
             size: self.size
+    MDNavigationLayout:
+        id:layout
+           
+        ScreenManager:
+            id: scrn_mngr
+            Screen:
+                name: 'scrn_home'
+                Home:
+                    id: home
+            Screen:
+                name: 'scrn_splash'
+                Splash:
+                    id: splash
+            Screen:
+                name:"scrn_login"
+                Login:
+                    id:login
+            Screen:
+                name:"scrn_signup"
+                Signup:
+                    id:signup
+            
+            Screen:
+                name: 'scrn_booking_details'
+                BookingDetails:
+                    id: booking_details
+            Screen:
+                name: 'scrn_ticket_details'
+                TicketDetails:
+                    id: ticket_details_info
+        MDNavigationDrawer:
+            id:nav_drawer
+            open_progress:.2
+            swipe_distance:4
+            anchor:"right"
+            BoxLayout:
+                orientation: "vertical"
+                MDLabel:
+                    text: "TransportYoiu"
+                    font_style: "Caption"
+                    adaptive_height: True
+                    color:rgba("#6068EB")
+                    bold:True
+                MDList:
+                    OneLineListItem:
+                        text: "Home"
+                
+                    OneLineListItem:
+                        text: "Payment method"
 
-    ScreenManager:
-        id: scrn_mngr
-        Screen:
-            name: 'scrn_splash'
-            Splash:
-                id: splash
-        Screen:
-            name:"scrn_login"
-            Login:
-                id:login
-        Screen:
-            name:"scrn_signup"
-            Signup:
-                id:signup
-        Screen:
-            name: 'scrn_home'
-            Home:
-                id: home
-        Screen:
-            name: 'scrn_booking_details'
-            BookingDetails:
-                id: booking_details
-        Screen:
-            name: 'scrn_ticket_details'
-            TicketDetails:
-                id: ticket_details_info
-     
+                    OneLineListItem:
+                        text: "Settings"
+                
+                    OneLineListItem:
+                        text: "Logout"
+                Widget: 
+            
