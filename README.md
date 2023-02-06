@@ -32,7 +32,7 @@ virtualenv venv
 ```
 Activate virtual environment variable (To deactivate: deactivate):
 ```bash
-ource venv/bin/activate
+source venv/bin/activate
 ```
 
 ## Install dependencies
