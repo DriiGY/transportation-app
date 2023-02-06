@@ -19,42 +19,42 @@ Install pip:
 
 Install virtualenv via pip: 
 ```bash
-$ pip install virtualenv
+pip install virtualenv
 ```
 Test your installation:
 ```bash
-$ virtualenv --version
+virtualenv --version
 ```
 Create a virtual environment for project:
 ```bash
-$ cd transportation-app
-$ virtualenv venv
+cd transportation-app
+virtualenv venv
 ```
 Activate virtual environment variable (To deactivate: deactivate):
 ```bash
-$ source venv/bin/activate
+ource venv/bin/activate
 ```
 
 ## Install dependencies
 Install kivy: (Kivy and kivymd need to be compatible or might show: error:kivy is too old)
 ```bash
-$ pip install kivy==2.0.0
+pip install kivy==2.0.0
 ```
 kivymd (kivymd==0.104.2 should work aswell)
 ```bash
-$ pip install kivymd==1.0.2 
+pip install kivymd==1.0.2 
 ```
 Install xclip and xsel:
 ```bash
-$ sudo apt-get install xclip
+sudo apt-get install xclip
 ```
 Install:
 ```bash
-$ pip install kivyauth, credentials, plyer, geocoder, geopy, email-validator  
+pip install kivyauth, credentials, plyer, geocoder, geopy, email-validator  
 ```
 Install requirements:
 ```bash
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 Add `credentials.py` to directory like `./transportation-app/credentials.py`:
 ```bash
@@ -67,7 +67,7 @@ API_KEY = "YOUR_API_KEY"
 
 Run program (from `./transportation-app/`):
 ```bash
-$ python3 main.py --size=412x732
+python3 main.py --size=412x732
 ```
 
 ## what do we have so far:

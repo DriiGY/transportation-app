@@ -19,6 +19,9 @@ run program:
     python3 main.py --size=412x732
 
 
+
+
+
 -- Only if necessary --
 pip install https://github.com/kivymd/KivyMD/archive/master.zip
 --- Fixed No such file or directory: '/home/derteck/projects/transportation-app-demo/transportation-app/kivy_venv/lib/python3.8/site-packages/kivymd/uix/label/label.kv'
