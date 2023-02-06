@@ -36,6 +36,11 @@ source venv/bin/activate
 ```
 
 ## Install dependencies
+
+Install xclip and xsel:
+```bash
+sudo apt-get install xclip
+```
 Install kivy: (Kivy and kivymd need to be compatible or might show: error:kivy is too old)
 ```bash
 pip install kivy==2.0.0
@@ -44,19 +49,19 @@ kivymd (kivymd==0.104.2 should work aswell)
 ```bash
 pip install kivymd==1.0.2 
 ```
-Install xclip and xsel:
-```bash
-sudo apt-get install xclip
-```
+
 Install:
 ```bash
 pip install kivyauth credentials plyer geocoder geopy email-validator kivy-garden kivy_garden.mapview
 ```
 
-Install requirements:
+Or 
+
+install requirements:
 ```bash
 pip install -r requirements.txt
 ```
+
 Add `credentials.py` to directory like `./transportation-app/credentials.py`:
 ```bash
 API_KEY = "YOUR_API_KEY"
