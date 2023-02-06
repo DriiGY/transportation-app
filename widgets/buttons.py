@@ -44,7 +44,7 @@ class FlatButton(Button):
         self.background_color = [0,0,0,0]
         self.background_down = ""
         self.background_normal = ""
-        self.background_disabled = ""
+        #self.background_disabled = ""
         self.markup = True
 
 class CircleButton(FlatButton):
@@ -55,7 +55,7 @@ class CircleButton(FlatButton):
         self.background_color = [0,0,0,0]
         self.background_down = ""
         self.background_normal = ""
-        self.background_disabled = ""
+        #self.background_disabled = ""
         self.markup = True
 
 class IconButton(FlatButton):

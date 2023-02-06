@@ -6,7 +6,7 @@ from kivy.uix.label import Label
 from kivy.uix.behaviors import ToggleButtonBehavior
 from kivy.clock import Clock
 from kivy.graphics import Color, Line
-from kivy.garden.mapview import MapView, MapMarkerPopup
+from kivy_garden.mapview import MapView, MapMarkerPopup
 from kivy.properties import StringProperty, ColorProperty
 from kivy.uix.widget import Widget
 from widgets.shadow import ShadowBox

@@ -1,4 +1,5 @@
 notas.txt
+
 *.pyc
 *.pyo
 # Byte-compiled / optimized / DLL files
@@ -40,3 +41,6 @@ cache/
 #google auth
 client_id.txt
 client_secret.txt
+
+#test.py - used to test datetime
+test.py

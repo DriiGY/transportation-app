@@ -14,6 +14,7 @@
 #: import Home views.home.Home
 #: import BookingDetails views.booking_details.BookingDetails
 #: import TicketDetails views.ticket.TicketDetails
+#: import SettingsScreen views.settings.SettingsScreen
 <MainWindow>:
     orientation: 'vertical'
     canvas.before:
@@ -27,7 +28,10 @@
            
         ScreenManager:
             id: scrn_mngr
-            
+            Screen:
+                name: 'scrn_settings'
+                SettingsScreen:
+                    id: setting
             Screen:
                 name: 'scrn_home'
                 Home:
@@ -69,14 +73,23 @@
                 MDList:
                     OneLineListItem:
                         text: "Home"
+                        on_release:
+                            scrn_mngr.current = "scrn_home"
+                            nav_drawer.set_state("close")
                 
                     OneLineListItem:
                         text: "Payment method"
 
                     OneLineListItem:
                         text: "Settings"
+                        on_release:
+                            scrn_mngr.current = "scrn_settings"
+                            nav_drawer.set_state("close")
                 
                     OneLineListItem:
                         text: "Logout"
+                        on_release:
+                            scrn_mngr.current = "scrn_login"
+                            nav_drawer.set_state("close")
                 Widget: 
             

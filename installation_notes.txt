@@ -1,0 +1,25 @@
+Install kivy: (Kivy and kivymd need to be compatible or might show: error:kivy is too old)
+    pip install kivy==2.0.0
+    pip install kivymd==1.0.2 (kivymd==0.104.2 should work aswell)
+
+Install xclip and xsel:
+    sudo apt-get install xclip
+Install:
+    pip install kivyauth, credentials, plyer, geocoder, geopy
+
+Add credentials.py file to ./transportation-app directory:
+    API_KEY = "YOUR_API_KEY"
+    - You can get your api key by signing up to https://openrouteservice.org/ and create a key.
+
+
+!note: client_id.txt and client_secret.txt are not used at the moment.
+
+
+run program:
+    python3 main.py --size=412x732
+
+
+-- Only if necessary --
+pip install https://github.com/kivymd/KivyMD/archive/master.zip
+--- Fixed No such file or directory: '/home/derteck/projects/transportation-app-demo/transportation-app/kivy_venv/lib/python3.8/site-packages/kivymd/uix/label/label.kv'
+
