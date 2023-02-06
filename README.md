@@ -69,4 +69,20 @@ Run program (from `./transportation-app/`):
 ```bash
 $ python3 main.py --size=412x732
 ```
-    
+
+## what do we have so far:
+
+ ✅ What you see in the video.
+ 
+ ❌ No settings screen (working on it now).
+ 
+ 
+ **NO BACKEND**:
+ 
+ ❌ No database.
+ 
+ ❌ Payment method.
+ 
+ ❌ QR code for ticket pdf.
+ 
+ ...
