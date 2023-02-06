@@ -65,7 +65,7 @@ API_KEY = "YOUR_API_KEY"
 
 !ignore: client_id.txt and client_secret.txt are not used at the moment.
 
-Run program:
+Run program (from `./transportation-app/`):
 ```bash
 $ python3 main.py --size=412x732
 ```
