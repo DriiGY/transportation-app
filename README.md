@@ -50,8 +50,9 @@ sudo apt-get install xclip
 ```
 Install:
 ```bash
-pip install kivyauth, credentials, plyer, geocoder, geopy, email-validator  
+pip install kivyauth credentials plyer geocoder geopy email-validator kivy-garden kivy_garden.mapview
 ```
+
 Install requirements:
 ```bash
 pip install -r requirements.txt
