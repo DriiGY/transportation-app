@@ -6,7 +6,7 @@ A place where you can find all ways of transport and decide the best way to get 
 https://user-images.githubusercontent.com/19626464/217091767-3c2fd64a-c728-4a1e-a53f-8f655a1cc4aa.mp4
 
 ## Installation
-#### 3.6>=python_version<=3.8
+#### 🐍 python_version (3.6 to 3.8 inc)
 ```bash
 git clone https://github.com/DriiGY/transportation-app.git
 cd transportation-app
