@@ -10,4 +10,6 @@ class SettingsScreen(BoxLayout):
     def __init__(self, **kw) -> None:
         super().__init__(**kw)
         self.app = MDApp.get_running_app()
-        
+    
+    def go_back(self):
+        self.parent.manager.current = "scrn_home"

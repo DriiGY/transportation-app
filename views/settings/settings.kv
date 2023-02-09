@@ -1,9 +1,104 @@
 
 <SettingsScreen>:
     orientation: "vertical"
+    padding:[dp(6)]
     canvas.before:
         Color:
-            rgba:[1,0,0,1]
+            rgba:rgba("#6167E9")
         Rectangle:
             pos:self.pos    
             size:self.size
+            
+    BoxLayout:
+        orientation: "vertical"
+        canvas.before:
+            Color:
+                rgba:app.colors.white
+            RoundedRectangle:
+                pos:self.pos    
+                size:self.size
+                radius:[dp(10)]
+        #Arrow and Settings title
+        BoxLayout:
+            size_hint_y: .1
+            padding:[dp(15), 0, dp(10), 0]
+            ButtonIcon:
+                size_hint_x: .2
+                text:icon("icon-chevron-left")
+                color:[0,0,0,1]
+                bold:True
+                font_size:app.fonts.size.h1
+                on_press:
+                    root.go_back()
+                    root.parent.manager.transition.direction = "left"
+            BoxLayout:
+                size_hint_x: .8
+                canvas.before:
+                    Color:
+                        rgba:[0,1,1,0]
+                    Rectangle:
+                        size:self.size
+                        pos:self.pos
+                padding:[0, 0, dp(100), 0]
+                Label:
+                    
+                    size_hint_x: 1
+                    text: "Settings"
+                    color:[0,0,0,1]
+                    font_size:app.fonts.size.h1
+        MDList:
+            size_hint_y: .9
+            padding:[dp(10)]
+            OneLineAvatarIconListItem:
+                text: "Personal"
+                IconRightWidget:
+                    icon: "chevron-right"
+                IconLeftWidget:
+                    icon: "account"
+            OneLineAvatarIconListItem:
+                text: "Wallet"
+                IconRightWidget:
+                    icon: "chevron-right"
+                IconLeftWidget:
+                    icon: "wallet-giftcard"
+            OneLineAvatarIconListItem:
+                text: "Trips"
+                IconRightWidget:
+                    icon: "chevron-right"
+                IconLeftWidget:
+                    icon: "car-hatchback"
+            TwoLineAvatarIconListItem:
+                text: "Privacy"
+                secondary_text:"[size=14]Privacy Policy[/size]"
+                IconRightWidget:
+                    icon: "chevron-right"
+                IconLeftWidget:
+                    icon: "shield-lock-open"
+            OneLineAvatarIconListItem:
+                text: "Notifications"
+                ripple_alpha:0
+                IconLeftWidget:
+                    icon: "bell"
+                    ripple_alpha:0
+                    specific_text_color: [1,0,0,1]
+                MDSwitch:
+                    thumb_color_active: rgba("#6167E9")
+                    track_color_active: rgba("#b0b2f3")
+                    track_color_inactive: rgba("#b0b2f3")
+                    pos_hint:{"center_y":.5, "x":(self.parent.width-self.width-dp(25))/self.parent.width}
+                
+            TwoLineAvatarIconListItem:
+                text: "Help"
+                secondary_text:"[size=14]Questions, feedback[/size]"
+                IconRightWidget:
+                    icon: "chevron-right"
+                IconLeftWidget:
+                    icon: "help"
+            OneLineAvatarIconListItem:
+                text: "About"
+                IconRightWidget:
+                    icon: "chevron-right"
+                IconLeftWidget:
+                    icon: "exclamation"
+
+        
