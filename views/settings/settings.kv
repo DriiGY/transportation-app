@@ -28,8 +28,9 @@
                 color:[0,0,0,1]
                 bold:True
                 font_size:app.fonts.size.h1
-                on_press:
+                on_release:
                     root.go_back()
+                    print("ola")
                     root.parent.manager.transition.direction = "left"
             BoxLayout:
                 size_hint_x: .8
@@ -88,12 +89,17 @@
                     pos_hint:{"center_y":.5, "x":(self.parent.width-self.width-dp(25))/self.parent.width}
                 
             TwoLineAvatarIconListItem:
-                text: "Help"
+                text: "Support/FaQ"
                 secondary_text:"[size=14]Questions, feedback[/size]"
+                on_release: 
+                    root.parent.manager.transition.direction = "left"
+                    root.parent.manager.current = "scrn_faq"
                 IconRightWidget:
                     icon: "chevron-right"
                 IconLeftWidget:
                     icon: "help"
+                
+                 
             OneLineAvatarIconListItem:
                 text: "About"
                 IconRightWidget:

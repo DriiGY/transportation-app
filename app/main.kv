@@ -15,6 +15,7 @@
 #: import BookingDetails views.booking_details.BookingDetails
 #: import TicketDetails views.ticket.TicketDetails
 #: import SettingsScreen views.settings.SettingsScreen
+#: import Faq views.faq.Faq
 <MainWindow>:
     orientation: 'vertical'
     canvas.before:
@@ -33,7 +34,10 @@
                 SettingsScreen:
                     id: setting
                     
-                            
+            Screen:
+                name: 'scrn_faq'
+                Faq:
+                    id: faq               
             Screen:
                 name: 'scrn_home'
                 Home:
