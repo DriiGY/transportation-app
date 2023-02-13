@@ -1,9 +1,65 @@
 
 
 <Faq>:
+    orientation:"vertical"
+    padding:[dp(6)]
     canvas.before:
         Color:
-            rgba:rgba("#6167E9")
+            rgba:app.colors.white
         Rectangle:
             pos:self.pos    
             size:self.size
+    BoxLayout:
+        orientation:"vertical"
+        size_hint_y: .2
+        padding:[dp(5), 0, dp(10), 0]
+        spacing:dp(5)
+        ButtonIcon:
+            size_hint: 1, .05
+            text:icon("icon-chevron-left")
+            color:[0,0,0,1]
+            bold:True
+            font_size:app.fonts.size.h1
+            on_release:
+                root.parent.manager.current = "scrn_settings"
+                root.parent.manager.transition.direction = "left"
+        BoxLayout:
+            size_hint: 1, .15
+            padding:[dp(25),0,0,0]
+            canvas.before:
+                Color:
+                    rgba:[0,1,1,0]
+                Rectangle:
+                    size:self.size
+                    pos:self.pos
+            Label:
+                
+                size_hint: 1, 1
+                text: "FAQS"
+                color:[0,0,0,1]
+                text_size:self.size 
+                halign:"left"
+                valign:"middle"
+                font_size:app.fonts.size.h1
+    MDBoxLayout:
+        orientation:"vertical"
+        size_hint_y: .8
+        MDTopAppBar:
+            title: "FAQS"
+        MDTabs:
+            id:tabs
+            Tab:
+                icon:"abacus"
+                title:"tittle1"
+                
+
+    Widget:
+
+
+
+<Tab>:
+    
+    MDLabel:
+        id: label
+        text: "Tab 0"
+        halign: "center"

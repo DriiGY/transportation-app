@@ -6,7 +6,9 @@ from kivy.metrics import dp, sp
 from kivy.core.window import Window
 from .view import MainWindow
 
+
 class MainApp(MDApp):
+   
     colors = QueryDict()
     colors.primary = rgba("#6167E9")
     colors.secondary = rgba("#F87974")
@@ -38,3 +40,4 @@ class MainApp(MDApp):
     window_size.width = Window.width
     def build(self):
         return MainWindow()
+    
