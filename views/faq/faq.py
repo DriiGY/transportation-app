@@ -6,7 +6,7 @@ from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.icon_definitions import md_icons
 
 Builder.load_file('views/faq/faq.kv')
-
+#s#######
 
 class Faq(BoxLayout):
     
