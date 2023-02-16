@@ -44,13 +44,109 @@
     MDBoxLayout:
         orientation:"vertical"
         size_hint_y: .8
-        MDTopAppBar:
-            title: "FAQS"
+        
         MDTabs:
             id:tabs
+            background_color:app.colors.white
+            text_color_normal:app.colors.black
+            text_color_active:rgba("#6167E9")
+            indicator_color:rgba("#6167E9")
             Tab:
-                icon:"abacus"
-                title:"tittle1"
+                
+                icon:""
+                title:"Feedback"
+                MDLabel:
+                    id: label
+                    text: "Tab 0"
+                    halign: "center"
+            Tab:
+                
+                icon:""
+                title:"FAQS"
+                BoxLayout:
+                    orientation:"vertical"
+                    padding:[0, dp(10), 0, dp(5)]
+                    BoxLayout:
+                        orientation:"vertical"
+                        size_hint_y:None
+                        height:dp(50)
+                        padding:[dp(5), 0, dp(5), 0]
+                        SearchBar:
+                    BoxLayout:
+                        orientation:"vertical"
+                        
+                        #Group of topics   
+                        BoxLayout:
+                            canvas.before:
+                                Color:
+                                    rgba:[0,0,0,0]
+                                Rectangle:
+                                    pos:self.pos
+                                    size:self.size
+                            orientation:"vertical"
+                            size_hint_y:None
+                            height:dp(120)
+                            # Topic title
+                            MDLabel:
+                                text: "About TransportYoiu"
+                                bold:True
+                                color:rgba("#6167E9")
+                                font_size:app.fonts.size.h2
+                            BoxLayout:
+                                orientation:"vertical"
+                                size_hint_y:None
+                                height:self.minimum_height
+                                spacing:dp(10)
+                                Text:
+                                    text:"What is TransportYoiu ? "
+                                BoxLayout:
+                                    orientation:"horizontal"
+                                    size_hint_y:None
+                                    height:self.minimum_height
+                                    spacing:dp(2)
+                                    Text:
+                                        text:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"
+                                        shorten:False
+                                        halign:"left"
+                                        text_size: self.width, None
+                                        size_hint: 1, None
+                                        height: self.texture_size[1]
+                                    MDIconButton:
+                                        icon:"arrow-down-drop-circle-outline"
+                                        pos_hint: {"center_x": .5, "center_y": .5}
+                        BoxLayout:
+                            orientation:"vertical"
+                            # Topic title
+                            MDLabel:
+                                text: "Payment Options"
+                                bold:True
+                                color:rgba("#6167E9")
+                                font_size:app.fonts.size.h2
+                            BoxLayout:
+                                orientation:"vertical"
+                                Text:
+                                    text:"Options available :"
+                                BoxLayout:
+                                    orientation:"vertical"
+                                    Text:
+                                        text:"Paypal, visa, multibanco"
+          
+
+            Tab:
+                icon:""
+                title:"What's New"
+                BoxLayout:
+                    orientation:"vertical"
+                    MDLabel:
+                        id: label
+                        text: "Tab 2"
+                        halign: "center"
+                    MDLabel:
+                        id: label
+                        text: "Tab 2"
+                        halign: "center"
+                    Widget:
+                
                 
 
     Widget:
@@ -59,7 +155,4 @@
 
 <Tab>:
     
-    MDLabel:
-        id: label
-        text: "Tab 0"
-        halign: "center"
+    

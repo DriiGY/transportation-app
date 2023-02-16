@@ -1,0 +1,22 @@
+[
+    {
+      "topic": "About TransportYoiu",
+      "questions": [
+        "What is TransportYoiu ?",
+        "What are my preferences ?"
+      ],
+      "answers": [
+        "TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences",
+        "Your preferences can be comfort, price of trip, type of car, ..."
+      ]
+    },
+    {
+      "topic": "Payment Options",
+      "questions": [
+        "Options available:"
+      ],
+      "answers": [
+        "Paypal, visa, multibanco"
+      ]
+    }
+  ]
