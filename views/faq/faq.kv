@@ -85,7 +85,7 @@
                                     size:self.size
                             orientation:"vertical"
                             size_hint_y:None
-                            height:dp(120)
+                            height:self.minimum_height
                             # Topic title
                             MDLabel:
                                 text: "About TransportYoiu"
@@ -97,26 +97,38 @@
                                 size_hint_y:None
                                 height:self.minimum_height
                                 spacing:dp(10)
-                                Text:
-                                    text:"What is TransportYoiu ? "
                                 BoxLayout:
                                     orientation:"horizontal"
                                     size_hint_y:None
                                     height:self.minimum_height
                                     spacing:dp(2)
                                     Text:
+                                        text:"What is TransportYoiu ? "
+                                        bold:True
+                                    MDIconButton:
+                                        id:min_max_close
+                                        icon:"arrow-up-drop-circle-outline"
+                                        pos_hint: {"center_x": .5, "center_y": .5}
+                                        on_release:root.min_max_answer()
+                                BoxLayout:
+                                    orientation:"horizontal"
+                                    size_hint_y:None
+                                    height:self.minimum_height
+                                    spacing:dp(2)
+                                    Text:
+                                        id:answer_text
                                         text:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"
                                         shorten:False
                                         halign:"left"
                                         text_size: self.width, None
                                         size_hint: 1, None
                                         height: self.texture_size[1]
-                                    MDIconButton:
-                                        icon:"arrow-down-drop-circle-outline"
-                                        pos_hint: {"center_x": .5, "center_y": .5}
+                                    
                         BoxLayout:
                             orientation:"vertical"
                             # Topic title
+                            # size_hint_y:None
+                            # height:self.minimum_height
                             MDLabel:
                                 text: "Payment Options"
                                 bold:True
@@ -124,12 +136,23 @@
                                 font_size:app.fonts.size.h2
                             BoxLayout:
                                 orientation:"vertical"
+                                size_hint_y:None
+                                height:self.minimum_height
+                                spacing:dp(10)
                                 Text:
+                                    bold:True
                                     text:"Options available :"
                                 BoxLayout:
                                     orientation:"vertical"
+                                    size_hint_y:None
+                                    height:self.minimum_height
                                     Text:
                                         text:"Paypal, visa, multibanco"
+                                        shorten:False
+                                        halign:"left"
+                                        text_size: self.width, None
+                                        size_hint: 1, None
+                                        height: self.texture_size[1]
           
 
             Tab:

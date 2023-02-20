@@ -18,7 +18,19 @@ class Faq(BoxLayout):
     #         self.root.ids.tabs.add_widget(Tab(icon=name_tab, title=name_tab))
     # def on_tab_switch(self, instance_tabs, instance_tab, instance_tab_label, tab_text):
     #         instance_tab.ids.label.text = tab_text
-
+    def min_max_answer(self, ):
+        if self.ids.min_max_close.icon == "arrow-down-drop-circle-outline":
+            self.ids.min_max_close.icon = "arrow-up-drop-circle-outline"
+            self.ids.answer_text.shorten = False
+            self.ids.answer_text.halign = "left"
+            self.ids.answer_text.text_size = (self.ids.answer_text.width, None)
+            self.ids.answer_text.size_hint = (1, None)
+            self.ids.answer_text.height = self.ids.answer_text.texture_size[1]
+            self.ids.answer_text.opacity = 1
+        else:
+            self.ids.min_max_close.icon = "arrow-down-drop-circle-outline"
+            self.ids.answer_text.height = 0
+            self.ids.answer_text.opacity = 0
 
 class Tab(MDFloatLayout, MDTabsBase):
     '''Class implementing content for a tab.'''
