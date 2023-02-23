@@ -41,6 +41,7 @@
                 halign:"left"
                 valign:"middle"
                 font_size:app.fonts.size.h1
+                
     MDBoxLayout:
         orientation:"vertical"
         size_hint_y: .8
@@ -75,7 +76,7 @@
                     BoxLayout:
                         orientation:"vertical"
                         
-                        #Group of topics   
+                        #Group of topics About  
                         BoxLayout:
                             canvas.before:
                                 Color:
@@ -92,25 +93,67 @@
                                 bold:True
                                 color:rgba("#6167E9")
                                 font_size:app.fonts.size.h2
+                                size_hint_y:None
+                                height:dp(20)
+                            # Each question stars here
                             BoxLayout:
                                 orientation:"vertical"
                                 size_hint_y:None
                                 height:self.minimum_height
-                                spacing:dp(10)
+                                spacing:dp(3)
                                 BoxLayout:
                                     orientation:"horizontal"
                                     size_hint_y:None
                                     height:self.minimum_height
                                     spacing:dp(2)
-                                    Text:
-                                        text:"What is TransportYoiu ? "
-                                        bold:True
+                                    canvas.before:
+                                        Color:
+                                            rgba:[1,0,0,1]
+                                        Rectangle:
+                                            pos:self.pos
+                                            size:self.size
+                                    MDLabel:
+                                        canvas.before:
+                                            Color:
+                                                rgba:[0,1,0,1]
+                                            Rectangle:
+                                                pos:self.pos
+                                                size:self.size
+                                        text:"[b]What is TransportYoiu ? [/b]"#str(self.y+self.parent.height/2)
+                                        #text_size: self.size
+                                        valign: "middle"
+                                        font_size: app.fonts.size.h4
+                                        shorten_from: "right" # not working bc shorten is false
+                                        shorten: False
+                                        color: [0,0,0, 1]
+                                        markup: True
+                                        size_hint_y:None
+                                        height: dp(20)
+                                        pos_hint:{"center_y":.5}
+
+                                    #Default height of mdiconbutton is bigger than dp(20)   
                                     MDIconButton:
+                                        canvas.before:
+                                            Color:
+                                                rgba:[0,0,1,1]
+                                            Rectangle:
+                                                pos:self.pos
+                                                size:self.size
                                         id:min_max_close
                                         icon:"arrow-up-drop-circle-outline"
                                         pos_hint: {"center_x": .5, "center_y": .5}
                                         on_release:root.min_max_answer()
+                                        font_size:app.fonts.size.h5
+                                        size_hint_y:None
+                                        height:dp(20)
                                 BoxLayout:
+                                    id:answer_text_box
+                                    canvas.before:
+                                        Color:
+                                            rgba:[0,1,0,1]
+                                        Rectangle:
+                                            pos:self.pos
+                                            size:self.size
                                     orientation:"horizontal"
                                     size_hint_y:None
                                     height:self.minimum_height
@@ -123,7 +166,60 @@
                                         text_size: self.width, None
                                         size_hint: 1, None
                                         height: self.texture_size[1]
-                                    
+                            #ex
+                            # MDLabel:
+                            #     text: "About TransportYoiu"
+                            #     bold:True
+                            #     color:rgba("#6167E9")
+                            #     font_size:app.fonts.size.h2
+                            # BoxLayout:
+                            #     orientation:"vertical"
+                            #     size_hint_y:None
+                            #     height:self.minimum_height
+                            #     spacing:dp(10)
+                            #     BoxLayout:
+                            #         orientation:"horizontal"
+                            #         size_hint_y:None
+                            #         height:self.minimum_height
+                            #         spacing:dp(2)
+                            #         MDLabel:
+                            #             text:"[b]What is TransportYoiu ? [/b]"
+                            #             #text_size: self.size
+                            #             valign: "middle"
+                            #             font_size: app.fonts.size.h4
+                            #             shorten_from: "right"
+                            #             shorten: True
+                            #             color: [0,0,0, 1]
+                            #             markup: True
+                            #             size_hint_y:None
+                            #             height:dp(10)
+                                       
+                            #         MDIconButton:
+                            #             id:min_max_close
+                            #             icon:"arrow-up-drop-circle-outline"
+                            #             pos_hint: {"center_x": .5, "center_y": .5}
+                            #             on_release:root.min_max_answer()
+                            #     BoxLayout:
+                            #         id:answer_text_box
+                            #         canvas.before:
+                            #             Color:
+                            #                 rgba:[0,1,0,1]
+                            #             Rectangle:
+                            #                 pos:self.pos
+                            #                 size:self.size
+                            #         orientation:"horizontal"
+                            #         size_hint_y:None
+                            #         height:self.minimum_height
+                            #         spacing:dp(2)
+                            #         Text:
+                            #             id:answer_text
+                            #             text:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"
+                            #             shorten:False
+                            #             halign:"left"
+                            #             text_size: self.width, None
+                            #             size_hint: 1, None
+                            #             height: self.texture_size[1]
+                                            
                         BoxLayout:
                             orientation:"vertical"
                             # Topic title
