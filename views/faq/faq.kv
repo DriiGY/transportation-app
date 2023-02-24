@@ -52,6 +52,7 @@
             text_color_normal:app.colors.black
             text_color_active:rgba("#6167E9")
             indicator_color:rgba("#6167E9")
+            #TAB
             Tab:
                 
                 icon:""
@@ -60,6 +61,7 @@
                     id: label
                     text: "Tab 0"
                     halign: "center"
+            #TAB
             Tab:
                 
                 icon:""
@@ -108,14 +110,14 @@
                                     spacing:dp(2)
                                     canvas.before:
                                         Color:
-                                            rgba:[1,0,0,1]
+                                            rgba:[1,0,0,0]
                                         Rectangle:
                                             pos:self.pos
                                             size:self.size
                                     MDLabel:
                                         canvas.before:
                                             Color:
-                                                rgba:[0,1,0,1]
+                                                rgba:[0,1,0,0]
                                             Rectangle:
                                                 pos:self.pos
                                                 size:self.size
@@ -135,7 +137,7 @@
                                     MDIconButton:
                                         canvas.before:
                                             Color:
-                                                rgba:[0,0,1,1]
+                                                rgba:[0,0,1,0]
                                             Rectangle:
                                                 pos:self.pos
                                                 size:self.size
@@ -150,7 +152,7 @@
                                     id:answer_text_box
                                     canvas.before:
                                         Color:
-                                            rgba:[0,1,0,1]
+                                            rgba:[0,1,0,0]
                                         Rectangle:
                                             pos:self.pos
                                             size:self.size
@@ -166,91 +168,171 @@
                                         text_size: self.width, None
                                         size_hint: 1, None
                                         height: self.texture_size[1]
-                            #ex
-                            # MDLabel:
-                            #     text: "About TransportYoiu"
-                            #     bold:True
-                            #     color:rgba("#6167E9")
-                            #     font_size:app.fonts.size.h2
-                            # BoxLayout:
-                            #     orientation:"vertical"
-                            #     size_hint_y:None
-                            #     height:self.minimum_height
-                            #     spacing:dp(10)
-                            #     BoxLayout:
-                            #         orientation:"horizontal"
-                            #         size_hint_y:None
-                            #         height:self.minimum_height
-                            #         spacing:dp(2)
-                            #         MDLabel:
-                            #             text:"[b]What is TransportYoiu ? [/b]"
-                            #             #text_size: self.size
-                            #             valign: "middle"
-                            #             font_size: app.fonts.size.h4
-                            #             shorten_from: "right"
-                            #             shorten: True
-                            #             color: [0,0,0, 1]
-                            #             markup: True
-                            #             size_hint_y:None
-                            #             height:dp(10)
-                                       
-                            #         MDIconButton:
-                            #             id:min_max_close
-                            #             icon:"arrow-up-drop-circle-outline"
-                            #             pos_hint: {"center_x": .5, "center_y": .5}
-                            #             on_release:root.min_max_answer()
-                            #     BoxLayout:
-                            #         id:answer_text_box
-                            #         canvas.before:
-                            #             Color:
-                            #                 rgba:[0,1,0,1]
-                            #             Rectangle:
-                            #                 pos:self.pos
-                            #                 size:self.size
-                            #         orientation:"horizontal"
-                            #         size_hint_y:None
-                            #         height:self.minimum_height
-                            #         spacing:dp(2)
-                            #         Text:
-                            #             id:answer_text
-                            #             text:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"
-                            #             shorten:False
-                            #             halign:"left"
-                            #             text_size: self.width, None
-                            #             size_hint: 1, None
-                            #             height: self.texture_size[1]
-                                            
-                        BoxLayout:
-                            orientation:"vertical"
-                            # Topic title
-                            # size_hint_y:None
-                            # height:self.minimum_height
-                            MDLabel:
-                                text: "Payment Options"
-                                bold:True
-                                color:rgba("#6167E9")
-                                font_size:app.fonts.size.h2
+                            #second question starts here
                             BoxLayout:
                                 orientation:"vertical"
                                 size_hint_y:None
                                 height:self.minimum_height
-                                spacing:dp(10)
-                                Text:
-                                    bold:True
-                                    text:"Options available :"
+                                spacing:dp(3)
                                 BoxLayout:
-                                    orientation:"vertical"
+                                    orientation:"horizontal"
                                     size_hint_y:None
                                     height:self.minimum_height
+                                    spacing:dp(2)
+                                    canvas.before:
+                                        Color:
+                                            rgba:[1,0,0,0]
+                                        Rectangle:
+                                            pos:self.pos
+                                            size:self.size
+                                    MDLabel:
+                                        canvas.before:
+                                            Color:
+                                                rgba:[0,1,0,0]
+                                            Rectangle:
+                                                pos:self.pos
+                                                size:self.size
+                                        text:"[b]What is TransportYoiu ? [/b]"#str(self.y+self.parent.height/2)
+                                        #text_size: self.size
+                                        valign: "middle"
+                                        font_size: app.fonts.size.h4
+                                        shorten_from: "right" # not working bc shorten is false
+                                        shorten: False
+                                        color: [0,0,0, 1]
+                                        markup: True
+                                        size_hint_y:None
+                                        height: dp(20)
+                                        pos_hint:{"center_y":.5}
+
+                                    #Default height of mdiconbutton is bigger than dp(20)   
+                                    MDIconButton:
+                                        canvas.before:
+                                            Color:
+                                                rgba:[0,0,1,0]
+                                            Rectangle:
+                                                pos:self.pos
+                                                size:self.size
+                                        id:min_max_close2
+                                        icon:"arrow-up-drop-circle-outline"
+                                        pos_hint: {"center_x": .5, "center_y": .5}
+                                        on_release:root.min_max_answer2()
+                                        font_size:app.fonts.size.h5
+                                        size_hint_y:None
+                                        height:dp(20)
+                                BoxLayout:
+                                    id:answer_text_box2
+                                    canvas.before:
+                                        Color:
+                                            rgba:[0,1,0,0]
+                                        Rectangle:
+                                            pos:self.pos
+                                            size:self.size
+                                    orientation:"horizontal"
+                                    size_hint_y:None
+                                    height:self.minimum_height
+                                    spacing:dp(2)
                                     Text:
-                                        text:"Paypal, visa, multibanco"
+                                        id:answer_text2
+                                        text:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"
                                         shorten:False
                                         halign:"left"
                                         text_size: self.width, None
                                         size_hint: 1, None
                                         height: self.texture_size[1]
-          
+                          
+                        #new topic  #################              
+                        BoxLayout:
+                            canvas.before:
+                                Color:
+                                    rgba:[0,0,0,0]
+                                Rectangle:
+                                    pos:self.pos
+                                    size:self.size
+                            orientation:"vertical"
+                            size_hint_y:None
+                            height:self.minimum_height
+                            # Topic title
+                            MDLabel:
+                                text: "payment options"
+                                bold:True
+                                color:rgba("#6167E9")
+                                font_size:app.fonts.size.h2
+                                size_hint_y:None
+                                height:dp(20)
+                            # Each question stars here
+                            BoxLayout:
+                                orientation:"vertical"
+                                size_hint_y:None
+                                height:self.minimum_height
+                                spacing:dp(3)
+                                BoxLayout:
+                                    orientation:"horizontal"
+                                    size_hint_y:None
+                                    height:self.minimum_height
+                                    spacing:dp(2)
+                                    canvas.before:
+                                        Color:
+                                            rgba:[1,0,0,0]
+                                        Rectangle:
+                                            pos:self.pos
+                                            size:self.size
+                                    MDLabel:
+                                        canvas.before:
+                                            Color:
+                                                rgba:[0,1,0,0]
+                                            Rectangle:
+                                                pos:self.pos
+                                                size:self.size
+                                        text:"[b]What are the optiuons? [/b]"#str(self.y+self.parent.height/2)
+                                        #text_size: self.size
+                                        valign: "middle"
+                                        font_size: app.fonts.size.h4
+                                        shorten_from: "right" # not working bc shorten is false
+                                        shorten: False
+                                        color: [0,0,0, 1]
+                                        markup: True
+                                        size_hint_y:None
+                                        height: dp(20)
+                                        pos_hint:{"center_y":.5}
 
+                                    #Default height of mdiconbutton is bigger than dp(20)   
+                                    MDIconButton:
+                                        canvas.before:
+                                            Color:
+                                                rgba:[0,0,1,0]
+                                            Rectangle:
+                                                pos:self.pos
+                                                size:self.size
+                                        id:min_max_close1
+                                        icon:"arrow-up-drop-circle-outline"
+                                        pos_hint: {"center_x": .5, "center_y": .5}
+                                        on_release:root.min_max_answer1()
+                                        font_size:app.fonts.size.h5
+                                        size_hint_y:None
+                                        height:dp(20)
+                                BoxLayout:
+                                    id:answer_text_box1
+                                    canvas.before:
+                                        Color:
+                                            rgba:[0,1,0,0]
+                                        Rectangle:
+                                            pos:self.pos
+                                            size:self.size
+                                    orientation:"horizontal"
+                                    size_hint_y:None
+                                    height:self.minimum_height
+                                    spacing:dp(2)
+                                    Text:
+                                        id:answer_text1
+                                        text:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"
+                                        shorten:False
+                                        halign:"left"
+                                        text_size: self.width, None
+                                        size_hint: 1, None
+                                        height: self.texture_size[1]
+                        Widget:
+          
+            #TAB
             Tab:
                 icon:""
                 title:"What's New"
@@ -268,7 +350,7 @@
                 
                 
 
-    Widget:
+    
 
 
 
