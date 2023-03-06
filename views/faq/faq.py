@@ -4,6 +4,7 @@ from kivymd.app import MDApp
 from kivymd.uix.tab import MDTabsBase
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.icon_definitions import md_icons
+from kivy.properties import StringProperty
 
 Builder.load_file('views/faq/faq.kv')
 
@@ -82,4 +83,13 @@ class Faq(BoxLayout):
 class Tab(MDFloatLayout, MDTabsBase):
     '''Class implementing content for a tab.'''
     pass
+
+class Question(BoxLayout):
+    '''Question to be added to each topic in FAQ'''
+    question = StringProperty("")
+    answer = StringProperty("")
+
+class TopicQuestion(BoxLayout):
+    '''Topic to be added to FAQ'''
+    topic = StringProperty("")
 

@@ -79,6 +79,7 @@
                         orientation:"vertical"
                         
                         #Group of topics About  
+                        # Fazer componente so com cada question para poder adicionar no futuro
                         BoxLayout:
                             canvas.before:
                                 Color:
@@ -283,7 +284,7 @@
                                             Rectangle:
                                                 pos:self.pos
                                                 size:self.size
-                                        text:"[b]What are the optiuons? [/b]"#str(self.y+self.parent.height/2)
+                                        text:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
                                         #text_size: self.size
                                         valign: "middle"
                                         font_size: app.fonts.size.h4
@@ -356,4 +357,96 @@
 
 <Tab>:
     
-    
+<Question>:
+BoxLayout:
+    orientation:"vertical"
+    size_hint_y:None
+    height:self.minimum_height
+    spacing:dp(3)
+    BoxLayout:
+        orientation:"horizontal"
+        size_hint_y:None
+        height:self.minimum_height
+        spacing:dp(2)
+        canvas.before:
+            Color:
+                rgba:[1,0,0,0]
+            Rectangle:
+                pos:self.pos
+                size:self.size
+        MDLabel:
+            canvas.before:
+                Color:
+                    rgba:[0,1,0,0]
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            text:"[b]" + root.question + "[/b]"#str(self.y+self.parent.height/2)
+            #text_size: self.size
+            valign: "middle"
+            font_size: app.fonts.size.h4
+            shorten_from: "right" # not working bc shorten is false
+            shorten: False
+            color: [0,0,0, 1]
+            markup: True
+            size_hint_y:None
+            height: dp(20)
+            pos_hint:{"center_y":.5}
+
+        #Default height of mdiconbutton is bigger than dp(20)   
+        MDIconButton:
+            canvas.before:
+                Color:
+                    rgba:[0,0,1,0]
+                Rectangle:
+                    pos:self.pos
+                    size:self.size
+            id:min_max_close1
+            icon:"arrow-up-drop-circle-outline"
+            pos_hint: {"center_x": .5, "center_y": .5}
+            on_release:root.min_max_answer1()
+            font_size:app.fonts.size.h5
+            size_hint_y:None
+            height:dp(20)
+    BoxLayout:
+        id:answer_text_box1
+        canvas.before:
+            Color:
+                rgba:[0,1,0,0]
+            Rectangle:
+                pos:self.pos
+                size:self.size
+        orientation:"horizontal"
+        size_hint_y:None
+        height:self.minimum_height
+        spacing:dp(2)
+        Text:
+            id:answer_text1
+            text:root.answer
+            shorten:False
+            halign:"left"
+            text_size: self.width, None
+            size_hint: 1, None
+            height: self.texture_size[1]
+
+<TopicQuestion>:
+    canvas.before:
+        Color:
+            rgba:[0,0,0,0]
+        Rectangle:
+            pos:self.pos
+            size:self.size
+    orientation:"vertical"
+    size_hint_y:None
+    height:self.minimum_height
+    # Topic title
+    MDLabel:
+        text: root.topic
+        bold:True
+        color:rgba("#6167E9")
+        font_size:app.fonts.size.h2
+        size_hint_y:None
+        height:dp(20)
+    # Add each question in parallel to MDLabel, add_widget to TopicQuestion
+
+
