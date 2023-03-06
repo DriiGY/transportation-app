@@ -358,7 +358,7 @@
 <Tab>:
     
 <Question>:
-BoxLayout:
+
     orientation:"vertical"
     size_hint_y:None
     height:self.minimum_height
@@ -409,7 +409,6 @@ BoxLayout:
             size_hint_y:None
             height:dp(20)
     BoxLayout:
-        id:answer_text_box1
         canvas.before:
             Color:
                 rgba:[0,1,0,0]
@@ -421,7 +420,7 @@ BoxLayout:
         height:self.minimum_height
         spacing:dp(2)
         Text:
-            id:answer_text1
+    
             text:root.answer
             shorten:False
             halign:"left"
