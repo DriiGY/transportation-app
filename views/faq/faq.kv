@@ -66,46 +66,61 @@
                 
                 icon:""
                 title:"FAQS"
+                
                 BoxLayout:
                     orientation:"vertical"
                     padding:[0, dp(10), 0, dp(5)]
+                    
                     BoxLayout:
                         orientation:"vertical"
                         size_hint_y:None
                         height:dp(50)
                         padding:[dp(5), 0, dp(5), 0]
                         SearchBar:
-                    BoxLayout:
-                        orientation:"vertical"
-                        id:base_for_topics
-                        #Group of topics About  
-                        # Fazer componente so com cada question para poder adicionar no futuro
-                        TopicQuestion:
-                            topic:"About TransportYoiu"
-                            # Each question stars here
-                            Question:
-                                question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
-                                answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
-                            #second question starts here
-                            Question:
-                                question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
-                                answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
-                          
-                        #new topic  #################              
-                        TopicQuestion:
-                            topic:"Payment options"
-                            # Each question stars here
+                    ScrollView:
+                        # padding:[0, dp(10), 0, dp(20)]
+                        do_scroll_x: False
+                        do_scroll_y: True 
+                        BoxLayout:
+                            orientation:"vertical"
+                            id:base_for_topics
+                            #Group of topics About  
+                            # Fazer componente so com cada question para poder adicionar no futuro
+                            size_hint_min_y: None
+                            size_hint_y: None
+                            height: self.minimum_height
+                            TopicQuestion:
+                                topic:"About TransportYoiu"
+                                # Each question stars here
+                                Question:
+                                    question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
+                                    answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
+                                #second question starts here
+                                Question:
+                                    question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
+                                    answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
                             
-                            Question:
-                                question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
-                                answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
-                            Question:
-                                question:"olafoajkofa"
-                                answer:"fmasmfoismngsongs"         
-                            Question:
-                                question:"olafoajkofaddddddddddddddddddddddddd"
-                                answer:"fmasmfoismngsondddddddddddddddddddddddgs"    
-                        Widget:
+                            #new topic  #################              
+                            TopicQuestion:
+                                topic:"Payment options"
+                                # Each question stars here
+                                
+                                Question:
+                                    question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
+                                    answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
+                                Question:
+                                    question:"olafoajkofa"
+                                    answer:"fmasmfoismngsongs"         
+                                Question:
+                                    question:"olafoajkofaddddddddddddddddddddddddd"
+                                    answer:"fmasmfoismngsondddddddddddddddddddddddgs"    
+                                Question:
+                                    question:"olafoajkofa"
+                                    answer:"fmasmfoismngsongs"         
+                                Question:
+                                    question:"olafoajkofaddddddddddddddddddddddddd"
+                                    answer:"fmasmfoismngsondddddddddddddddddddddddgs"    
+            # Widget:
           
             #TAB
             Tab:
