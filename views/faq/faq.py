@@ -24,61 +24,7 @@ class Faq(BoxLayout):
     ####
     #feedback vai ser uma caixa de texto para mandar um email dando feedback
     #pode ter comentarios de users anteriores
-    def min_max_answer(self, ):
-        if self.ids.min_max_close.icon == "arrow-down-drop-circle-outline":
-            self.ids.min_max_close.icon = "arrow-up-drop-circle-outline"
-            self.ids.answer_text.shorten = False
-            self.ids.answer_text.halign = "left"
-            self.ids.answer_text.text_size = (self.ids.answer_text.width, None)
-            self.ids.answer_text.size_hint = (1, None)
-            self.ids.answer_text.height = self.ids.answer_text.texture_size[1]
-            self.ids.answer_text.opacity = 1
-            self.ids.answer_text_box.size_hint = (1, None)
-            self.ids.answer_text_box.height = self.ids.answer_text.texture_size[1]
-            self.ids.answer_text_box.opacity = 1
-        else:
-            self.ids.min_max_close.icon = "arrow-down-drop-circle-outline"
-            self.ids.answer_text.height = 0
-            self.ids.answer_text.opacity = 0
-            self.ids.answer_text_box.height = 0
-            self.ids.answer_text_box.opacity = 0
-    def min_max_answer1(self, ):
-        if self.ids.min_max_close1.icon == "arrow-down-drop-circle-outline":
-            self.ids.min_max_close1.icon = "arrow-up-drop-circle-outline"
-            self.ids.answer_text1.shorten = False
-            self.ids.answer_text1.halign = "left"
-            self.ids.answer_text1.text_size = (self.ids.answer_text1.width, None)
-            self.ids.answer_text1.size_hint = (1, None)
-            self.ids.answer_text1.height = self.ids.answer_text1.texture_size[1]
-            self.ids.answer_text1.opacity = 1
-            self.ids.answer_text_box1.size_hint = (1, None)
-            self.ids.answer_text_box1.height = self.ids.answer_text1.texture_size[1]
-            self.ids.answer_text_box1.opacity = 1
-        else:
-            self.ids.min_max_close1.icon = "arrow-down-drop-circle-outline"
-            self.ids.answer_text1.height = 0
-            self.ids.answer_text1.opacity = 0
-            self.ids.answer_text_box1.height = 0
-            self.ids.answer_text_box1.opacity = 0
-
-    def min_max_answer2(self, ):
-        if self.ids.min_max_close2.icon == "arrow-down-drop-circle-outline":
-            self.ids.min_max_close2.icon = "arrow-up-drop-circle-outline"
-            self.ids.answer_text2.shorten = False
-            self.ids.answer_text2.halign = "left"
-            self.ids.answer_text2.text_size = (self.ids.answer_text2.width, None)
-            self.ids.answer_text2.size_hint = (1, None)
-            self.ids.answer_text2.height = self.ids.answer_text2.texture_size[1]
-            self.ids.answer_text2.opacity = 1
-            self.ids.answer_text_box2.size_hint = (1, None)
-            self.ids.answer_text_box2.height = self.ids.answer_text2.texture_size[1]
-            self.ids.answer_text_box2.opacity = 1
-        else:
-            self.ids.min_max_close2.icon = "arrow-down-drop-circle-outline"
-            self.ids.answer_text2.height = 0
-            self.ids.answer_text2.opacity = 0
-            self.ids.answer_text_box2.height = 0
-            self.ids.answer_text_box2.opacity = 0
+ 
 
 class Tab(MDFloatLayout, MDTabsBase):
     '''Class implementing content for a tab.'''
@@ -88,8 +34,34 @@ class Question(BoxLayout):
     '''Question to be added to each topic in FAQ'''
     question = StringProperty("")
     answer = StringProperty("")
+    def min_max_answer(self, button, answer_id, answer_box_id):
+        # print(button)
+        # print(answer_id.text)
+        if button.icon == "arrow-down-drop-circle-outline":
+            button.icon = "arrow-up-drop-circle-outline"
+            answer_id.shorten = False
+            answer_id.halign = "left"
+            answer_id.text_size = (answer_id.width, None)
+            answer_id.size_hint = (1, None)
+            answer_id.height = answer_id.texture_size[1]
+            answer_id.opacity = 1
+            answer_box_id.size_hint = (1, None)
+            answer_box_id.height = answer_id.texture_size[1]
+            answer_box_id.opacity = 1
+        else:
+            button.icon = "arrow-down-drop-circle-outline"
+            answer_id.height = 0
+            answer_id.opacity = 0
+            answer_box_id.height = 0
+            answer_box_id.opacity = 0
 
 class TopicQuestion(BoxLayout):
     '''Topic to be added to FAQ'''
     topic = StringProperty("")
 
+
+"""
+Note:
+    Add scrollview to FAQS
+
+    """
