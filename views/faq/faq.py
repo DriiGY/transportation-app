@@ -5,6 +5,8 @@ from kivymd.uix.tab import MDTabsBase
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.icon_definitions import md_icons
 from kivy.properties import StringProperty
+from kivy.clock import Clock
+
 
 Builder.load_file('views/faq/faq.kv')
 
@@ -14,13 +16,20 @@ class Faq(BoxLayout):
     def __init__(self, **kw) -> None:
         super().__init__(**kw)
         self.app = MDApp.get_running_app()
+        Clock.schedule_once(self.render, .1)
     # def on_start(self):
     #     for name_tab in list(md_icons.keys())[15:30]:
     #         self.root.ids.tabs.add_widget(Tab(icon=name_tab, title=name_tab))
     # def on_tab_switch(self, instance_tabs, instance_tab, instance_tab_label, tab_text):
     #         instance_tab.ids.label.text = tab_text
-
-
+    def render(self, _):
+       
+        self.ids.search_bar.ids.mag_glass.bind(on_release= self.find_question)
+        
+        
+    def find_question(self, *args):
+     
+        print("fiakfiamfiaomfaofa")
     ####
     #feedback vai ser uma caixa de texto para mandar um email dando feedback
     #pode ter comentarios de users anteriores
@@ -63,5 +72,5 @@ class TopicQuestion(BoxLayout):
 """
 Note:
     Add scrollview to FAQS
-
+    while search bar is activated should search for what is being searched every 2 secs? id of textfield in searchbar :search_field
     """
