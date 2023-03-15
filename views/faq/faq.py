@@ -6,8 +6,10 @@ from kivymd.uix.floatlayout import MDFloatLayout
 from kivymd.icon_definitions import md_icons
 from kivy.properties import StringProperty
 from kivy.clock import Clock
+import json
+import os
 
-
+FAQ_DIR = os.path.dirname(os.path.abspath(__file__))
 Builder.load_file('views/faq/faq.kv')
 
 
@@ -23,9 +25,31 @@ class Faq(BoxLayout):
     # def on_tab_switch(self, instance_tabs, instance_tab, instance_tab_label, tab_text):
     #         instance_tab.ids.label.text = tab_text
     def render(self, _):
-       
-        self.ids.search_bar.ids.mag_glass.bind(on_release= self.find_question)
+        path = FAQ_DIR + "/data_topics.json"
+        f = open(path)
+        data = json.load(f)
+        j=0
+        print(self.ids)
+        print(self.ids.base_for_topics.ids)
+        for i in data['faqs']:
+            topic = TopicQuestion(topic=i['topic'],)
+            self.ids.base_for_topics.add_widget(topic)
+            id=i["id"]
+            
+            self.ids[id] = topic
+            for j in range(0, len(i["questions"])):
+                self.ids[id].add_widget(Question(
+                    question=i["questions"][j],
+                    answer=i["answers"][j]
+                ))
+           
         
+        print(self.ids.base_for_topics.children)
+        print(self.ids.search_bar.ids)
+        print()
+        print(self.ids)
+        self.ids.search_bar.ids.mag_glass.bind(on_release= self.find_question)
+        f.close()
         
     def find_question(self, *args):
      
@@ -66,6 +90,7 @@ class Question(BoxLayout):
 
 class TopicQuestion(BoxLayout):
     '''Topic to be added to FAQ'''
+    id = StringProperty("")
     topic = StringProperty("")
 
 
