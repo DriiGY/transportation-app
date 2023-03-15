@@ -18,6 +18,8 @@ class Faq(BoxLayout):
     def __init__(self, **kw) -> None:
         super().__init__(**kw)
         self.app = MDApp.get_running_app()
+        self.questions = []
+        self.answers = []
         Clock.schedule_once(self.render, .1)
     # def on_start(self):
     #     for name_tab in list(md_icons.keys())[15:30]:
@@ -29,8 +31,6 @@ class Faq(BoxLayout):
         f = open(path)
         data = json.load(f)
         j=0
-        print(self.ids)
-        print(self.ids.base_for_topics.ids)
         for i in data['faqs']:
             topic = TopicQuestion(topic=i['topic'],)
             self.ids.base_for_topics.add_widget(topic)
@@ -38,22 +38,39 @@ class Faq(BoxLayout):
             
             self.ids[id] = topic
             for j in range(0, len(i["questions"])):
+                self.questions.append(i["questions"][j])
+                self.answers.append(i["answers"][j])
                 self.ids[id].add_widget(Question(
                     question=i["questions"][j],
                     answer=i["answers"][j]
                 ))
            
-        
-        print(self.ids.base_for_topics.children)
-        print(self.ids.search_bar.ids)
-        print()
-        print(self.ids)
+     
+        # print(self.ids.base_for_topics.children)
+        # print(self.ids.search_bar.ids)
+        # print()
+        # print(self.ids)
+
         self.ids.search_bar.ids.mag_glass.bind(on_release= self.find_question)
         f.close()
         
-    def find_question(self, *args):
-     
-        print("fiakfiamfiaomfaofa")
+    def find_question(self, *args ):
+        word = str(self.ids.search_bar.ids.search_field.text)
+        questions = self.questions
+        answers = self.answers
+        
+        
+        try:
+            #matching has all the indexes of questions list that match the word searched 
+            if len(word)>0:
+                matching = [i for i in range(0,len(questions)) if word in questions[i]]
+                print(questions[matching[0]], answers[matching[0]], matching)
+            else:
+                print("Not foundddd")
+        except:
+            print("Not found!")
+        # print(self.questions)
+        # print(self.answers)
     ####
     #feedback vai ser uma caixa de texto para mandar um email dando feedback
     #pode ter comentarios de users anteriores

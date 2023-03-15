@@ -20,9 +20,11 @@ Builder.load_string(
             size:self.size
     size_hint_y: None
     height: self.minimum_height
+  
     MDIconButton:
         id:mag_glass
         icon: 'magnify'
+    
     MDTextField:
         id: search_field
         hint_text: 'Search most asked'
