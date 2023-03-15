@@ -71,6 +71,9 @@ class Faq(BoxLayout):
             print("Not found!")
         # print(self.questions)
         # print(self.answers)
+    def disappear_faqs_info(self):
+        """Hides FAQS info to show the search results in FAQ"""
+        pass
     ####
     #feedback vai ser uma caixa de texto para mandar um email dando feedback
     #pode ter comentarios de users anteriores
