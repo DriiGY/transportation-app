@@ -3,8 +3,10 @@ from kivy.uix.boxlayout import BoxLayout
 from kivymd.app import MDApp
 from kivymd.uix.tab import MDTabsBase
 from kivymd.uix.floatlayout import MDFloatLayout
+from kivy.uix.button import Button
 from kivymd.icon_definitions import md_icons
-from kivy.properties import StringProperty
+from kivy.metrics import dp
+from kivy.properties import StringProperty, NumericProperty
 from kivy.clock import Clock
 import json
 import os
@@ -58,13 +60,23 @@ class Faq(BoxLayout):
         word = str(self.ids.search_bar.ids.search_field.text)
         questions = self.questions
         answers = self.answers
-        
+        wid = self.ids.base_for_topics
         
         try:
             #matching has all the indexes of questions list that match the word searched 
             if len(word)>0:
                 matching = [i for i in range(0,len(questions)) if word in questions[i]]
                 print(questions[matching[0]], answers[matching[0]], matching)
+                wid.opacity, wid.disabled, wid.height, wid.size_hint_y = 0,0,0,0
+                print('OOOOOOOOO')
+               
+                box = BoxLayout( orientation="vertical", size_hint_min_y=None,size_hint_y=None,height=dp(100))
+                id = "lookup_questions"
+                self.ids[id] = box
+                self.ids.base_box_layout.add_widget(box)
+                self.ids.lookup_questions.add_widget(Button(text='World'))
+                print("lllllllllllllll")
+                print(self.ids)
             else:
                 print("Not foundddd")
         except:
