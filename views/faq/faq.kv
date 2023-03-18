@@ -1,6 +1,7 @@
 
 
 <Faq>:
+    
     orientation:"vertical"
     padding:[dp(6)]
     canvas.before:
@@ -45,7 +46,6 @@
     MDBoxLayout:
         orientation:"vertical"
         size_hint_y: .8
-        
         MDTabs:
             id:tabs
             background_color:app.colors.white
@@ -137,6 +137,20 @@
                                     Question:
                                         question:"olafoajkofaddddddddddddddddddddddddd"
                                         answer:"fmasmfoismngsondddddddddddddddddddddddgs"    
+                                  
+                                        
+                            BoxLayout:
+                                id:lookup_questions
+                                orientation:"vertical"
+                                size_hint_min_y:None
+                                size_hint_y:None
+                                height:self.minimum_height
+                                disabled:True
+                                opacity:0
+                                MDIconButton:
+                                    #size_hint_x:.2
+                                    icon:"close"
+                                    on_release:root.close_lookup_box()            
             # Widget:
           
             #TAB
@@ -257,4 +271,15 @@
         height:dp(20)
     # Add each question in parallel to MDLabel, add_widget to TopicQuestion
 
+<LookupBox>:
+    orientation:"vertical"
+    size_hint_min_y:None
+    size_hint_y:None
+    height:self.minimum_height
+    MDIconButton:
+        #size_hint_x:.2
+        icon:"close"
+        on_release:root.close_lookup_box()
+    # Widget:
+    #     size_hint_y:.8
 

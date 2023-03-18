@@ -3,7 +3,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivymd.app import MDApp
 from kivymd.uix.tab import MDTabsBase
 from kivymd.uix.floatlayout import MDFloatLayout
-from kivy.uix.button import Button
+from kivy.uix.label import Label
 from kivymd.icon_definitions import md_icons
 from kivy.metrics import dp
 from kivy.properties import StringProperty, NumericProperty
@@ -61,31 +61,77 @@ class Faq(BoxLayout):
         questions = self.questions
         answers = self.answers
         wid = self.ids.base_for_topics
-        
+        lookup_box = self.ids.lookup_questions
         try:
             #matching has all the indexes of questions list that match the word searched 
             if len(word)>0:
-                matching = [i for i in range(0,len(questions)) if word in questions[i]]
+                matching = [i for i in range(0,len(questions)) if word in questions[i]] # gives indexed of questions in self.questions
                 print(questions[matching[0]], answers[matching[0]], matching)
-                wid.opacity, wid.disabled, wid.height, wid.size_hint_y = 0,0,0,0
-                print('OOOOOOOOO')
+                wid.opacity, wid.disabled,wid.size_hint_y , wid.height = 0,True, None,0
+                #print(matching)
+                #lookup_box = self.ids.lookup_questions
+                x =0
+                for ind in matching:
+                    question = Question(question=self.questions[ind], answer=self.answers[ind])
+                    id = "lookup_question_{}".format(x)
+                    self.ids[id] = question
+                    lookup_box.add_widget(question)
+                    x+=1
+                for id in self.ids:
+                    #print(id)
+                    if "not_found_label" in id:
+                        self.ids.lookup_questions.remove_widget(self.ids[id])
+                lookup_box.opacity = 1
                
-                box = BoxLayout( orientation="vertical", size_hint_min_y=None,size_hint_y=None,height=dp(100))
-                id = "lookup_questions"
-                self.ids[id] = box
-                self.ids.base_box_layout.add_widget(box)
-                self.ids.lookup_questions.add_widget(Button(text='World'))
-                print("lllllllllllllll")
-                print(self.ids)
+                lookup_box.size_hint_y = None
+                lookup_box.height = self.ids.lookup_questions.minimum_height
+                lookup_box.disabled = False
+                self.ids.search_bar.disabled = True
+                
+                
+                #print(self.ids)
             else:
                 print("Not foundddd")
+                wid.opacity, wid.disabled,wid.size_hint_y , wid.height = 0,True, None,0
+                lookup_box.add_widget(Label(text="Not Found", color=[0,0,0,1]))
+
+                lookup_box.opacity = 1
+                
+                lookup_box.size_hint_y = None
+                lookup_box.height = self.ids.lookup_questions.minimum_height
+                lookup_box.disabled = False
+                self.ids.search_bar.disabled = True
         except:
             print("Not found!")
+            wid.opacity, wid.disabled,wid.size_hint_y , wid.height = 0,True, None,0
+            label = Label(text="Not Found", color=[0,0,0,1])
+            id = "not_found_label"
+            self.ids[id] = label
+            lookup_box.add_widget(label)
+            lookup_box.opacity = 1
+           
+            lookup_box.size_hint_y = None
+            lookup_box.height = self.ids.lookup_questions.minimum_height
+            lookup_box.disabled = False
+            self.ids.search_bar.disabled = True
         # print(self.questions)
         # print(self.answers)
-    def disappear_faqs_info(self):
-        """Hides FAQS info to show the search results in FAQ"""
-        pass
+    def close_lookup_box(self):
+        
+        for id in self.ids:
+            #print(id)
+            if "lookup_question_" in id:
+                self.ids.lookup_questions.remove_widget(self.ids[id])
+                
+        lookup_wid = self.ids.lookup_questions
+        lookup_wid.opacity, lookup_wid.disabled,lookup_wid.size_hint_y , lookup_wid.height  = 0, True, None, 0
+
+        base = self.ids.base_for_topics
+        base.opacity, base.disabled, base.size_hint_y , base.height= 1,False,None, self.ids.base_for_topics.minimum_height
+
+        self.ids.search_bar.disabled = False
+        
+
     ####
     #feedback vai ser uma caixa de texto para mandar um email dando feedback
     #pode ter comentarios de users anteriores
@@ -125,7 +171,9 @@ class TopicQuestion(BoxLayout):
     id = StringProperty("")
     topic = StringProperty("")
 
-
+class LookupBox(BoxLayout):
+    def __init__(self, **kw) -> None:
+        super().__init__(**kw)
 """
 Note:
     Add scrollview to FAQS
