@@ -57,7 +57,7 @@ class Faq(BoxLayout):
         f.close()
         
     def find_question(self, *args ):
-        word = str(self.ids.search_bar.ids.search_field.text)
+        word = str(self.ids.search_bar.ids.search_field.text).lower()
         questions = self.questions
         answers = self.answers
         wid = self.ids.base_for_topics
@@ -65,8 +65,8 @@ class Faq(BoxLayout):
         try:
             #matching has all the indexes of questions list that match the word searched 
             if len(word)>0:
-                matching = [i for i in range(0,len(questions)) if word in questions[i]] # gives indexed of questions in self.questions
-                print(questions[matching[0]], answers[matching[0]], matching)
+                matching = [i for i in range(0,len(questions)) if word in questions[i].lower()] # gives indexed of questions in self.questions
+                #print(questions[matching[0]], answers[matching[0]], matching)
                 wid.opacity, wid.disabled,wid.size_hint_y , wid.height = 0,True, None,0
                 #print(matching)
                 #lookup_box = self.ids.lookup_questions
@@ -91,7 +91,7 @@ class Faq(BoxLayout):
                 
                 #print(self.ids)
             else:
-                print("Not foundddd")
+                #print("Not foundddd")
                 wid.opacity, wid.disabled,wid.size_hint_y , wid.height = 0,True, None,0
                 lookup_box.add_widget(Label(text="Not Found", color=[0,0,0,1]))
 
@@ -102,7 +102,7 @@ class Faq(BoxLayout):
                 lookup_box.disabled = False
                 self.ids.search_bar.disabled = True
         except:
-            print("Not found!")
+            #print("Not found!")
             wid.opacity, wid.disabled,wid.size_hint_y , wid.height = 0,True, None,0
             label = Label(text="Not Found", color=[0,0,0,1])
             id = "not_found_label"
@@ -122,7 +122,7 @@ class Faq(BoxLayout):
             #print(id)
             if "lookup_question_" in id:
                 self.ids.lookup_questions.remove_widget(self.ids[id])
-                
+
         lookup_wid = self.ids.lookup_questions
         lookup_wid.opacity, lookup_wid.disabled,lookup_wid.size_hint_y , lookup_wid.height  = 0, True, None, 0
 
