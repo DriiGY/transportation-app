@@ -171,9 +171,7 @@ class TopicQuestion(BoxLayout):
     id = StringProperty("")
     topic = StringProperty("")
 
-class LookupBox(BoxLayout):
-    def __init__(self, **kw) -> None:
-        super().__init__(**kw)
+
 """
 Note:
     Add scrollview to FAQS
