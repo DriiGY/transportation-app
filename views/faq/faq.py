@@ -10,7 +10,8 @@ from kivy.properties import StringProperty, NumericProperty
 from kivy.clock import Clock
 import json
 import os
-
+from kivymd.toast import toast
+#Clock.max_iteration = 50  # changed clock iteration on app/__init__.py. Works but should be properly fixed.
 FAQ_DIR = os.path.dirname(os.path.abspath(__file__))
 Builder.load_file('views/faq/faq.kv')
 
@@ -22,7 +23,7 @@ class Faq(BoxLayout):
         self.app = MDApp.get_running_app()
         self.questions = []
         self.answers = []
-        Clock.schedule_once(self.render, .1)
+        Clock.schedule_once(self.render, .5)
     # def on_start(self):
     #     for name_tab in list(md_icons.keys())[15:30]:
     #         self.root.ids.tabs.add_widget(Tab(icon=name_tab, title=name_tab))
@@ -64,7 +65,7 @@ class Faq(BoxLayout):
         lookup_box = self.ids.lookup_questions
         try:
             #matching has all the indexes of questions list that match the word searched 
-            if len(word)>0:
+            if len(word)>2:
                 matching = [i for i in range(0,len(questions)) if word in questions[i].lower()] # gives indexed of questions in self.questions
                 #print(questions[matching[0]], answers[matching[0]], matching)
                 wid.opacity, wid.disabled,wid.size_hint_y , wid.height = 0,True, None,0
@@ -87,20 +88,21 @@ class Faq(BoxLayout):
                 lookup_box.height = self.ids.lookup_questions.minimum_height
                 lookup_box.disabled = False
                 self.ids.search_bar.disabled = True
-                
+                #toast("Not found")
                 
                 #print(self.ids)
             else:
                 #print("Not foundddd")
-                wid.opacity, wid.disabled,wid.size_hint_y , wid.height = 0,True, None,0
-                lookup_box.add_widget(Label(text="Not Found", color=[0,0,0,1]))
+                # wid.opacity, wid.disabled,wid.size_hint_y , wid.height = 0,True, None,0
+                # lookup_box.add_widget(Label(text="Not Found", color=[0,0,0,1]))
 
-                lookup_box.opacity = 1
+                # lookup_box.opacity = 1
                 
-                lookup_box.size_hint_y = None
-                lookup_box.height = self.ids.lookup_questions.minimum_height
-                lookup_box.disabled = False
-                self.ids.search_bar.disabled = True
+                # lookup_box.size_hint_y = None
+                # lookup_box.height = self.ids.lookup_questions.minimum_height
+                # lookup_box.disabled = False
+                # self.ids.search_bar.disabled = True
+                pass
         except:
             #print("Not found!")
             wid.opacity, wid.disabled,wid.size_hint_y , wid.height = 0,True, None,0
@@ -176,4 +178,11 @@ class TopicQuestion(BoxLayout):
 Note:
     Add scrollview to FAQS
     while search bar is activated should search for what is being searched every 2 secs? id of textfield in searchbar :search_field
+    So remove children diretas com o remove_widget, nao da por id a paritr do root widget. self.ids e a lista de ids apenas.
+    Por um botao add feedback e abrir um popup window tipo. E mostrar uma lista dos feedbacks anteriores.
+    feedback deve ter estrelas uma caixa de texto com um dropdown sobre do que fala o feedback:
+    improve, experience,...
+    o feedback deve ter o nome e imagem do user??????
+    ver examplo playstore e cada app.
+
     """

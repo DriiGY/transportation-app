@@ -57,11 +57,14 @@
                 
                 icon:""
                 title:"Feedback"
-                MDLabel:
-                    id: label
-                    text: "Tab 0"
-                    halign: "center"
-            #TAB
+                MDRaisedButton:
+                    text: "Review"
+                    md_bg_color: rgba("#6167E9") # opens dialog to give stars and comment like playstore
+                    
+
+
+
+            #TAB FAQ
             Tab:
                 
                 icon:""
@@ -78,7 +81,7 @@
                         padding:[dp(5), 0, dp(5), 0]
                         SearchBar:
                             id:search_bar
-                            
+                    ####### PROBLEM CRITICAL WARNING INSIDE THIS::::::::      
                     ScrollView:
                         # padding:[0, dp(10), 0, dp(20)]
                         do_scroll_x: False
@@ -104,39 +107,39 @@
                                 size_hint_min_y: None
                                 size_hint_y: None
                                 height: self.minimum_height
-                                TopicQuestion:
-                                    id:about_transport_id
-                                    topic:"About TransportYoiu"
-                                    # Each question stars here
-                                    Question:
-                                        question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
-                                        answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
-                                    #second question starts here
-                                    Question:
-                                        question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
-                                        answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
+                                # TopicQuestion:
+                                #     id:about_transport_id
+                                #     topic:"About TransportYoiu"
+                                #     # Each question stars here
+                                #     Question:
+                                #         question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
+                                #         answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
+                                #     #second question starts here
+                                #     Question:
+                                #         question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
+                                #         answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
                                 
                                 #new topic  #################              
-                                TopicQuestion:
-                                    id:options_id
-                                    topic:"Payment options"
-                                    # Each question stars here
+                                # TopicQuestion:
+                                #     id:options_id
+                                #     topic:"Payment options"
+                                #     # Each question stars here
                                     
-                                    Question:
-                                        question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
-                                        answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
-                                    Question:
-                                        question:"olafoajkofa"
-                                        answer:"fmasmfoismngsongs"         
-                                    Question:
-                                        question:"olafoajkofaddddddddddddddddddddddddd"
-                                        answer:"fmasmfoismngsondddddddddddddddddddddddgs"    
-                                    Question:
-                                        question:"olafoajkofa"
-                                        answer:"fmasmfoismngsongs"         
-                                    Question:
-                                        question:"olafoajkofaddddddddddddddddddddddddd"
-                                        answer:"fmasmfoismngsondddddddddddddddddddddddgs"    
+                                #     Question:
+                                #         question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
+                                #         answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
+                                #     Question:
+                                #         question:"olafoajkofa"
+                                #         answer:"fmasmfoismngsongs"         
+                                #     Question:
+                                #         question:"olafoajkofaddddddddddddddddddddddddd"
+                                #         answer:"fmasmfoismngsondddddddddddddddddddddddgs"    
+                                #     Question:
+                                #         question:"olafoajkofa"
+                                #         answer:"fmasmfoismngsongs"         
+                                #     Question:
+                                #         question:"olafoajkofaddddddddddddddddddddddddd"
+                                #         answer:"fmasmfoismngsondddddddddddddddddddddddgs"    
                                   
                                         
                             BoxLayout:
@@ -154,20 +157,20 @@
             # Widget:
           
             #TAB
-            Tab:
-                icon:""
-                title:"What's New"
-                BoxLayout:
-                    orientation:"vertical"
-                    MDLabel:
-                        id: label
-                        text: "Tab 2"
-                        halign: "center"
-                    MDLabel:
-                        id: label
-                        text: "Tab 2"
-                        halign: "center"
-                    Widget:
+            # Tab:
+            #     icon:""
+            #     title:"What's New"
+            #     BoxLayout:
+            #         orientation:"vertical"
+            #         MDLabel:
+            #             id: label
+            #             text: "Tab 2"
+            #             halign: "center"
+            #         MDLabel:
+            #             id: label
+            #             text: "Tab 2"
+            #             halign: "center"
+            #         Widget:
                 
                 
 

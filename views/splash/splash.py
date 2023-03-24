@@ -10,7 +10,7 @@ class Splash(BoxLayout):
     def __init__(self, **kw) -> None:
         super().__init__(**kw)
         self.app = MDApp.get_running_app()
-        Clock.schedule_once(self.render, .1)
+        Clock.schedule_once(self.render, .5)
         self.on_start()
     def render(self, _):
         self.ids.progress.start()

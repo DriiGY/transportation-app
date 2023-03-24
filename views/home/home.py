@@ -21,7 +21,7 @@ class Home(BoxLayout):
     
     def __init__(self, **kw) -> None:
         super().__init__(**kw)
-        Clock.schedule_once(self.render, .1)
+        Clock.schedule_once(self.render, .5)
         # check if starting point was placed.
         self.my_pin_placed = False
 
