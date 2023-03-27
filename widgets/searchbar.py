@@ -27,7 +27,7 @@ Builder.load_string(
     
     MDTextField:
         id: search_field
-        hint_text: 'Search most asked'
+        hint_text: root.hint_text
     
        
 
@@ -63,7 +63,7 @@ Builder.load_string(
 #         orientation: 'vertical'
 
 class SearchBar(BoxLayout):
-    pass
+    hint_text = StringProperty("")
     # def set_list_md_icons(self, text="", search=False):
     #     '''Builds a list of icons for the screen MDIcons.'''
     #     for name_icon in md_icons.keys():

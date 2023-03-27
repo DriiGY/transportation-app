@@ -1,0 +1,60 @@
+{
+    "reviews":[
+        {
+            "profile_pic":"https://pbs.twimg.com/media/FjU2lkcWYAgNG6d.jpg",
+            "name":"Rasheed Suni",
+            "rating": 4,
+            "comment":"It's actually quite impressive that the app sucks as much as it does.How is the buffering issue not fixed yet? It's been this way for months. A year ago it was perfect and now the app is pretty much useless. Can't get through 2 minutes of content without it buffering.",
+            "date":"2/12/2024"
+        },
+        {
+            "profile_pic":"https://images.healthshots.com/healthshots/en/uploads/2020/12/08182549/positive-person.jpg",
+            "name":"Ricardo",
+            "rating":3,
+            "comment":"It looks as though there was been a poor update to the app where it doesn't pick you up or drop you off in the right location. It caters far more to the driver than to the passenger which is ridiculous. What is the point of dropping a pin and providing an address for the destination if you will just drop me off across the road. Even though the drive then has to turn around to go back into town anyway. Ever heard of safe U-turns!!!!!",
+            "date":"1/12/2024"
+        },
+        {
+            "profile_pic":"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+            "name":"John Stones",
+            "rating":5,
+            "comment":"TransportYoiu drivers are good. This is for the app. Map needs improvement it constantly mislabeled as belonging to a local highschool even though the building has been privately owned for 16 years and a few blocks away. This causes drivers to go to the wrong place. It's gotten better then worse over the years so I know this is a correctable thing. Please fix.",
+            "date":"29/07/2024"
+        },
+        {
+            "profile_pic":"https://www.tu-ilmenau.de/unionline/fileadmin/_processed_/0/0/csm_Person_Yury_Prof_Foto_AnLI_Footgrafie__2_.JPG_94f12fbf25.jpg",
+            "name":"Raphael Guerreiro",
+            "rating":5,
+            "comment":"When TransportYoiu works as it should, which is most of the time, it's wonderful. When there's a problem, however, the help protocols leave something to be desired, and reaching a human being is next to impossible. Perhaps, at least a text box would provide an opportunity to pose a simple explanation or offer a concise explanation.",
+            "date":"10/12/2021"
+        },
+        {
+            "profile_pic":"https://ensinarhistoria.com.br/s21/wp-content/uploads/2019/05/Anibal_reconstituicao-a-partir-do-busto-em-marmore.jpg",
+            "name":"Anibal",
+            "rating":4,
+            "comment":"Mostly very positive. Friendly drivers 95% of the time. Pity that you can no longer depend on getting a ride when you urgently need it for sn appointment, etc.",
+            "date":"22/09/2023"
+        },
+        {
+            "profile_pic":"https://www.indianmotorcycle.pt/fileadmin/templates/model_23/homepage/footer/scout-footer.png",
+            "name":"Rohit Kaan",
+            "rating":1,
+            "comment":"In the past it's been a pleasure to use, and I've had a great experience with the drivers. I have maintained a 5 star profile - however drivers will choose to accept and cancel trips at the last minute. Unsure of the reason, but this has been incredibly inconvenient on multiple occasions. What's more unusual is I've tried scheduling rides which charge more in comparison to the immediate rides offered, and the same thing will happen.",
+            "date":"16/10/2024"
+        },
+        {
+            "profile_pic":"https://ichef.bbci.co.uk/news/976/cpsprodpb/165C4/production/_121888519_parag-agarwal_hires.jpg",
+            "name":"Sane Pate",
+            "rating":4,
+            "comment":"I want to give this 4.5 stars, but can't. App is great and easy to use. Drivers are usually amazing, and I would give 5 stars for those. But the company is not great. They charge crazy prices and don't give the drivers the majority of it. When theres surge pricing, it doesn't trickle down, and thats where the loss of 2 stars is. I understand it costs money to run a business, but the drivers deserve higher percentages. I will still keep using it though, as the drivers need income.",
+            "date":"2/12/2024"
+        },
+        {
+            "profile_pic":"https://pbs.twimg.com/profile_images/1448696882746695683/Jp2_LEBL_400x400.jpg",
+            "name":"Gordon Ramsay",
+            "rating":5,
+            "comment":"This doesn't involve the app in itself, which works fine, but I usually don't get a ride for 30 minutes or so..they sometimes don't have many available drivers. This can sometimes be a hassle, but it definitely beats the even more expensive alternative ride sharing app that doesn't have really any drivers in my area at all.",
+            "date":"23/1/2024"
+        }
+    ]
+}
