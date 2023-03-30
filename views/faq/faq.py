@@ -176,6 +176,10 @@ class StarBar(BoxLayout):
     total_stars = NumericProperty(1)
     stars = NumericProperty(0)
 
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        #StarBar.total_stars = 100  # Initiate from data here!! request api
+
 """
 Note:
     Add scrollview to FAQS
