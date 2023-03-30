@@ -129,7 +129,7 @@
                                         color: [0,0,0,1]
                                         halign:"center"
                                         shorten:True
-                                BoxLayout:
+                                BoxLayout: # add id to each icon so the color can be manipulated later
                                     size_hint:1,1
                                     MDIcon:
                                         pos_hint:{"center_y":.5}
@@ -184,47 +184,80 @@
                                     size:self.size
                             orientation:"vertical"
                             size_hint_x:.6
-                            GridLayout:#use boxlayouts, graph size is roundedrectagnles size, one roundedrectagnel box layout inside another, size is proportion of stars
-                                cols:2
-                                rows:5
-                                MDLabel:
+                            BoxLayout:#use boxlayouts, graph size is roundedrectagnles size, one roundedrectagnel box layout inside another, size is proportion of stars
+                                orientation:"horizontal"
+                                BoxLayout:
+                                    orientation:"vertical"
+                                    size_hint_x:.2
+                                    canvas.before:
+                                        Color:
+                                            rgba:[1,0,0,0]
+                                        Rectangle:
+                                            pos:self.pos
+                                            size:self.size
+                                    MDLabel:
                                     
-                                    text:"5"
-                                    font_size:dp(18)
-                                    color: [0,0,0,1]
-                                    halign:"center"
-                                MDLabel:
+                                        text:"5"
+                                        font_size:dp(18)
+                                        color: [0,0,0,1]
+                                        halign:"center"
+                                    MDLabel:
+                                        
+                                        text:"4"
+                                        font_size:dp(18)
+                                        color: [0,0,0,1]
+                                        halign:"center"
+                                    MDLabel:
+                                        
+                                        text:"3"
+                                        font_size:dp(18)
+                                        color: [0,0,0,1]
+                                        halign:"center"
+                                    MDLabel:
+                                        
+                                        text:"2"
+                                        font_size:dp(18)
+                                        color: [0,0,0,1]
+                                        halign:"center"
+                                    MDLabel:
+                                        
+                                        text:"1"
+                                        font_size:dp(18)
+                                        color: [0,0,0,1]
+                                        halign:"center"
+                                BoxLayout:
                                     
-                                    text:"3"
-                                    font_size:dp(18)
-                                    color: [0,0,0,1]
-                                    halign:"center"
-                                MDLabel:
-                                    
-                                    text:"5"
-                                    font_size:dp(18)
-                                    color: [0,0,0,1]
-                                    halign:"center"
-                                MDLabel:
-                                    
-                                    text:"1"
-                                    font_size:dp(18)
-                                    color: [0,0,0,1]
-                                    halign:"center"
-                                MDLabel:
-                                    
-                                    text:"5"
-                                    font_size:dp(18)
-                                    color: [0,0,0,1]
-                                    halign:"center"
-                                MDLabel:
-                                    
-                                    text:"5"
-                                    font_size:dp(18)
-                                    color: [0,0,0,1]
-                                    halign:"center"
-
-
+                                    orientation:"vertical"
+                                    size_hint_x:.8
+                                    ##### bar 1
+                                    StarBar:
+                                        total_stars:100
+                                        stars:20
+                                    ##### bar 2
+                                    StarBar:
+                                        total_stars:100
+                                        stars:40
+                                    ##### bar 3
+                                    StarBar:
+                                        total_stars:100
+                                        stars:35
+                                    ##### bar 4
+                                    StarBar:
+                                        total_stars:100
+                                        stars:5
+                                    ##### bar 5
+                                    StarBar:
+                                        total_stars:100
+                                        stars:0
+                                                
+                    BoxLayout:
+                        canvas.before:
+                            Color:
+                                rgba:[1,0,0,1]
+                            Rectangle:
+                                pos:self.pos
+                                size:self.size                        
+                   
                             
                     Widget:
                     
@@ -442,4 +475,27 @@
         height:dp(20)
     # Add each question in parallel to MDLabel, add_widget to TopicQuestion
 
+<StarBar>: # This is  a BoxLayout!!!!
+                               
+    size_hint_y: .2
+    #height:dp(20)
+    padding:[0,0,0,dp(10)]
+    BoxLayout:
+        size_hint:1, .4
 
+        canvas.before:
+            Color:
+                rgba:rgba("#EBEBEB")
+            RoundedRectangle:
+                size:self.size
+                pos:self.pos
+                radius:[8]
+        BoxLayout:
+            size_hint:1,1
+            canvas.before:
+                Color:
+                    rgba:rgba("#0F9D58")
+                RoundedRectangle:
+                    size:(((self.size[0] * root.stars)/root.total_stars), self.size[1])
+                    pos:self.pos
+                    radius:[8]

@@ -172,7 +172,9 @@ class TopicQuestion(BoxLayout):
     '''Topic to be added to FAQ'''
     id = StringProperty("")
     topic = StringProperty("")
-
+class StarBar(BoxLayout):
+    total_stars = NumericProperty(1)
+    stars = NumericProperty(0)
 
 """
 Note:
