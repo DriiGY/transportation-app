@@ -172,6 +172,8 @@ class TopicQuestion(BoxLayout):
     '''Topic to be added to FAQ'''
     id = StringProperty("")
     topic = StringProperty("")
+
+
 class StarBar(BoxLayout):
     total_stars = NumericProperty(1)
     stars = NumericProperty(0)
@@ -182,13 +184,10 @@ class StarBar(BoxLayout):
 
 """
 Note:
-    Add scrollview to FAQS
-    while search bar is activated should search for what is being searched every 2 secs? id of textfield in searchbar :search_field
-    So remove children diretas com o remove_widget, nao da por id a paritr do root widget. self.ids e a lista de ids apenas.
-    Por um botao add feedback e abrir um popup window tipo. E mostrar uma lista dos feedbacks anteriores.
+
     feedback deve ter estrelas uma caixa de texto com um dropdown sobre do que fala o feedback:
     improve, experience,...
     o feedback deve ter o nome e imagem do user??????
     ver examplo playstore e cada app.
-
+    # Limit to 250 characters when creating review
     """

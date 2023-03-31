@@ -239,27 +239,171 @@
                                         stars:40
                                     ##### bar 3
                                     StarBar:
-                                        #total_stars:100
+                                        total_stars:100
                                         stars:35
                                     ##### bar 4
                                     StarBar:
-                                        #total_stars:100
+                                        total_stars:100
                                         stars:5
                                     ##### bar 5
                                     StarBar:
-                                        #total_stars:100
+                                        total_stars:100
                                         stars:0
-                                                
-                    BoxLayout:
+                    # CARDS BOX                     
+                    BoxLayout: 
+                        orientation:"vertical"
                         canvas.before:
                             Color:
-                                rgba:[1,0,0,1]
+                                rgba:[1,0,0,0]
                             Rectangle:
                                 pos:self.pos
-                                size:self.size                        
-                   
+                                size:self.size   
+                        padding:[dp(3), dp(15), dp(3), dp(10)]
+                        # card                     
+                        BackBox:
+                            size_hint:1, None
+                            height:dp(250)
+                            padding:[dp(2)]
+                            bcolor:rgba("#E1E1E1") 
+                            radius: [10]
+                            BackBox:
+                                orientation:"vertical"
+                                radius: [10]
+                                bcolor:rgba("#ffffff") # This color can either be light purple (#DCE3F9) or purple (#5B63CD)
+                                size_hint:.9,1
+                                pos_hint: {'center_x': .5}
+                                padding:[dp(6), dp(4), dp(4), dp(6) ]
+                                BoxLayout:  # has profile icon, name and dropdown list
+                                    canvas.before:
+                                        Color:
+                                            rgba:[1,0,0,0]
+                                        Rectangle:
+                                            pos:self.pos
+                                            size:self.size   
+                                    orientation:"horizontal"
+                                    size_hint_y:.2
+                                    padding:[dp(4), dp(1), dp(2), dp(3) ]
+                                    spacing:dp(10)
+                                    ShadowBox:
+                                        radius:[self.height]
+                                        size_hint:None, None
+                                        size:[dp(42), dp(42)]
+                                        #padding:dp(10)
+                                        IconButton:
+                                            source:"assets/imgs/result.png"
+                                    MDLabel:
+                                        text:"Yahya Arrassi"
+                                    Widget:
+                                        
+                                    MDIconButton:
+                                        icon:"dots-vertical"
+                                BoxLayout:  # has stars and date of publish
+                                    canvas.before:
+                                        Color:
+                                            rgba:[0,1,0,0]
+                                        Rectangle:
+                                            pos:self.pos
+                                            size:self.size   
+                                    orientation:"horizontal"
+                                    size_hint_y:.1
+                                    BoxLayout: 
+                                        size_hint:1,1
+                                        MDIcon:
+                                            pos_hint:{"center_y":.5}
+                                            icon:"star"
+                                            icon_size: dp(1)
+                                            theme_text_color: "Custom"
+                                            text_color: rgba("#0F9D58")
+                                            
+                                        MDIcon:
+                                            pos_hint:{"center_y":.5}
+                                            icon:"star"
+                                            icon_size: dp(1)
+                                            theme_text_color: "Custom"
+                                            text_color: rgba("#0F9D58")
+                                            
+                                        MDIcon:
+                                            pos_hint:{"center_y":.5}
+                                            icon:"star"
+                                            icon_size: dp(1)
+                                            theme_text_color: "Custom"
+                                            text_color: rgba("#0F9D58")
+                                            
+                                        MDIcon:
+                                            pos_hint:{"center_y":.5}
+                                            icon:"star-half-full"
+                                            icon_size: dp(1)
+                                            theme_text_color: "Custom"
+                                            text_color: rgba("#0F9D58")
+                                
+                                        MDIcon:
+                                            pos_hint:{"center_y":.5}
+                                            icon:"star-outline"
+                                            icon_size: dp(1)
+                                            theme_text_color: "Custom"
+                                            text_color: rgba("#0F9D58")
+                                    MDLabel:
+                                        text:"11/6/18"
+                                        color:rgba("#686868")
+                                    Widget:
+                                        size_hint_x:.4
+                                BoxLayout: # has review text
+                                    canvas.before:
+                                        Color:
+                                            rgba:[0,0,1,0]
+                                        Rectangle:
+                                            pos:self.pos
+                                            size:self.size  
+                                    size_hint_y:.45
+                                    MDLabel: 
+                                        size_hint:1,1
+
+                                        text:"Really. I have never seen such a smoth app. The app is easy to use and fast. Best ratings in the market. Can't wait for the new releases. I love you guys. Thank YOU!"
+                                        color:rgba("#616161")
+                        
+                                        max_lines:5
+
+                                BoxLayout:  # has grey bar
+                                    canvas.before:
+                                        Color:
+                                            rgba: rgba('#E1E1E1')
+                                        Rectangle:
+                                            pos:self.pos
+                                            size:[self.size[0]-dp(250), dp(2)]  
+                                    size_hint_y:.05
+                                BoxLayout: # has "review...helpful" and 2 buttons for yes/no
+                                    canvas.before:
+                                        Color:
+                                            rgba:[1,0,1,0]
+                                        Rectangle:
+                                            pos:self.pos
+                                            size:self.size   
+                                    orientation:"horizontal"
+                                    size_hint_y:.2
+                                    spacing:dp(10)
+                                    MDLabel:
+                                        text:"Was this review helpful?"
+                                        color:rgba("#616161")
+                                        font_size:dp(15)
+                                        size_hint_x:.5
+                                    Widget:
+                                        size_hint_x:.1
+                                    MDRoundFlatButton:
+                                        text: "Yes"
+                                        text_color: rgba("#616161")
+                                        line_color: rgba("#444444")
+                                        line_width:dp(1)
+                                        size_hint_x:.2
+                                    MDRoundFlatButton:
+                                        text: "No"
+                                        text_color: rgba("#616161")
+                                        line_color: rgba("#444444")
+                                        line_width:dp(1)
+                                        size_hint_x:.2
+
+                        Widget:
                             
-                    Widget:
+                    
                     
 
 
@@ -308,39 +452,7 @@
                                 size_hint_min_y: None
                                 size_hint_y: None
                                 height: self.minimum_height
-                                # TopicQuestion:
-                                #     id:about_transport_id
-                                #     topic:"About TransportYoiu"
-                                #     # Each question stars here
-                                #     Question:
-                                #         question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
-                                #         answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
-                                #     #second question starts here
-                                #     Question:
-                                #         question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
-                                #         answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
-                                
-                                #new topic  #################              
-                                # TopicQuestion:
-                                #     id:options_id
-                                #     topic:"Payment options"
-                                #     # Each question stars here
-                                    
-                                #     Question:
-                                #         question:"[b]What are the optiuons? "+"ola[/b]"#str(self.y+self.parent.height/2)
-                                #         answer:"TransportYoiu is a app that allows you to choose a initial and final destination and plan it depending on your preferences"  
-                                #     Question:
-                                #         question:"olafoajkofa"
-                                #         answer:"fmasmfoismngsongs"         
-                                #     Question:
-                                #         question:"olafoajkofaddddddddddddddddddddddddd"
-                                #         answer:"fmasmfoismngsondddddddddddddddddddddddgs"    
-                                #     Question:
-                                #         question:"olafoajkofa"
-                                #         answer:"fmasmfoismngsongs"         
-                                #     Question:
-                                #         question:"olafoajkofaddddddddddddddddddddddddd"
-                                #         answer:"fmasmfoismngsondddddddddddddddddddddddgs"    
+                                  
                                   
                                         
                             BoxLayout:
@@ -356,22 +468,7 @@
                                     icon:"close"
                                     on_release:root.close_lookup_box()            
             # Widget:
-          
-            #TAB
-            # Tab:
-            #     icon:""
-            #     title:"What's New"
-            #     BoxLayout:
-            #         orientation:"vertical"
-            #         MDLabel:
-            #             id: label
-            #             text: "Tab 2"
-            #             halign: "center"
-            #         MDLabel:
-            #             id: label
-            #             text: "Tab 2"
-            #             halign: "center"
-            #         Widget:
+
                 
                 
 
