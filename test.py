@@ -27,7 +27,7 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 # Open the input image as numpy array, convert to RGB
-img=Image.open("assets/imgs/person.jpg").convert("RGB")
+img=Image.open("assets/imgs/unknown.jpg").convert("RGB")
 npImage=np.array(img)
 h,w=img.size
 
@@ -43,4 +43,4 @@ npAlpha=np.array(alpha)
 npImage=np.dstack((npImage,npAlpha))
 
 # Save with alpha
-Image.fromarray(npImage).save('assets/imgs/result.png')
+Image.fromarray(npImage).save('assets/imgs/unknown_pic.png')

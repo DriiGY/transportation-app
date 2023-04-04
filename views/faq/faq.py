@@ -4,7 +4,7 @@ from kivymd.app import MDApp
 from kivymd.uix.tab import MDTabsBase
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivy.uix.label import Label
-from kivymd.icon_definitions import md_icons
+from widgets.box import BackBox
 from kivy.metrics import dp
 from kivy.properties import StringProperty, NumericProperty
 from kivy.clock import Clock
@@ -182,6 +182,11 @@ class StarBar(BoxLayout):
         super().__init__(**kwargs)
         #StarBar.total_stars = 100  # Initiate from data here!! request api
 
+class ReviewCard(BackBox):
+    profile_pic = StringProperty("assets/imgs/unknown_pic.png")
+    name = StringProperty("Anonymous")
+    date = StringProperty("dd/mm/yy")
+    review_text = StringProperty("")
 """
 Note:
 
