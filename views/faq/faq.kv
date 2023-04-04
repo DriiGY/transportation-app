@@ -275,6 +275,7 @@
                                 name:"Yahra Assiz"
                                 date:"11/10/2010"
                                 review_text:"Really. I have never seen such a smoth app. The app is easy to use and fast. Best ratings in the market. Can't wait for the new releases. I love you guys. Thank YOU!"
+                                stars:[1,0,0,0,0]                            
                             ReviewCard:
                                 # profile_pic:"assets/imgs/result.png"
                                 # name:"Yahra Assiz"
@@ -286,6 +287,7 @@
                                 name:"Patrick Colesman"
                                 date:"01/01/2022"
                                 review_text:"Really. I have never seen such a smoth app. The app is easy to use and fast. Best ratings in the market. Can't wait for the new releases. I love you guys. Thandoinbdoibniobndfgoibnfonbfbnfgiunbiunbiudnbfdnbidunbduinbiudnbiufdnbiudnbiudnibundiubnfdiubndiunbdiunbiudnbiudnbiudnbiudnbiudnbiundiubnfdiunbdiuk YOU!"
+                                stars:[1,1,2,0,0]
                             #Widget:
                             
                     
@@ -539,35 +541,35 @@
                 size_hint:1,1
                 MDIcon:
                     pos_hint:{"center_y":.5}
-                    icon:"star"
+                    icon: root.which_star(root.stars[0])
                     icon_size: dp(1)
                     theme_text_color: "Custom"
                     text_color: rgba("#0F9D58")
                     
                 MDIcon:
                     pos_hint:{"center_y":.5}
-                    icon:"star"
+                    icon:root.which_star(root.stars[1])
                     icon_size: dp(1)
                     theme_text_color: "Custom"
                     text_color: rgba("#0F9D58")
                     
                 MDIcon:
                     pos_hint:{"center_y":.5}
-                    icon:"star"
+                    icon:root.which_star(root.stars[2])
                     icon_size: dp(1)
                     theme_text_color: "Custom"
                     text_color: rgba("#0F9D58")
                     
                 MDIcon:
                     pos_hint:{"center_y":.5}
-                    icon:"star-half-full"
+                    icon:root.which_star(root.stars[3])
                     icon_size: dp(1)
                     theme_text_color: "Custom"
                     text_color: rgba("#0F9D58")
         
                 MDIcon:
                     pos_hint:{"center_y":.5}
-                    icon:"star-outline"
+                    icon:root.which_star(root.stars[4])
                     icon_size: dp(1)
                     theme_text_color: "Custom"
                     text_color: rgba("#0F9D58")

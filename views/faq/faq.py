@@ -6,7 +6,7 @@ from kivymd.uix.floatlayout import MDFloatLayout
 from kivy.uix.label import Label
 from widgets.box import BackBox
 from kivy.metrics import dp
-from kivy.properties import StringProperty, NumericProperty
+from kivy.properties import StringProperty, NumericProperty, ListProperty
 from kivy.clock import Clock
 import json
 import os
@@ -185,9 +185,19 @@ class StarBar(BoxLayout):
 class ReviewCard(BackBox):
     profile_pic = StringProperty("assets/imgs/unknown_pic.png")
     name = StringProperty("Anonymous")
+    stars = ListProperty([1,1,1,2,0])  # 0 empty star, 1 full star, 2 half-star
     date = StringProperty("dd/mm/yy")
     review_text = StringProperty("")
-"""
+
+    def which_star(self, value, *args):
+        if value == 1:
+            return "star"
+        elif value == 2 :
+            return "star-half-full" 
+        else:
+            return "star-outline" 
+        
+    """
 Note:
 
     feedback deve ter estrelas uma caixa de texto com um dropdown sobre do que fala o feedback:
