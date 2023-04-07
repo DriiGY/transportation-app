@@ -8,7 +8,9 @@ from kivy.uix.label import Label
 from widgets.box import BackBox
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.button import MDRaisedButton
+from kivymd.uix.menu import MDDropdownMenu
 from kivy.utils import rgba
+from kivy.metrics import dp
 from kivy.properties import StringProperty, NumericProperty, ListProperty
 from kivy.clock import Clock
 import json
@@ -194,6 +196,7 @@ class Faq(BoxLayout):
         print("YOU NEED TO CREATE A SUBMIT FORM!!!!")
         # self.dialog.content_cls.ids gets all ids
         #print(self.dialog.content_cls.stars)
+        #add new review by creating ReviewCard()
 
     def closeDialog(self, *args):
         self.dialog.dismiss()
@@ -283,6 +286,32 @@ class ReviewCard(BackBox):
     stars = ListProperty([1,1,1,2,0])  # 0 empty star, 1 full star, 2 half-star
     date = StringProperty("dd/mm/yy")
     review_text = StringProperty("")
+    menu = None
+    def open_dropdown_dots(self):
+       
+        items_d = ['flag']
+        menu_items = [
+            {
+                "text": f"{i}",
+                "viewclass": "OneLineListItem",
+                "height": dp(40),
+                "on_release": lambda x=f"{i}": self.menu_callback(x),
+            } for i in items_d
+        ]
+        
+        fots_flag_button = self.ids["dots_flag"]
+        if not self.menu:
+            self.menu = MDDropdownMenu(
+                caller=fots_flag_button,
+                items=menu_items,
+                width_mult=2,
+            )
+        self.menu.open()
+
+    def menu_callback(self, text_item):
+        """Acts on release flag button, DOESN'T DO ANYTHING"""
+        #print(text_item)
+        self.menu.dismiss()
 
     def which_star(self, value, *args):
         if value == 1:
@@ -291,6 +320,18 @@ class ReviewCard(BackBox):
             return "star-half-full" 
         else:
             return "star-outline" 
+    
+    def helpful_question_yes(self, *args):
+        self.ids["no"].text_color = rgba("#616161")
+        self.ids["no"].line_color = rgba("#444444")
+        self.ids["yes"].text_color = rgba("#0F9D58")
+        self.ids["yes"].line_color = rgba("#0F9D58")
+
+    def helpful_question_no(self, *args):
+        self.ids["no"].text_color = [1,0,0,1]
+        self.ids["no"].line_color = [1,0,0,1]
+        self.ids["yes"].text_color = rgba("#616161")
+        self.ids["yes"].line_color = rgba("#444444")
     
     
     
@@ -308,4 +349,9 @@ Note:
     o feedback deve ter o nome e imagem do user??????
     ver examplo playstore e cada app.
     # Limit to 250 characters when creating review
+
+
+
+    Change color of reviewcard helppful button and add vote to DB
+    Add to 3 point button flag option
     """
