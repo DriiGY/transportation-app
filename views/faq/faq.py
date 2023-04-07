@@ -1,23 +1,54 @@
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.behaviors import ButtonBehavior
 from kivymd.app import MDApp
 from kivymd.uix.tab import MDTabsBase
 from kivymd.uix.floatlayout import MDFloatLayout
 from kivy.uix.label import Label
 from widgets.box import BackBox
-from kivy.metrics import dp
+from kivymd.uix.dialog import MDDialog
+from kivymd.uix.button import MDRaisedButton
+from kivy.utils import rgba
 from kivy.properties import StringProperty, NumericProperty, ListProperty
 from kivy.clock import Clock
 import json
 import os
-from kivymd.toast import toast
+
 #Clock.max_iteration = 50  # changed clock iteration on app/__init__.py. Works but should be properly fixed.
 FAQ_DIR = os.path.dirname(os.path.abspath(__file__))
 Builder.load_file('views/faq/faq.kv')
 
 
+class ReviewContent(BoxLayout, ButtonBehavior):
+    stars = NumericProperty(0)
+    """Review dialog box content"""
+    def on_click_star(self, id, *args):
+        #print(id)
+        if id == "star1":
+            self.ids["star1"].icon = "star"
+            self.ids["star2"].icon = self.ids["star3"].icon = self.ids["star4"].icon = self.ids["star5"].icon = "star-outline"
+            ReviewContent.stars = 1
+        if id == "star2":
+            self.ids["star1"].icon = self.ids["star2"].icon = "star"
+            self.ids["star3"].icon = self.ids["star4"].icon = self.ids["star5"].icon = "star-outline"
+            ReviewContent.stars = 2
+        if id == "star3":
+            self.ids["star1"].icon = self.ids["star2"].icon = self.ids["star3"].icon = "star"
+            self.ids["star4"].icon = self.ids["star5"].icon = "star-outline"
+            ReviewContent.stars = 3
+        if id == "star4":
+            self.ids["star1"].icon = self.ids["star2"].icon = self.ids["star3"].icon = self.ids["star4"].icon = "star"
+            self.ids["star5"].icon = "star-outline"
+            ReviewContent.stars = 4
+        if id == "star5":
+            self.ids["star1"].icon = self.ids["star2"].icon = self.ids["star3"].icon = self.ids["star4"].icon = self.ids["star5"].icon = "star"
+            ReviewContent.stars = 5
+
+
+
 class Faq(BoxLayout):
-    
+    dialog = None
+    dicard_dialog = None
     def __init__(self, **kw) -> None:
         super().__init__(**kw)
         self.app = MDApp.get_running_app()
@@ -132,11 +163,75 @@ class Faq(BoxLayout):
         base.opacity, base.disabled, base.size_hint_y , base.height= 1,False,None, self.ids.base_for_topics.minimum_height
 
         self.ids.search_bar.disabled = False
-        
+    
+    def show_review_dialog(self, *args):
+        if not self.dialog:
+            self.dialog = MDDialog(
+                title="Review: Helps us improve your experience!", 
+                type="custom",
+                content_cls=ReviewContent(),
+                buttons=[
+                    MDRaisedButton(
+                        text="CANCEL",
+                        theme_text_color="Custom",
+                        text_color=rgba("#ffffff"),
+                        md_bg_color="grey",
+                        on_release=self.closeDialog
+                    ),
+                    MDRaisedButton(
+                        text="REVIEW",
+                        theme_text_color="Custom",
+                        text_color=rgba("#ffffff"),
+                        md_bg_color=rgba("#6167E9"),
+                        font_style="Button",
+                        on_release=self.submitReview
+                    ),
+                ]
+            )
+        self.dialog.open()
+    
+    def submitReview(self, *args):
+        print("YOU NEED TO CREATE A SUBMIT FORM!!!!")
+        # self.dialog.content_cls.ids gets all ids
+        #print(self.dialog.content_cls.stars)
 
-    ####
-    #feedback vai ser uma caixa de texto para mandar um email dando feedback
-    #pode ter comentarios de users anteriores
+    def closeDialog(self, *args):
+        self.dialog.dismiss()
+        if not self.dicard_dialog:
+            self.dicard_dialog = MDDialog(
+            title="Discard?", 
+            type="custom",
+            buttons=[
+                MDRaisedButton(
+                    text="Yes",
+                    theme_text_color="Custom",
+                    text_color=rgba("#ffffff"),
+                    md_bg_color="grey",
+                    on_release=self.closeDiscardDialog
+                ),
+                MDRaisedButton(
+                    text="No",
+                    theme_text_color="Custom",
+                    text_color=rgba("#ffffff"),
+                    md_bg_color=rgba("#6167E9"),
+                    font_style="Button",
+                    on_release=self.saveReview
+                ),
+            ]
+            )
+        self.dicard_dialog.open()
+        
+    
+    
+    def closeDiscardDialog(self, *args):
+        self.dialog.content_cls.ids["star1"].icon = self.dialog.content_cls.ids["star2"].icon = self.dialog.content_cls.ids["star3"].icon  = \
+        self.dialog.content_cls.ids["star4"].icon = self.dialog.content_cls.ids["star5"].icon = "star-outline"
+        self.dialog.content_cls.ids["review_text"].text = ""
+        self.dicard_dialog.dismiss()
+    
+    def saveReview(self, *args):
+        self.dicard_dialog.dismiss()
+
  
 
 class Tab(MDFloatLayout, MDTabsBase):
@@ -196,7 +291,15 @@ class ReviewCard(BackBox):
             return "star-half-full" 
         else:
             return "star-outline" 
-        
+    
+    
+    
+    
+    
+    
+    
+    
+    
     """
 Note:
 
