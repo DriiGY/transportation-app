@@ -1,0 +1,25 @@
+
+<PersonalScreen>:
+    orientation: "vertical"
+    padding:[dp(2)]
+    canvas.before:
+        Color:
+            rgba:[1,0,0,0]
+        Rectangle:
+            pos:self.pos    
+            size:self.size
+    BoxLayout:
+        orientation:"vertical"
+        size_hint_y: .2
+        padding:[dp(5), 0, dp(10), 0]
+        spacing:dp(5)
+        ButtonIcon:
+            size_hint: 1, .05
+            text:icon("icon-chevron-left")
+            color:[0,0,0,1]
+            bold:True
+            font_size:app.fonts.size.h1
+            on_release:
+                root.parent.manager.current = "scrn_settings"
+                root.parent.manager.transition.direction = "left"
+        Widget:

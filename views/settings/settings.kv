@@ -51,6 +51,9 @@
             padding:[dp(10)]
             OneLineAvatarIconListItem:
                 text: "Personal"
+                on_release: 
+                    root.parent.manager.transition.direction = "left"
+                    root.parent.manager.current = "scrn_personal"
                 IconRightWidget:
                     icon: "chevron-right"
                 IconLeftWidget:

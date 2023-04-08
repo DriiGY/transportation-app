@@ -17,6 +17,7 @@
 #: import TicketDetails views.ticket.TicketDetails
 #: import SettingsScreen views.settings.SettingsScreen
 #: import Faq views.faq.Faq
+#: import PersonalScreen views.personal_info.PersonalScreen
 <MainWindow>:
     orientation: 'vertical'
     canvas.before:
@@ -34,6 +35,11 @@
                 name: 'scrn_settings'
                 SettingsScreen:
                     id: setting
+            Screen:
+                name: 'scrn_personal'
+                PersonalScreen:
+                    id: personal
+            
                     
             Screen:
                 name: 'scrn_faq'
