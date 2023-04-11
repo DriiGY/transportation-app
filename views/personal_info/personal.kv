@@ -1,7 +1,7 @@
 
 <PersonalScreen>:
     orientation: "vertical"
-    padding:[dp(2)]
+    #padding:[dp(2)]
     canvas.before:
         Color:
             rgba:[1,0,0,0]
@@ -9,17 +9,116 @@
             pos:self.pos    
             size:self.size
     BoxLayout:
-        orientation:"vertical"
-        size_hint_y: .2
+        canvas.before:
+            Color:
+                rgba:rgba("#6167E9")
+            Rectangle:
+                pos:self.pos    
+                size:self.size
+        orientation:"horizontal"
+        size_hint_y: .15
         padding:[dp(5), 0, dp(10), 0]
         spacing:dp(5)
         ButtonIcon:
-            size_hint: 1, .05
-            text:icon("icon-chevron-left")
-            color:[0,0,0,1]
+            size_hint: .2, 1
+            text:icon("icon-x")
+            color:[1,1,1,1]
             bold:True
             font_size:app.fonts.size.h1
             on_release:
                 root.parent.manager.current = "scrn_settings"
                 root.parent.manager.transition.direction = "left"
-        Widget:
+        MDLabel:
+       
+            size_hint: .8, 1
+            text:"Edit Account"
+            color:[1,1,1,1]
+            font_size:app.fonts.size.h2
+        
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba:rgba("#F9F9F9")
+            Rectangle:
+                pos:self.pos    
+                size:self.size 
+        padding:[dp(10),dp(3),0, dp(10)]  
+        size_hint: 1, .35
+        RelativeLayout:
+            
+            size_hint: 1, 1
+            ShadowBox:
+                canvas.before:
+                    Color:
+                        rgba:[1,0,0,0]
+                    Rectangle:
+                        pos:self.pos    
+                        size:self.size 
+                radius:[self.height]
+                size_hint:None, None
+                size:[self.parent.size[0]/3, self.parent.size[1]-dp(15)]
+                #padding:dp(10)
+                IconButton:
+                    source:"assets/imgs/unknown_pic.png"
+            ShadowBox:
+                canvas.before:
+                    Color:
+                        rgba:[1,1,1,0]
+                    Rectangle:
+                        pos:self.pos    
+                        size:self.size 
+                radius:[self.height]
+                size_hint:None, None
+                size:[self.parent.size[0]/8, self.parent.size[1]/4]
+                #padding:dp(10)
+                IconButton:
+                    source:"assets/imgs/edit_pencil.png"
+                    on_release:print("Aperta aqui")
+                    
+    MDList:
+        size_hint_y: .5
+        padding:[dp(10)]
+        TwoLineAvatarIconListItem:
+            text: "First Name"
+            secondary_text:"[size=18]Danilo[/size]"
+            IconRightWidget:
+                icon: "chevron-right"
+            IconLeftWidget:
+                icon: "account"
+        TwoLineAvatarIconListItem:
+            text: "Last Name"
+            secondary_text:"[size=18]Pereira[/size]"
+            IconRightWidget:
+                icon: "chevron-right"
+            IconLeftWidget:
+                icon: "account"
+        ThreeLineAvatarIconListItem:
+            text: "Phone Number"
+            secondary_text: "969999999"
+            tertiary_text: "verified"
+            tertiary_theme_text_color:"Custom"
+            tertiary_text_color:rgba("#86B686")
+            IconLeftWidget:
+                icon: "phone"
+
+            IconRightWidget:
+                icon: "chevron-right"
+            
+        OneLineAvatarIconListItem:
+            text: "email@hotmail.com"
+
+            IconLeftWidget:
+                icon: "email"
+        
+        TwoLineAvatarIconListItem:
+            text: "Password"
+            secondary_text:"[size=18]******[/size]"
+            IconRightWidget:
+                icon: "chevron-right"
+            IconLeftWidget:
+                icon: "lock"
+                
+    Widget:
+
+
+    
