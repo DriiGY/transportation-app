@@ -5,7 +5,7 @@ from kivy.core.window import Window
 from kivymd.uix.filemanager import MDFileManager
 from kivymd.toast import toast
 from kivy.clock import Clock
-import time
+from plyer import tts,filechooser
 Builder.load_file('views/personal_info/personal.kv')
 
 # use plyer filechooser, works in android depending on root directory path: https://stackoverflow.com/questions/72430198/plyer-filechooser-working-perfectly-on-windows-but-does-not-work-on-android
@@ -22,7 +22,13 @@ class PersonalScreen(MDBoxLayout):
 
 
 
+    def open_filechooser(self):
+        filechooser.open_file(on_selection=self.on_selection)
 
+    def on_selection(self, selection):
+        if selection:
+            print(selection[0])
+            self.ids.profile_pic.source = selection[0]
 
     def show_file_manager(self):
         print("here")

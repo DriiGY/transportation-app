@@ -59,6 +59,7 @@
                 size:[self.parent.size[0]/3, self.parent.size[1]-dp(15)]
                 #padding:dp(10)
                 IconButton:
+                    id:profile_pic
                     source:"assets/imgs/unknown_pic.png"
             ShadowBox:
                 canvas.before:
@@ -73,7 +74,7 @@
                 #padding:dp(10)
                 IconButton:
                     source:"assets/imgs/edit_pencil.png"
-                    on_release:root.show_file_manager()
+                    on_release:root.open_filechooser()
                     
     MDList:
         size_hint_y: .5
