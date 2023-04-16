@@ -8,7 +8,7 @@ from kivy.clock import Clock
 import time
 Builder.load_file('views/personal_info/personal.kv')
 
-
+# use plyer filechooser, works in android depending on root directory path: https://stackoverflow.com/questions/72430198/plyer-filechooser-working-perfectly-on-windows-but-does-not-work-on-android
 class PersonalScreen(MDBoxLayout):
     
     def __init__(self, **kw) -> None:
@@ -37,7 +37,7 @@ class PersonalScreen(MDBoxLayout):
         self.file_manager.previous = True
         self.file_manager_open()
         print(self.file_manager.__dict__)
-        self.exit_manager()
+        #self.exit_manager()
 
 
 
@@ -48,16 +48,18 @@ class PersonalScreen(MDBoxLayout):
         self.file_manager.show('/')  # output manager to the screen
         self.manager_open = True
 
-    def select_path(self, path='/', *args):
+    def select_path(self, path, *args):
         '''It will be called when you click on the file name
         or the catalog selection button.
 
         :type path: str;
         :param path: path to the selected directory or file;
         '''
-
+        print(self.file_manager.current_path)
         self.exit_manager()
-        toast(path)
+        
+        print(path)
+        
         
     def exit_manager(self, *args):
         '''Called when the user reaches the root of the directory tree.'''
