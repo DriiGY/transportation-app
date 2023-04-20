@@ -1,6 +1,6 @@
 import numpy as np
 from PIL import Image, ImageDraw
-
+import os
 def round_image(path):
     # Open the input image as numpy array, convert to RGB
     # "assets/imgs/edit_image_use.png"
@@ -18,6 +18,7 @@ def round_image(path):
 
     # Add alpha layer to RGB
     npImage=np.dstack((npImage,npAlpha))
-    
+    filepath = 'assets/imgs/edit_image.png'
     # Save with alpha
-    Image.fromarray(npImage).save('assets/imgs/edit_image.png')
+    Image.fromarray(npImage).save(filepath)
+    return filepath
