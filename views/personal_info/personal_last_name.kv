@@ -1,0 +1,56 @@
+
+
+<PersonalLastName>:
+    orientation: "vertical"
+    #padding:[dp(2)]
+    canvas.before:
+        Color:
+            rgba:[1,0,0,0]
+        Rectangle:
+            pos:self.pos    
+            size:self.size
+    padding:dp(10)
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba:[0,0,0,0]
+            Rectangle:
+                pos:self.pos    
+                size:self.size
+        orientation:"horizontal"
+        size_hint_y: .15
+        padding:[dp(5), 0, dp(10), 0]
+        spacing:dp(5)
+        ButtonIcon:
+            size_hint: .2, 1
+            text:icon("icon-chevron-left")
+            color:[0,0,0,1]
+            bold:True
+            font_size:app.fonts.size.h1
+            on_release:
+                root.parent.manager.current = "scrn_personal"
+                root.parent.manager.transition.direction = "left"
+        MDLabel:
+       
+            size_hint: .8, 1
+            text:"Edit last name"
+            color:[0,0,0,1]
+            font_size:app.fonts.size.h2
+    BoxLayout:
+        orientation:"vertical"
+        spacing:dp(10)
+        padding:[dp(10), 0, dp(10), 0]
+        MDTextField:
+            id:new_name
+            hint_text: "New name:"
+            mode: "rectangle"
+        MDTextField:
+            id:new_name_repeat
+            hint_text: "Repeat name:"
+            mode: "rectangle"
+        MDRaisedButton:
+            text: "Save"
+            pos_hint:{"center_x":.5}
+            md_bg_color: rgba("#6167E9")
+            on_release:root.update_last_name()
+    Widget:

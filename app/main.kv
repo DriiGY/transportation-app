@@ -19,6 +19,7 @@
 #: import Faq views.faq.Faq
 #: import PersonalScreen views.personal_info.PersonalScreen
 #: import PersonalFirstName views.personal_info.PersonalFirstName
+#: import PersonalLastName views.personal_info.PersonalLastName
 <MainWindow>:
     orientation: 'vertical'
     canvas.before:
@@ -44,7 +45,10 @@
                 name: 'scrn_personal_firstname'
                 PersonalFirstName:
                     id: personal_firstname
-                    
+            Screen:
+                name: 'scrn_personal_lastname'
+                PersonalLastName:
+                    id: personal_lastname       
             Screen:
                 name: 'scrn_faq'
                 Faq:

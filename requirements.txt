@@ -24,8 +24,10 @@ oauthlib==3.2.2
 Pillow==9.4.0
 plyer==2.1.0
 Pygments==2.14.0
+python-dotenv==1.0.0
 ratelim==0.1.6
 requests==2.28.2
+sinchsms==1.0.4
 six==1.16.0
 urllib3==1.26.14
 Werkzeug==2.0.3

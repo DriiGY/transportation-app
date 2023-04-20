@@ -31,6 +31,8 @@ pip-delete-this-directory.txt
 # venv
 venv/
 
+# credentials dotenv
+.env
 # credentials
 credentials.py
 

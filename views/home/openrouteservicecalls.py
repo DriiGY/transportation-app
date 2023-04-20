@@ -1,9 +1,10 @@
 import requests
 import re
 import json
-from credentials import API_KEY
-#import pprint
 
+import os
+#import pprint
+API_KEY = f"{os.getenv('API_KEY')}"
 def get_street_from_coordinates(lat, lon):
   
         headers = {
@@ -27,7 +28,6 @@ def openrouteservice_request(body):
         string_res = call.text
 
         #print(string_res)
-
         tag = 'rtept'
         reg_str = '</' + tag + '>(.*?)' + '>'
         res = re.findall(reg_str, string_res)
