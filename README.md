@@ -1,4 +1,4 @@
-# Transportation App
+# Transportation App (description not updated)
 App where passengers can look for their most convenient way of travelling (bus, train or car) and book a trip!
 A place where you can find all ways of transport and decide the best way to get to your destination.
 
