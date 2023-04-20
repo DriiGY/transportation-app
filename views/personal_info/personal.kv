@@ -82,6 +82,9 @@
         TwoLineAvatarIconListItem:
             text: "First Name"
             secondary_text:"[size=18]Danilo[/size]"
+            on_release: 
+                root.parent.manager.transition.direction = "left"
+                root.parent.manager.current = "scrn_personal_firstname"
             IconRightWidget:
                 icon: "chevron-right"
             IconLeftWidget:

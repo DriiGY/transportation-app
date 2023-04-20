@@ -18,7 +18,7 @@ def round_image(path):
 
     # Add alpha layer to RGB
     npImage=np.dstack((npImage,npAlpha))
-    filepath = 'assets/imgs/edit_image.png'
+    filepath = 'assets/imgs/profile_pic_final_edit.png'
     # Save with alpha
     Image.fromarray(npImage).save(filepath)
     return filepath

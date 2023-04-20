@@ -17,7 +17,7 @@ class PersonalScreen(MDBoxLayout):
     def __init__(self, **kw) -> None:
         super().__init__(**kw)
         self.app = MDApp.get_running_app()
-        self.manager_open = False
+        
         
 
     def go_back(self):
@@ -30,70 +30,10 @@ class PersonalScreen(MDBoxLayout):
 
     def on_selection(self, selection):
         if selection:
-            print(selection[0])
+            #print(selection[0])
             show_img_path = round_image(selection[0])
             self.ids.profile_pic.source = show_img_path  # selection[0]   
     
-
-        
-    # def show_file_manager(self):
-    #     print("here")
-    #     self.file_manager  = MDFileManager()
-        
-    #     Window.bind(on_keyboard=self.events)
-    #     #print(self.file_manager)
-    #     self.file_manager.bind(
-    #         exit_manager=self.exit_manager,
-    #         select_path=self.select_path
-    #         )
-    #     self.file_manager.previous = True
-    #     self.file_manager_open()
-    #     print(self.file_manager.__dict__)
-    #     #self.exit_manager()
-
-
-
-
-
-    # def file_manager_open(self):
-    #     #print(self.file_manager)
-    #     self.file_manager.show('/')  # output manager to the screen
-    #     self.manager_open = True
-
-    # def select_path(self, path, *args):
-    #     '''It will be called when you click on the file name
-    #     or the catalog selection button.
-
-    #     :type path: str;
-    #     :param path: path to the selected directory or file;
-    #     '''
-    #     print(self.file_manager.current_path)
-    #     self.exit_manager()
-        
-    #     print(path)
-        
-        
-    # def exit_manager(self, *args):
-    #     '''Called when the user reaches the root of the directory tree.'''
-       
-        
-    #     print(self.file_manager, "iiiiiiiiiiiiiiiiiii")
-    #     self.file_manager.close()
-    #     self.manager_open = False
-    #     print("gsfdfdfdfghd")
-    #     print("gsfdfdfdfghd")
-    
-
-    # def events(self, instance, keyboard, keycode, text, modifiers ):  
-    #     '''Called when buttons are pressed on the mobile device.'''
-
-    #     if keyboard in (1001, 27):
-    #         if self.manager_open:
-    #             self.file_manager.back()
-    #     elif keyboard == 70:
-    #         if self.manager_open:
-    #             self.file_manager.back()
-    #     return True
     
 
 
