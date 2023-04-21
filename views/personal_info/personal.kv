@@ -120,6 +120,9 @@
         TwoLineAvatarIconListItem:
             text: "Password"
             secondary_text:"[size=18]******[/size]"
+            on_release:
+                root.parent.manager.current = "scrn_personal_password"
+                root.parent.manager.transition.direction = "left"
             IconRightWidget:
                 icon: "chevron-right"
             IconLeftWidget:
