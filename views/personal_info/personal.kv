@@ -80,6 +80,7 @@
         size_hint_y: .5
         padding:[dp(10)]
         TwoLineAvatarIconListItem:
+            id:first_name
             text: "First Name"
             secondary_text:"[size=18]Danilo[/size]"
             on_release: 
@@ -105,6 +106,9 @@
             tertiary_text: "verified"
             tertiary_theme_text_color:"Custom"
             tertiary_text_color:rgba("#86B686")
+            on_release:
+                root.parent.manager.current = "scrn_personal_phone"
+                root.parent.manager.transition.direction = "left"
             IconLeftWidget:
                 icon: "phone"
 

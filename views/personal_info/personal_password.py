@@ -12,6 +12,7 @@ Builder.load_file('views/personal_info/personal_password.kv')
 #
 # Create a widget from ClickableTextFieldPassword instead of 2:ClickableTextFieldPassword and ClickableTextFieldPasswordd (one more d)
 # Mobile code should be in a new screen or a dialog box
+# Stay on the screen waiting for code if cancel or fail code, ask to send again or stop all together
 ##
 class PersonalPassword(MDBoxLayout):
     def __init__(self, **kw) -> None:

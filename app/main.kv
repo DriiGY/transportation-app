@@ -21,6 +21,7 @@
 #: import PersonalFirstName views.personal_info.PersonalFirstName
 #: import PersonalLastName views.personal_info.PersonalLastName
 #: import PersonalPassword views.personal_info.PersonalPassword
+#: import PersonalPhone views.personal_info.PersonalPhone
 <MainWindow>:
     orientation: 'vertical'
     canvas.before:
@@ -38,6 +39,10 @@
                 name: 'scrn_settings'
                 SettingsScreen:
                     id: setting
+            Screen:
+                name: 'scrn_personal_phone'
+                PersonalPhone:
+                    id: personal_phone
             Screen:
                 name: 'scrn_personal_password'
                 PersonalPassword:

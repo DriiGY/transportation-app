@@ -19,6 +19,7 @@ class PersonalFirstName(MDBoxLayout):
         #print(name_first_field, name_first_field_repeat)
         
         if name_first_field == name_first_field_repeat:
+            self.parent.manager.get_screen("scrn_personal").children[0].ids["first_name"].secondary_text = "[size=18]JOhn Smith[/size]"
             self.parent.manager.current = "scrn_personal"
         else:
             toast("Fields must match!")
