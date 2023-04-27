@@ -35,4 +35,13 @@
             text:"Edit phone number"
             color:[0,0,0,1]
             font_size:app.fonts.size.h2
+    BoxLayout:
+        orientation:"vertical"
+        spacing:dp(10)
+        padding:[dp(10), 0, dp(10), 0]
+        MDRaisedButton:
+            text: "send email"
+            pos_hint:{"center_x":.5}
+            md_bg_color: rgba("#6167E9")
+            on_release:root.update_phone_number()
     Widget:
