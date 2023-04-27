@@ -24,7 +24,10 @@ class PersonalPassword(MDBoxLayout):
         password_field_repeat = self.ids.new_password_repeat.text.strip()
         #old_password widget must match previous password
         if password_field == password_field_repeat and len(password_field)>0 and len(password_field_repeat)>0:
-          
+            passw = ""
+            for letter in range(len(password_field_repeat)):
+                passw += "*"
+            self.parent.manager.get_screen("scrn_personal").children[0].ids["password"].secondary_text = f"[size=18]{passw}[/size]"
             #send_sms("yuyu")
             self.parent.manager.current = "scrn_personal"
         else:

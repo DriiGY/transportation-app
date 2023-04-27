@@ -15,7 +15,7 @@ class PersonalLastName(MDBoxLayout):
         name_first_field_repeat = self.ids.new_name_repeat.text.strip()
        
         if name_first_field == name_first_field_repeat:
-          
+            self.parent.manager.get_screen("scrn_personal").children[0].ids["last_name"].secondary_text = f"[size=18]{name_first_field.title()}[/size]"
             #send_sms("yuyu")
             self.parent.manager.current = "scrn_personal"
         else:
