@@ -39,9 +39,34 @@
         orientation:"vertical"
         spacing:dp(10)
         padding:[dp(10), 0, dp(10), 0]
+        ClickableTextFieldNumber:
+            id:old_phone_number
+            hint_text: "Old phone number:"
+            input_filter:"int"
+        ClickableTextFieldNumber:
+            id:new_phone_number
+            hint_text: "New phone number:"
+            input_filter:"int"
         MDRaisedButton:
-            text: "send email"
+            text: "Update number"  # create dialog so we add code from email
             pos_hint:{"center_x":.5}
             md_bg_color: rgba("#6167E9")
             on_release:root.update_phone_number()
     Widget:
+
+
+<ClickableTextFieldNumber>:
+    size_hint: 1, None
+    height: name.height
+    
+    MDTextField:
+        id: name
+        hint_text: root.hint_text
+        color_mode: 'custom'
+        line_color_focus: rgba("#6068EB")
+        line_color_normal: rgba("#D0D0D0")
+        hint_text_color_normal: rgba('#D0D0D0')
+        hint_text_color_focus: rgba("#6068EB")
+        multiline:False
+        text_color_focus:app.colors.black
+        input_filter:root.input_filter

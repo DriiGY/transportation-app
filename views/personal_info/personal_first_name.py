@@ -27,7 +27,6 @@ class PersonalFirstName(MDBoxLayout):
 
 class ClickableTextFieldUsernamee(MDRelativeLayout):
     hint_text = StringProperty()
-
     def __init__(self, **kw) -> None:
         self.valid = False
         #Clock.schedule_interval(self.validate_username, 1)
