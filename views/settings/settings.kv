@@ -60,12 +60,19 @@
                     icon: "account"
             OneLineAvatarIconListItem:
                 text: "Wallet"
+                on_release: 
+                    root.parent.manager.transition.direction = "left"
+                    root.parent.manager.current = "scrn_wallet"
                 IconRightWidget:
                     icon: "chevron-right"
                 IconLeftWidget:
                     icon: "wallet-giftcard"
+                
             OneLineAvatarIconListItem:
                 text: "Trips"
+                on_release: 
+                    root.parent.manager.transition.direction = "left"
+                    root.parent.manager.current = "scrn_trips"
                 IconRightWidget:
                     icon: "chevron-right"
                 IconLeftWidget:

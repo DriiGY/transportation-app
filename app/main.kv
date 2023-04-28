@@ -22,6 +22,8 @@
 #: import PersonalLastName views.personal_info.PersonalLastName
 #: import PersonalPassword views.personal_info.PersonalPassword
 #: import PersonalPhone views.personal_info.PersonalPhone
+#: import Wallet views.wallet.wallet
+#: import Trips views.trips.trips
 <MainWindow>:
     orientation: 'vertical'
     canvas.before:
@@ -39,6 +41,14 @@
                 name: 'scrn_settings'
                 SettingsScreen:
                     id: setting
+            Screen:
+                name: 'scrn_trips'
+                Trips:
+                    id: trips
+            Screen:
+                name: 'scrn_wallet'
+                Wallet:
+                    id: wallet
             Screen:
                 name: 'scrn_personal_phone'
                 PersonalPhone:
