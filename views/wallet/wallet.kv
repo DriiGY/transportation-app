@@ -4,8 +4,211 @@
     #padding:[dp(2)]
     canvas.before:
         Color:
-            rgba:[1,0,0,1]
+            rgba:[1,0,0,0]
         Rectangle:
             pos:self.pos    
             size:self.size
-    padding:dp(10)
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba:rgba("#6167E9")
+            Rectangle:
+                pos:self.pos    
+                size:self.size
+        orientation:"horizontal"
+        size_hint_y: .1
+        padding:[dp(5), 0, dp(10), 0]
+        spacing:dp(5)
+        ButtonIcon:
+            size_hint: .2, 1
+            text:icon("icon-chevron-left")
+            color:[1,1,1,1]
+            bold:True
+            font_size:app.fonts.size.h1
+            on_release:
+                root.parent.manager.current = "scrn_settings"
+                root.parent.manager.transition.direction = "left"
+        MDLabel:
+       
+            size_hint: .8, 1
+            text:"Wallet"
+            color:[1,1,1,1]
+            font_size:app.fonts.size.h1
+
+
+    ScrollView:
+        # padding:[0, dp(10), 0, dp(20)]
+        do_scroll_x: False
+        do_scroll_y: True             
+        
+        BoxLayout:
+            orientation:"vertical"
+            spacing:dp(15)
+            #size_hint_y:.9
+            size_hint_min_y: None
+            size_hint_y: None
+            height: self.minimum_height
+            BoxLayout:
+                orientation:"vertical"
+                canvas.before:
+                    Color:
+                        rgba:[1,0,0,0]
+                    Rectangle:
+                        pos:self.pos    
+                        size:self.size
+                size_hint:1, None
+                height:dp(150)
+                padding:[dp(5), dp(10), dp(5), dp(10)]
+                
+                FitImage:
+                    id: wallet_image
+                    source: "assets/imgs/cute_astronaut.png"
+                    size_hint:1,1
+                    radius: [dp(20), dp(20), dp(20), dp(20) ]
+            
+            BoxLayout:
+                
+                size_hint:1, None
+                height:dp(100)
+                padding:[dp(5), 0, dp(5), 0]
+                ShadowBox:
+                    bcolor:rgba("#f9f9f9")
+                    radius:[dp(10)]
+                    orientation:"vertical"
+                    padding:[dp(10), 0, dp(5), 0]
+                    BoxLayout:
+                        
+                        MDLabel:
+                            text:"TransportYoiu coins"
+                            color:[0,0,0,1]
+                            size_hint: .4, 1
+                            font_size:app.fonts.size.h5
+                        Widget:
+                            size_hint: .5, 1
+                        ButtonIcon:
+                            
+                            size_hint: .1, 1
+                            text:icon("icon-chevron-right")
+                            color:[0,0,0,1]
+                            bold:True
+                            font_size:app.fonts.size.h3
+                    
+                    MDLabel:
+                        text:"€ 30.00"
+                        color:[0,0,0,1]
+                        bold:True
+                        font_size:app.fonts.size.h3
+            BoxLayout:
+                
+                size_hint:1, None
+                height:dp(150)
+                padding:[dp(5), 0, dp(5), 0]
+                ShadowBox:
+                    bcolor:[1,1,1,1]
+                    radius:[dp(10)]
+                    orientation:"horizontal"
+                    padding:[dp(10), dp(5), dp(5), dp(5)]
+                    BoxLayout:
+                        size_hint_x:.85
+                        orientation:"vertical"
+                        MDLabel:
+                            text:"Send a gift"
+                            color:[0,0,0,1]
+                            size_hint: .4, 1
+                            bold:True
+                            font_size:app.fonts.size.h3
+                        MDLabel:
+                            text:"You can now send gift cards to your friends"
+                            color:[0,0,0,1]
+                            font_size:app.fonts.size.h5
+                        MDRaisedButton:
+                            text: "Send a gift"
+                            md_bg_color: rgba("#d3d3d3")
+                            text_color:[0,0,0,1]
+                    BoxLayout:
+                        size_hint_x:.15
+                        IconButton:
+                            source:"assets/imgs/green-gift.png"
+            
+            BoxLayout:
+                orientation:"vertical"
+                padding:[dp(10), dp(15), dp(5), dp(5)]
+                size_hint_min_y: None
+                size_hint_y: None
+                height: self.minimum_height
+                spacing:dp(10)
+                MDLabel:
+                    
+                    text:"Payment methods"
+                    font_size:app.fonts.size.h3
+                    color:[0,0,0,1]
+                    bold:True
+                    size_hint:1, None
+                    height:dp(30)
+                BoxLayout:
+                    id:payment_cards
+                    orientation:"vertical"
+                    size_hint_y:None
+                    height:self.minimum_height
+                    spacing:dp(4)
+                    BoxLayout:
+                        size_hint:1, None
+                        height:dp(20)
+                        spacing:dp(10)
+                        FitImage:
+                            id:card_type
+                            source: "assets/imgs/mastercard_symbol.png"
+                            size_hint:None, None
+                            size:dp(20), dp(20)
+                            pos_hint:{"center_y":.5}
+                        MDLabel:
+                        
+                            text:"**** 9999"
+                            font_size:app.fonts.size.h6
+                            color:[0,0,0,1]
+                            valign:"middle"
+                    BoxLayout:
+                        size_hint:1, None
+                        height:dp(20)
+                        spacing:dp(10)
+                        FitImage:
+                            id:card_type
+                            source: "assets/imgs/mastercard_symbol.png"
+                            size_hint:None, None
+                            size:dp(20), dp(20)
+                            pos_hint:{"center_y":.5}
+                        MDLabel:
+                        
+                            text:"**** 9999"
+                            font_size:app.fonts.size.h6
+                            color:[0,0,0,1]
+                            valign:"middle"
+                    BoxLayout:
+                        size_hint:1, None
+                        height:dp(20)
+                        spacing:dp(10)
+                        FitImage:
+                            id:card_type
+                            source: "assets/imgs/mastercard_symbol.png"
+                            size_hint:None, None
+                            size:dp(20), dp(20)
+                            pos_hint:{"center_y":.5}
+                        MDLabel:
+                        
+                            text:"**** 9999"
+                            font_size:app.fonts.size.h6
+                            color:[0,0,0,1]
+                            valign:"middle"
+                MDRaisedButton:
+                    size_hint:.5, None
+                    height:dp(20)
+                    text: "Add payment methood"
+                    md_bg_color: rgba("#d3d3d3")
+                    text_color:[0,0,0,1]
+                        
+                       
+                      
+                
+                    
+                   
+            Widget:

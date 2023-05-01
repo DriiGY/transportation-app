@@ -4,8 +4,35 @@
     #padding:[dp(2)]
     canvas.before:
         Color:
-            rgba:[1,1,0,1]
+            rgba:[1,1,0,0]
         Rectangle:
             pos:self.pos    
             size:self.size
-    padding:dp(10)
+    
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba:rgba("#6167E9")
+            Rectangle:
+                pos:self.pos    
+                size:self.size
+        orientation:"horizontal"
+        size_hint_y: .1
+        padding:[dp(5), 0, dp(10), 0]
+        spacing:dp(5)
+        ButtonIcon:
+            size_hint: .2, 1
+            text:icon("icon-x")
+            color:[1,1,1,1]
+            bold:True
+            font_size:app.fonts.size.h1
+            on_release:
+                root.parent.manager.current = "scrn_settings"
+                root.parent.manager.transition.direction = "left"
+        MDLabel:
+       
+            size_hint: .8, 1
+            text:"Your trips"
+            color:[1,1,1,1]
+            font_size:app.fonts.size.h1
+    Widget:
