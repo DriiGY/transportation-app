@@ -24,6 +24,7 @@
 #: import PersonalPhone views.personal_info.PersonalPhone
 #: import Wallet views.wallet.wallet
 #: import AddPayment views.wallet.AddPayment
+#: import AddCreditDetails views.wallet.AddCreditDetails
 #: import Trips views.trips.trips
 <MainWindow>:
     orientation: 'vertical'
@@ -53,7 +54,11 @@
             Screen:
                 name: 'scrn_add_payment'
                 AddPayment:
-                    id: add_payment
+                    id: add_payment  
+            Screen:
+                name: 'scrn_add_credit_card_details'
+                AddCreditDetails:
+                    id: add_credit_details
             Screen:
                 name: 'scrn_personal_phone'
                 PersonalPhone:

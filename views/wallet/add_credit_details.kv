@@ -1,0 +1,94 @@
+
+<AddCreditDetails>:
+    orientation: "vertical"
+    
+    canvas.before:
+        Color:
+            rgba:[0,0,0,0]
+        Rectangle:
+            pos:self.pos    
+            size:self.size
+    spacing:dp(10)
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba:[0,0,0,1]
+            Rectangle:
+                pos:self.pos    
+                size:self.size
+        orientation:"horizontal"
+        size_hint_y: None
+        height:dp(100)
+        padding:[dp(5), 0, dp(10), 0]
+        spacing:dp(5)
+        ButtonIcon:
+            size_hint: .2, 1
+            text:icon("icon-chevron-left")
+            color:[1,1,1,1]
+            bold:False
+            font_size:app.fonts.size.h1
+            on_release:
+                root.parent.manager.current = "scrn_add_payment"
+                root.parent.manager.transition.direction = "left"
+        MDLabel:
+    
+            size_hint: .8, 1
+            text:"Add Card"
+            color:[1,1,1,1]
+            font_size:app.fonts.size.h2
+            bold:False
+    BoxLayout:
+        size_hint_y: None
+        height:dp(300)
+        orientation:"vertical"
+        padding:[dp(10)]
+        MDTextField:
+            id:card_number
+            icon_left: "credit-card"
+            hint_text: ""   
+            mode:"round" 
+        BoxLayout:
+            orientation:"horizontal"
+            size_hint_y:None
+            height:dp(100)
+            BoxLayout:
+                size_hint_y:None
+                height:dp(80)
+                orientation:"vertical"
+                MDLabel:
+                    text:"Exp. Date"
+                    color:[0,0,0,1]
+                MDTextField:
+                    id:exp_date
+                    hint_text: "MM/YY"  
+                    mode:"round"  
+            BoxLayout:
+                size_hint_y:None
+                height:dp(80)
+                orientation:"vertical"
+                MDLabel:
+                    text:"CVV"
+                    color:[0,0,0,1]
+                MDTextField:
+                    id:cvv
+                    hint_text: "123"    
+                    mode:"round" 
+    MDLabel:
+        size_hint_y: None
+        height:dp(20)
+        text:"Only country available is [b][color=#ff0000]Portugal[color=#ff0000][b]"
+        color:[0,0,0,1]
+        halign:"center"
+        markup: True
+    MDRaisedButton:
+        size_hint:.5, None
+        height:dp(40)
+        text: "Next"
+        md_bg_color: [1,0,0,1]
+        text_color:[0,0,0,1]
+        pos_hint:{"center_x":.5}
+        on_release:
+            root.parent.manager.current = "scrn_wallet"
+            root.parent.manager.transition.direction = "left"
+
+    Widget:

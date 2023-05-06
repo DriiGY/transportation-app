@@ -40,6 +40,9 @@
         padding:[dp(10)]
         OneLineAvatarListItem:
             text: "Credit or Debit Card"
+            on_release:
+                root.parent.manager.current = "scrn_add_credit_card_details"
+                root.parent.manager.transition.direction = "left"
             ImageLeftWidget:
                 source: "assets/imgs/creditcard.png"
         OneLineAvatarListItem:
