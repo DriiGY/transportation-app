@@ -1,0 +1,57 @@
+
+<AddPayment>:
+    orientation: "vertical"
+    #padding:[dp(2)]
+    canvas.before:
+        Color:
+            rgba:[1,0,0,0]
+        Rectangle:
+            pos:self.pos    
+            size:self.size
+    BoxLayout:
+        # canvas.before:
+        #     Color:
+        #         rgba:rgba("#6167E9")
+        #     Rectangle:
+        #         pos:self.pos    
+        #         size:self.size
+        orientation:"horizontal"
+        size_hint_y: .1
+        padding:[dp(5), 0, dp(10), 0]
+        spacing:dp(5)
+        ButtonIcon:
+            size_hint: .2, 1
+            text:icon("icon-chevron-left")
+            color:[0,0,0,1]
+            bold:True
+            font_size:app.fonts.size.h1
+            on_release:
+                root.parent.manager.current = "scrn_wallet"
+                root.parent.manager.transition.direction = "left"
+        MDLabel:
+    
+            size_hint: .8, 1
+            text:"Add Payment"
+            color:[0,0,0,1]
+            font_size:app.fonts.size.h1
+            bold:True
+    MDList:
+        size_hint_y: .9
+        padding:[dp(10)]
+        OneLineAvatarListItem:
+            text: "Credit or Debit Card"
+            ImageLeftWidget:
+                source: "assets/imgs/creditcard.png"
+        OneLineAvatarListItem:
+            text: "Paypal"
+            ImageLeftWidget:
+                source: "assets/imgs/paypal.png"
+        OneLineAvatarListItem:
+            text: "Gift Card"
+            ImageLeftWidget:
+                source: "assets/imgs/giftcard.png"
+        OneLineAvatarListItem:
+            text: "MB Way"
+            ImageLeftWidget:
+                source: "assets/imgs/mbway.jpg"
+   

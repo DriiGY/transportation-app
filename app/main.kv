@@ -23,6 +23,7 @@
 #: import PersonalPassword views.personal_info.PersonalPassword
 #: import PersonalPhone views.personal_info.PersonalPhone
 #: import Wallet views.wallet.wallet
+#: import AddPayment views.wallet.AddPayment
 #: import Trips views.trips.trips
 <MainWindow>:
     orientation: 'vertical'
@@ -49,6 +50,10 @@
                 name: 'scrn_wallet'
                 Wallet:
                     id: wallet
+            Screen:
+                name: 'scrn_add_payment'
+                AddPayment:
+                    id: add_payment
             Screen:
                 name: 'scrn_personal_phone'
                 PersonalPhone:

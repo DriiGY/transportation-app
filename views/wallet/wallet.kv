@@ -151,60 +151,25 @@
                     size_hint_y:None
                     height:self.minimum_height
                     spacing:dp(4)
-                    BoxLayout:
-                        size_hint:1, None
-                        height:dp(20)
-                        spacing:dp(10)
-                        FitImage:
-                            id:card_type
-                            source: "assets/imgs/mastercard_symbol.png"
-                            size_hint:None, None
-                            size:dp(20), dp(20)
-                            pos_hint:{"center_y":.5}
-                        MDLabel:
-                        
-                            text:"**** 9999"
-                            font_size:app.fonts.size.h6
-                            color:[0,0,0,1]
-                            valign:"middle"
-                    BoxLayout:
-                        size_hint:1, None
-                        height:dp(20)
-                        spacing:dp(10)
-                        FitImage:
-                            id:card_type
-                            source: "assets/imgs/mastercard_symbol.png"
-                            size_hint:None, None
-                            size:dp(20), dp(20)
-                            pos_hint:{"center_y":.5}
-                        MDLabel:
-                        
-                            text:"**** 9999"
-                            font_size:app.fonts.size.h6
-                            color:[0,0,0,1]
-                            valign:"middle"
-                    BoxLayout:
-                        size_hint:1, None
-                        height:dp(20)
-                        spacing:dp(10)
-                        FitImage:
-                            id:card_type
-                            source: "assets/imgs/mastercard_symbol.png"
-                            size_hint:None, None
-                            size:dp(20), dp(20)
-                            pos_hint:{"center_y":.5}
-                        MDLabel:
-                        
-                            text:"**** 9999"
-                            font_size:app.fonts.size.h6
-                            color:[0,0,0,1]
-                            valign:"middle"
+                    PaymentCardsListItem:
+                        card_icon:"assets/imgs/mastercard_symbol.png"
+                        card_number:"**** 1234"
+                    PaymentCardsListItem:
+                        card_icon:"assets/imgs/mastercard_symbol.png"
+                        card_number:"**** 6666"
+                    
+                    PaymentCardsListItem:
+                        card_icon:"assets/imgs/mastercard_symbol.png"
+                        card_number:"**** 9999"
                 MDRaisedButton:
                     size_hint:.5, None
                     height:dp(20)
                     text: "Add payment methood"
                     md_bg_color: rgba("#d3d3d3")
                     text_color:[0,0,0,1]
+                    on_release:
+                        root.parent.manager.current = "scrn_add_payment"
+                        root.parent.manager.transition.direction = "left"
                         
                        
                       
@@ -212,3 +177,20 @@
                     
                    
             Widget:
+
+<PaymentCardsListItem>:
+    size_hint:1, None
+    height:dp(20)
+    spacing:dp(10)
+    FitImage:
+        id:card_type
+        source: root.card_icon
+        size_hint:None, None
+        size:dp(20), dp(20)
+        pos_hint:{"center_y":.5}
+    MDLabel:
+    
+        text:root.card_number
+        font_size:app.fonts.size.h6
+        color:[0,0,0,1]
+        valign:"middle"
