@@ -5,6 +5,7 @@ import json
 import os
 #import pprint
 API_KEY = f"{os.getenv('API_KEY')}"
+
 def get_street_from_coordinates(lat, lon):
   
         headers = {
@@ -12,9 +13,10 @@ def get_street_from_coordinates(lat, lon):
         }
         call = requests.get('https://api.openrouteservice.org/geocode/reverse?api_key={}&point.lon={}&point.lat={}'.format(API_KEY, lon, lat), headers=headers)
         res = json.loads(call.text)
-        
+        #print(res)
         # pp = pprint.PrettyPrinter(indent=4)
         # pp.pprint(res['features'][0]) # ['properties']['region']
+        
         return res['features'][0]['properties']['label'], res['features'][0]['properties']['region']
 
 def openrouteservice_request(body):

@@ -139,7 +139,7 @@ class Home(BoxLayout):
 
                 # Add pin to mapview
                 self.ids.main_map.add_widget(self.my_pin)
-
+            
                 # Get label and region. Label will be used in every component describing the adress of a point. Like my_location_label, ... 
                 # Region is used in the ticket details.
                 label, region = get_street_from_coordinates(latitude, longitude)
